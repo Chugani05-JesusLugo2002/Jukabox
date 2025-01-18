@@ -1,0 +1,17 @@
+runserver:
+    ./manage.py runserver
+
+# Django migrations related actions
+
+alias c := check
+alias mm := makemigrations
+alias m := migrate
+
+check:
+    ./manage.py check
+
+makemigrations:
+    ./manage.py makemigrations
+
+migrate:
+    ./manage.py migrate
