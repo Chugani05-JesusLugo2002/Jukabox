@@ -6,7 +6,147 @@
     },
     {
         "id": 2,
-        "name": "",
+        "name": "Pav Dharia",
+        "bio": ""
+    },
+    {
+        "id": 3,
+        "name": "Nandini Srikar",
+        "bio": ""
+    },
+    {
+        "id": 4,
+        "name": "Akshath",
+        "bio": ""
+    },
+    {
+        "id": 5,
+        "name": "Imagine Dragons",
+        "bio": ""
+    },
+    {
+        "id": 6,
+        "name": "Myke Towers",
+        "bio": ""
+    },
+    {
+        "id": 7,
+        "name": "Don Omar",
+        "bio": ""
+    },
+    {
+        "id": 8,
+        "name": "Ryan Castro",
+        "bio": ""
+    },
+    {
+        "id": 9,
+        "name": "Coldplay",
+        "bio": ""
+    },
+    {
+        "id": 10,
+        "name": "Dua Lipa",
+        "bio": ""
+    },
+    {
+        "id": 11,
+        "name": "Meghan Trainor",
+        "bio": ""
+    },
+    {
+        "id": 12,
+        "name": "Ariadna Grande",
+        "bio": ""
+    },
+    {
+        "id": 13,
+        "name": "Little Mix",
+        "bio": ""
+    },
+    {
+        "id": 14,
+        "name": "Adele",
+        "bio": ""
+    },
+    {
+        "id": 15,
+        "name": "Stray Kids",
+        "bio": ""
+    },
+    {
+        "id": 16,
+        "name": "Emir Taha",
+        "bio": ""
+    },
+    {
+        "id": 17,
+        "name": "Snow Wife",
+        "bio": ""
+    },
+    {
+        "id": 18,
+        "name": "Camila Cabello",
+        "bio": ""
+    },
+    {
+        "id": 19,
+        "name": "Stela Cole",
+        "bio": ""
+    },
+    {
+        "id": 20,
+        "name": "Twenty One Pilots",
+        "bio": ""
+    },
+    {
+        "id": 21,
+        "name": "Kendrick Lamar",
+        "bio": ""
+    },
+    {
+        "id": 22,
+        "name": "OMORI",
+        "bio": ""
+    },
+    {
+        "id": 23,
+        "name": "Alias Conrad Coldwood",
+        "bio": ""
+    },
+    {
+        "id": 24,
+        "name": "Calle 13",
+        "bio": ""
+    },
+    {
+        "id": 25,
+        "name": "Miranda",
+        "bio": ""
+    },
+    {
+        "id": 26,
+        "name": "Tsuka Saitoh",
+        "bio": ""
+    },
+    {
+        "id": 27,
+        "name": "Christopher Larkin",
+        "bio": ""
+    },
+    {
+        "id": 28,
+        "name": "Yuka Kitamura",
+        "bio": ""
+    },
+    {
+        "id": 29,
+        "name": "Ridiculon",
+        "bio": ""
+    },
+    {
+        "id": 30,
+        "name": "Eminem",
         "bio": ""
     }
 ]
