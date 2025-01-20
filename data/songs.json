@@ -35,7 +35,7 @@
         "id": 5,
         "name": "Bones",
         "artist": "Imagine Dragons",
-        "album": "Mercury – Acts 1 & 2",
+        "album": "Mercury - Acts 1 & 2",
         "genre": ["Rock", "Pop", "R'n'B", "Indie", "Country"],
         "year": 2022
     },
@@ -277,6 +277,6 @@
         "artist": "Toby Fox",
         "album": "DELTARUNE Chapter 1 OST",
         "genre": "Orchestral",
-        "year": 20
+        "year": 2018
     }
 ]
