@@ -155,17 +155,17 @@
         "id": 20,
         "name": "Message Man",
         "artist": "Twenty One Pilots",
-        "album": "",
-        "genre": "",
-        "year": 1234
+        "album": "Blurryface",
+        "genre": "Indie",
+        "year": 2015
     },
     {
         "id": 21,
         "name": "Squabble Up",
         "artist": "Kendrick Lamar",
-        "album": "",
-        "genre": "",
-        "year": 1234
+        "album": "GNX",
+        "genre": ["Rap", "Hip-Hop"],
+        "year": 2024
     },
     {
         "id": 22,
@@ -201,8 +201,8 @@
     },
     {
         "id": 26,
-        "name": "Tsuka Saitoh",
-        "artist": "Laurence, The First Vicar",
+        "name": "Laurence, The First Vicar",
+        "artist": "Tsuka Saitoh",
         "album": "Bloodborne OST",
         "genre": "Orchestral",
         "year": 1234
@@ -238,5 +238,45 @@
         "album": "The Marshall Mathers LP 2",
         "genre": ["Hip-Hop", "Rap", "Rock"],
         "year": 2013
+    },
+    {
+        "id": 31,
+        "name": "The Pantaloon",
+        "artist": "Twenty One Pilots",
+        "album": "Twenty One Pilots",
+        "genre": "Rock",
+        "year": 2009
+    },
+    {
+        "id": 32,
+        "name": "Heathens",
+        "artist": "Twenty One Pilots",
+        "album": "Suicide Squad: The Album",
+        "genre": ["Rock", "Rap", "Indie"],
+        "year": 2009
+    },
+    {
+        "id": 33,
+        "name": "Houdini",
+        "artist": "Dua Lipa",
+        "album": "Radical Optimism",
+        "genre": ["Pop", "R'n'B"] ,
+        "year": 2024
+    },
+    {
+        "id": 34,
+        "name": "Aa Zara",
+        "artist": "Sunidhi Chauhan",
+        "album": "Murder 2",
+        "genre": "I-pop",
+        "year": 2011
+    },
+    {
+        "id": 35,
+        "name": "THE WORLD REVOLVING",
+        "artist": "Toby Fox",
+        "album": "DELTARUNE Chapter 1 OST",
+        "genre": "Orchestral",
+        "year": 20
     }
 ]

@@ -148,5 +148,15 @@
         "id": 30,
         "name": "Eminem",
         "bio": "An American rapper, songwriter, and record producer, widely regarded as one of the greatest artists in hip-hop history. His lyrical prowess and storytelling ability have earned him numerous awards and a lasting impact on the genre."
+    },
+    {
+        "id": 31,
+        "name": "Sunidhi Chauhan",
+        "bio": "An Indian playback singer known for her powerful voice and versatility across genres. With a career spanning over two decades, she has recorded thousands of songs and won numerous awards in Bollywood music."
+    },
+    {
+        "id": 32,
+        "name": "Toby Fox",
+        "bio": "An American indie game developer and composer best known for creating the critically acclaimed game Undertale. His innovative storytelling and unique gameplay mechanics have garnered a dedicated fanbase and numerous awards. Fox continues to influence the gaming industry with his work on projects like Deltarune."
     }
 ]
