@@ -1,0 +1,172 @@
+[
+    {
+        "id": 1,
+        "name": "Harshit Saxena",
+        "bio": "An Indian singer and songwriter known for his versatility across various music genres, from pop to classical. He has gained recognition for his vocal talent and ability to connect with audiences."
+    },
+    {
+        "id": 2,
+        "name": "Pav Dharia",
+        "bio": "An Indian artist and music producer famous for his hits in pop music, blending contemporary rhythms with traditional melodies. His career has flourished due to his knack for creating catchy songs."
+    },
+    {
+        "id": 3,
+        "name": "Nandini Srikar",
+        "bio": "An Indian singer and composer recognized for her work in film music and contributions to folk music. Her captivating voice and passion for music have led to collaborations with several prominent artists."
+    },
+    {
+        "id": 4,
+        "name": "Akshath",
+        "bio": "An emerging young artist in the music scene, known for his fresh style and emotional lyrics. His music spans various genres, allowing him to attract a diverse audience."
+    },
+    {
+        "id": 5,
+        "name": "Imagine Dragons",
+        "bio": "An American alternative rock band known for their energetic sound and introspective lyrics. They have won multiple Grammy Awards and their music resonates globally."
+    },
+    {
+        "id": 6,
+        "name": "Myke Towers",
+        "bio": "A Puerto Rican rapper and singer known for his unique style that blends reggaeton and trap. He has gained international popularity through collaborations and chart-topping hits."
+    },
+    {
+        "id": 7,
+        "name": "Don Omar",
+        "bio": "A Latin urban music icon known for his influence in reggaeton and powerful voice. He has sold millions of records and collaborated with numerous renowned artists."
+    },
+    {
+        "id": 8,
+        "name": "Ryan Castro",
+        "bio": "A Colombian singer who has gained recognition in the reggaeton scene. His fresh style and catchy lyrics have made him a prominent figure in urban music."
+    },
+    {
+        "id": 9,
+        "name": "Coldplay",
+        "bio": "A British alternative rock band famous for their melodic sound and emotional lyrics. They have sold millions of albums and are known for their impressive live performances."
+    },
+    {
+        "id": 10,
+        "name": "Dua Lipa",
+        "bio": "A British singer and songwriter recognized for her powerful voice and contemporary pop style. She has won several Grammy Awards and is known for her global chart-topping hits."
+    },
+    {
+        "id": 11,
+        "name": "Meghan Trainor",
+        "bio": "An American singer and songwriter famous for her retro style and empowering lyrics. Her hit 'All About That Bass' catapulted her to fame, and she has continued to release hits since."
+    },
+    {
+        "id": 12,
+        "name": "Ariadna Grande",
+        "bio": "An American singer and actress known for her impressive vocal range and pop style. She has received multiple awards and is one of the most influential artists of her generation."
+    },
+    {
+        "id": 13,
+        "name": "Little Mix",
+        "bio": "A British girl group formed on 'The X Factor', known for their vocal harmonies and female empowerment. They have released numerous hits and won several awards."
+    },
+    {
+        "id": 14,
+        "name": "Adele",
+        "bio": "A British singer and songwriter famous for her powerful voice and emotional ballads. She has sold millions of albums and won multiple Grammy Awards, becoming a music icon."
+    },
+    {
+        "id": 15,
+        "name": "Stray Kids",
+        "bio": "A South Korean K-pop group known for their energy and production skills. They have gained a global fanbase thanks to their innovative music and dynamic performances."
+    },
+    {
+        "id": 16,
+        "name": "Emir Taha",
+        "bio": "An emerging pop artist known for his fresh style and lyrics that resonate with youth. His talent has led to recognition in the music scene."
+    },
+    {
+        "id": 17,
+        "name": "Snow Wife",
+        "bio": "An independent artist who blends genres like pop and indie. Her introspective music and poetic lyrics have captured the attention of a growing audience."
+    },
+    {
+        "id": 18,
+        "name": "Camila Cabello",
+        "bio": "A Cuban-American singer and songwriter famous for her solo career and work with Fifth Harmony. Her pop style and emotional ballads have led her to international fame."
+    },
+    {
+        "id": 19,
+        "name": "Stela Cole",
+        "bio": "An American singer and songwriter known for her alternative pop style and sincere lyrics. She has gained recognition for her innovative approach to music."
+    },
+    {
+        "id": 20,
+        "name": "Twenty One Pilots",
+        "bio": "An American alternative rock duo known for their genre-blending and introspective lyrics. They have won several awards and are famous for their energetic live concerts."
+    },
+    {
+        "id": 21,
+        "name": "Kendrick Lamar",
+        "bio": "An American rapper and songwriter considered one of the best of his generation. His music addresses social issues and has won multiple Grammy Awards, solidifying his legacy in hip-hop."
+    },
+    {
+        "id": 22,
+        "name": "OMORI",
+        "bio": "A talented artist known for his unique sound that blends various musical styles, creating an immersive experience for listeners. His work often explores themes of introspection and emotional depth."
+    },
+    {
+        "id": 23,
+        "name": "Alias Conrad Coldwood",
+        "bio": "An artist recognized for his innovative approach to music, combining elements of electronic and acoustic sounds. His creative style has garnered a dedicated following."
+    },
+    {
+        "id": 24,
+        "name": "Calle 13",
+        "bio": "A Puerto Rican band known for their fusion of reggaeton, hip-hop, and Latin music. Their socially conscious lyrics and energetic performances have made them a significant force in the music industry."
+    },
+    {
+        "id": 25,
+        "name": "Miranda",
+        "bio": "An Argentine pop band celebrated for their catchy melodies and vibrant performances. They have a strong fan base in Latin America and are known for their engaging live shows."
+    },
+    {
+        "id": 26,
+        "name": "Tsuka Saitoh",
+        "bio": "A Japanese artist known for his contributions to the contemporary music scene, blending traditional sounds with modern influences. His work often reflects cultural themes and personal narratives."
+    },
+    {
+        "id": 27,
+        "name": "Christopher Larkin",
+        "bio": "A composer recognized for his work in video game music, creating immersive soundscapes that enhance the gaming experience. His compositions are celebrated for their emotional depth and creativity."
+    },
+    {
+        "id": 28,
+        "name": "Yuka Kitamura",
+        "bio": "A Japanese composer known for her work in video game soundtracks, particularly in the action and adventure genres. Her music is characterized by its dynamic range and emotional resonance."
+    },
+    {
+        "id": 29,
+        "name": "Ridiculon",
+        "bio": "An independent music duo known for their eclectic sound that combines various genres, including electronic and rock. Their innovative approach to music has earned them a dedicated fan base."
+    },
+    {
+        "id": 30,
+        "name": "Eminem",
+        "bio": "An American rapper, songwriter, and record producer, widely regarded as one of the greatest artists in hip-hop history. His lyrical prowess and storytelling ability have earned him numerous awards and a lasting impact on the genre."
+    },
+    {
+        "id": 31,
+        "name": "Sunidhi Chauhan",
+        "bio": "An Indian playback singer known for her powerful voice and versatility across genres. With a career spanning over two decades, she has recorded thousands of songs and won numerous awards in Bollywood music."
+    },
+    {
+        "id": 32,
+        "name": "Toby Fox",
+        "bio": "An American indie game developer and composer best known for creating the critically acclaimed game Undertale. His innovative storytelling and unique gameplay mechanics have garnered a dedicated fanbase and numerous awards. Fox continues to influence the gaming industry with his work on projects like Deltarune."
+    },
+    {
+        "id": 33,
+        "name": "Casey Edwards",
+        "bio": ""
+    },
+    {
+        "id": 34,
+        "name": "Neoni",
+        "bio": ""
+    }
+]

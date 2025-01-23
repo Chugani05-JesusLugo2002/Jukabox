@@ -1,0 +1,3 @@
+# Run ESLint and then, the development server
+run:
+    npm run format && npm run dev
