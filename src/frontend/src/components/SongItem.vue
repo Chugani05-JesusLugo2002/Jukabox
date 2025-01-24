@@ -3,5 +3,7 @@ const props = defineProps(['song'])
 </script>
 
 <template>
-  <li>{{ song.name }}</li>
+  <li class="list-group-item">
+    {{ song.name }}
+  </li>
 </template>
