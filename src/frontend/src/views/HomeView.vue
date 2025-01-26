@@ -1,5 +1,3 @@
 <template>
-  <main>
-    <h1>Hello world!</h1>
-  </main>
+  <h1 class="display-1">Home</h1>
 </template>

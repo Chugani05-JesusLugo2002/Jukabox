@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const logoutIcon = ref('bi bi-door-closed')
-
-
 </script>
 
 <template>
@@ -16,7 +14,7 @@ const logoutIcon = ref('bi bi-door-closed')
 
       <ul class="navbar-nav">
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/">Home</RouterLink>
+          <RouterLink class="nav-link" to="/home">Home</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink class="nav-link" to="/explore">Explore</RouterLink>
@@ -45,10 +43,24 @@ const logoutIcon = ref('bi bi-door-closed')
           />
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#"><i class="bi bi-moon"></i> Change theme</a></li>
-          <li><a class="dropdown-item" href="#"><i class="bi bi-gear" id="settings-icon"></i> Settings</a></li>
           <li>
-            <a class="dropdown-item" href="#" @mouseover="logoutIcon = 'bi bi-door-open'" @mouseleave="logoutIcon = 'bi bi-door-closed'">
+            <a class="dropdown-item" href="#"><i class="bi bi-person-circle"></i> My profile</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#"><i class="bi bi-moon"></i> Change theme</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#"
+              ><i class="bi bi-gear" id="settings-icon"></i> Settings</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="#"
+              @mouseover="logoutIcon = 'bi bi-door-open'"
+              @mouseleave="logoutIcon = 'bi bi-door-closed'"
+            >
               <i :class="logoutIcon"></i> Logout
             </a>
           </li>

@@ -294,5 +294,13 @@
         "album": "HORROR MOVIES",
         "genre": "Indie",
         "year": 2021
+    },
+    {
+        "id": 38,
+        "name": "Glue Song",
+        "artist": "Beabadoobee",
+        "album": "Glue Song",
+        "genre": ["Pop", "Indie"],
+        "year": 2023
     }
 ]
