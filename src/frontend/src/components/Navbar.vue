@@ -70,10 +70,14 @@ const logoutIcon = ref('bi bi-door-closed')
   </header>
 </template>
 
-<style scoped>
-.navbar-nav .router-link-active {
-  background-color: rgb(199, 199, 252);
-  border-radius: 5px;
-  font-weight: bold;
+<style scoped lang="scss">
+@import '@/scss/colors';
+
+.navbar-nav {
+  .router-link-active {
+    background-color: $primary-color;
+    border-radius: 5px;
+    font-weight: bold;
+  }
 }
 </style>
