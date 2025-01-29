@@ -6,3 +6,9 @@ class Playlist(models.Model):
     songs = models.ManyToManyField('songs.Song', blank=True)
     creator = models.ForeignKey('users.Profile', on_delete=models.CASCADE, related_name='playlists')
     created_at = models.DateField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('title',)
+
+    def __str__(self, *args, **kwargs):
+        return f'{self.title} by {self.creator}'

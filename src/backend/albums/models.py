@@ -5,3 +5,9 @@ class Album(models.Model):
     artists = models.ManyToManyField('artists.Artist', related_name='albums')
     released_at = models.DateField()
     cover = models.ImageField(upload_to='covers/', default='covers/default.jpg')
+
+    class Meta:
+        ordering = ('title',)
+
+    def __str__(self, *args, **kwargs):
+        return f'{self.title} by {self.artists}' 
