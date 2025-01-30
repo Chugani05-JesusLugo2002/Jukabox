@@ -1,6 +1,8 @@
 from django.db import models
 from colorfield.fields import ColorField
 
+from shared.validators import validate_year_range
+
 class Genre(models.Model):
     name = models.CharField(max_length=250)
     color = ColorField(default='#ffffff')
@@ -8,21 +10,20 @@ class Genre(models.Model):
     class Meta:
         ordering = ('name',)
 
-    def __str__(self, *args, **kwargs):
+    def __str__(self):
         return self.name
 
 
 class Song(models.Model):
     title = models.CharField(max_length=250)
-    artists = models.ManyToManyField('artists.Artist')
-    released_at = models.DateField()
+    artists = models.ManyToManyField('artists.Artist', related_name='songs')
+    released_at = models.SmallIntegerField(validators=[validate_year_range])
     album = models.ForeignKey('albums.Album', on_delete=models.PROTECT, related_name='songs', null=True, blank=True)
-    url = models.URLField(max_length=250)
     genre = models.ManyToManyField(Genre, related_name='songs')
     added_at = models.DateField(auto_now_add=True) 
 
     class Meta:
         ordering = ('title',)
 
-    def __str__(self, *args, **kwargs):
+    def __str__(self):
         return self.title

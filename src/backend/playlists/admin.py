@@ -4,4 +4,4 @@ from .models import Playlist
 
 @admin.register(Playlist)
 class PlaylistAdmin(admin.ModelAdmin):
-    list_display = ('title', 'creator', 'created_at')
+    list_display = ('title', 'user', 'created_at')
