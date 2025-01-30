@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from .models import Song
+from .serializers import SongSerializer
 
-# Create your views here.
+def song_list(request):
+    songs = Song.objects.all()
+    serializer = SongSerializer(songs, request=request)
+    return serializer.json_response()
