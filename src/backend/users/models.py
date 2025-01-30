@@ -10,5 +10,5 @@ class Profile(models.Model):
     liked_artists = models.ManyToManyField('artists.Artist', blank=True)
     created_at = models.DateField(auto_now_add=True)
 
-    def __str__(self, *args, **kwargs):
+    def __str__(self):
         return self.user
