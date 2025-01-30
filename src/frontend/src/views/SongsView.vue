@@ -1,23 +1,26 @@
 <script setup lang="ts">
 import ViewHeader from '@/components/ViewHeader.vue'
-
-import { ref, onMounted } from 'vue'
-import { useAPI } from '@/composables/useAPI'
+import { useAPI } from '@/composables/useAPI';
+import { onMounted, ref } from 'vue';
 
 const { getData } = useAPI()
-const songs = ref(null)
+const latestSongs = ref(null)
 
 onMounted(async () => {
-  songs.value = await getData('songs/')
-  console.log(songs.value)
+  latestSongs.value = await getData('songs/')
 })
 </script>
 
 <template>
   <ViewHeader title="Songs" />
 
-  <ul v-if="songs">
-    <li v-for="(song, index) in songs" :key="index">{{ song }}</li>
+  <h2 class="display-5 mt-3">Latest songs</h2>
+  <ul>
+    <li v-for="song in latestSongs">{{ song }}</li>
   </ul>
-  <p v-else>Loading</p>
+
+  <h2 class="display-5 mt-3">Trending genres</h2>
+
+  <h2 class="display-5 mt-3">Most liked playlists</h2>
+
 </template>

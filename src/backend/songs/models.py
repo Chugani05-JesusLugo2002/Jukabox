@@ -1,5 +1,6 @@
 from django.db import models
 from colorfield.fields import ColorField
+from django.urls import reverse
 
 from shared.validators import validate_year_range
 
@@ -27,3 +28,10 @@ class Song(models.Model):
 
     def __str__(self):
         return self.title
+    
+    @property
+    def cover(self):
+        DEFAULT_COVER = 'covers/default.jpg'
+        return self.album.cover.url if self.album else DEFAULT_COVER
+
+    

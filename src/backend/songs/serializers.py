@@ -29,6 +29,7 @@ class SongSerializer(BaseSerializer):
             'artists': ArtistSerializer(instance.artists.all(), request=self.request).serialize(),
             'released_at': instance.released_at,
             'album': album,
+            'cover': self.build_url(instance.cover),
             'genre': GenreSerializer(instance.genre.all()).serialize(),
             'added_at': instance.added_at.isoformat()
         }
