@@ -8,6 +8,7 @@ class Profile(models.Model):
     liked_albums = models.ManyToManyField('albums.Album', blank=True)
     liked_playlist = models.ManyToManyField('playlists.Playlist', blank=True)
     liked_artists = models.ManyToManyField('artists.Artist', blank=True)
+    added_at = models.DateField(auto_now_add=True)
 
     def __str__(self, *args, **kwargs):
         return self.user

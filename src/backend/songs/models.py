@@ -18,7 +18,8 @@ class Song(models.Model):
     released_at = models.DateField()
     album = models.ForeignKey('albums.Album', on_delete=models.PROTECT, related_name='songs', null=True, blank=True)
     url = models.URLField(max_length=250)
-    genre = models.ManyToManyField(Genre, related_name='songs') 
+    genre = models.ManyToManyField(Genre, related_name='songs')
+    added_at = models.DateField(auto_now_add=True) 
 
     class Meta:
         ordering = ('title',)
