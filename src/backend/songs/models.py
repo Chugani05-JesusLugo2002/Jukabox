@@ -20,7 +20,7 @@ class Song(models.Model):
     released_at = models.SmallIntegerField(validators=[validate_year_range])
     album = models.ForeignKey('albums.Album', on_delete=models.PROTECT, related_name='songs', null=True, blank=True)
     genre = models.ManyToManyField(Genre, related_name='songs')
-    added_at = models.DateField(auto_now_add=True) 
+    added_at = models.DateTimeField(auto_now_add=True) 
 
     class Meta:
         ordering = ('title',)
