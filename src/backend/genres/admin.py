@@ -4,4 +4,4 @@ from .models import Genre
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ['name']}

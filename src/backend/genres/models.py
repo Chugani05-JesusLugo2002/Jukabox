@@ -5,7 +5,7 @@ from colorfield.fields import ColorField
 
 class Genre(models.Model):
     name = models.CharField(max_length=250)
-    slug = models.SlugField(unique=True, default=slugify(name))
+    slug = models.SlugField(unique=True)
     color = ColorField(default='#ffffff')
 
     class Meta:
