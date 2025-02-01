@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import type { Song } from '@/components/classes/Song'
 import ViewHeader from '@/components/ViewHeader.vue'
 import { useAPI } from '@/composables/useAPI'
 import { onMounted, ref } from 'vue'
 
 const { getData } = useAPI()
-const latestSongs = ref(null)
+const latestSongs = ref<Song[]>([])
 
 onMounted(async () => {
   latestSongs.value = await getData('songs/')
