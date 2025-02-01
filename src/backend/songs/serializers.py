@@ -2,19 +2,8 @@ from shared.serializers import BaseSerializer
 
 from artists.serializers import ArtistSerializer
 from albums.serializers import AlbumSerializer
+from genres.serializers import GenreSerializer
 
-
-class GenreSerializer(BaseSerializer):
-    def __init__(self, to_serialize, *, fields=[], request=None):
-        super().__init__(to_serialize, fields=fields, request=request)
-
-    def serialize_instance(self, instance):
-        return {
-            'id': instance.pk,
-            'name': instance.name,
-            'color': instance.color
-        }
-    
 
 class SongSerializer(BaseSerializer):
     def __init__(self, to_serialize, *, fields=[], request=None):

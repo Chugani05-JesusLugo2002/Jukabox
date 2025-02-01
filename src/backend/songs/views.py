@@ -17,3 +17,4 @@ def latest_songs(request: HttpRequest) -> JsonResponse:
     songs = Song.objects.all().order_by('-added_at')[:5]
     serializer = SongSerializer(songs, request=request)
     return serializer.json_response()   
+
