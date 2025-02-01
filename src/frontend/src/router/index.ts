@@ -10,7 +10,7 @@ const routes = [
   { path: '/home', component: HomeView, name: 'home' },
   { path: '/explore', component: ExploreView, name: 'explore' },
   { path: '/songs', component: SongsView, name: 'song-list' },
-  { path: '/songs/:song_pk', component: SongDetailView, name: 'song-detail' },
+  { path: '/songs/:song_pk/', component: SongDetailView, name: 'song-detail' },
   { path: '/artists', component: ArtistsView, name: 'artist-list' },
 ]
 
