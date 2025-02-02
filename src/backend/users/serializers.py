@@ -9,5 +9,9 @@ class UserSerializer(BaseSerializer):
     def serialize_instance(self, instance) -> dict:
         return {
             'id': instance.pk,
-            'username': instance.username
+            'token': instance.token,
+            'username': instance.user.username,
+            'first_name': instance.first_name,
+            'last_name': instance.last_name,
+            'avatar': self.build_url(instance.avatar.url)
         }
