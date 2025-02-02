@@ -13,7 +13,7 @@ const routes = [
   { path: '/songs', component: SongsView, name: 'song-list' },
   { path: '/songs/:song_pk/', component: SongDetailView, name: 'song-detail' },
   { path: '/artists', component: ArtistsView, name: 'artist-list' },
-  { path: '/community', component: CommunityView, name: 'community' }
+  { path: '/community', component: CommunityView, name: 'community' },
 ]
 
 const router = createRouter({
