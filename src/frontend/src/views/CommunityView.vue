@@ -3,5 +3,5 @@ import ViewHeader from '@/components/ViewHeader.vue'
 </script>
 
 <template>
-  <ViewHeader title="Community" />
+  <ViewHeader>Community</ViewHeader>
 </template>

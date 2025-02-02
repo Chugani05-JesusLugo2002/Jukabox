@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { ref } from 'vue'
+import { useAuthStore } from '@/stores/useAuth'
+import isAuth from './elements/Navbar/isAuth.vue'
+import noAuth from './elements/Navbar/noAuth.vue'
 
-const logoutIcon = ref('bi bi-door-closed')
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -30,45 +32,8 @@ const logoutIcon = ref('bi bi-door-closed')
         </li>
       </ul>
 
-      <div class="dropdown">
-        <a
-          class="dropdown-toggle text-body-emphasis"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img
-            src="https://github.com/mdo.png"
-            alt="My profile avatar"
-            class="rounded-circle"
-            width="32"
-            height="32"
-          />
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a class="dropdown-item" href="#"><i class="bi bi-person-circle"></i> My profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#"><i class="bi bi-moon"></i> Change theme</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#"
-              ><i class="bi bi-gear" id="settings-icon"></i> Settings</a
-            >
-          </li>
-          <li>
-            <a
-              class="dropdown-item"
-              href="#"
-              @mouseover="logoutIcon = 'bi bi-door-open'"
-              @mouseleave="logoutIcon = 'bi bi-door-closed'"
-            >
-              <i :class="logoutIcon"></i> Logout
-            </a>
-          </li>
-        </ul>
-      </div>
+      <isAuth v-if="authStore.isAuthenticated" />
+      <noAuth v-else />
     </nav>
   </header>
 </template>

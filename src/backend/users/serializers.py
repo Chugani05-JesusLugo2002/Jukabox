@@ -11,7 +11,8 @@ class UserSerializer(BaseSerializer):
             'id': instance.pk,
             'token': instance.token,
             'username': instance.user.username,
-            'first_name': instance.first_name,
-            'last_name': instance.last_name,
+            'first_name': instance.user.first_name,
+            'last_name': instance.user.last_name,
+            'email': instance.user.email,
             'avatar': self.build_url(instance.avatar.url)
         }

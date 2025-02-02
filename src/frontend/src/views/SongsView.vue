@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <ViewHeader title="Songs" />
+  <ViewHeader>Songs</ViewHeader>
 
   <h2 class="display-5 mt-3">Latest songs</h2>
   <div class="songs-grid d-flex flex-wrap gap-3 justify-content-center">

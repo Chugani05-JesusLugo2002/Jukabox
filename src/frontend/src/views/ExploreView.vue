@@ -4,7 +4,7 @@ import ExplorerComponent from '@/components/elements/ExplorerComponent.vue'
 </script>
 
 <template>
-  <ViewHeader title="Explore" />
+  <ViewHeader>Explore</ViewHeader>
 
   <ExplorerComponent />
 </template>

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'albums.apps.AlbumsConfig',
     'genres.apps.GenresConfig',
     'users.apps.UsersConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [

@@ -19,7 +19,7 @@ onMounted(async () => {
 <template>
   <div v-if="song">
     <!-- Este es el título -->
-    <ViewHeader :title="song.title" />
+    <ViewHeader>{{ song.title }}</ViewHeader>
 
     <!-- Aqui va toda la mondá relacionada con la canción -->
   </div>
