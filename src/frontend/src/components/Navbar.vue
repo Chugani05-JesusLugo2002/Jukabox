@@ -25,6 +25,9 @@ const logoutIcon = ref('bi bi-door-closed')
         <li class="nav-item">
           <RouterLink class="nav-link" to="/artists">Artists</RouterLink>
         </li>
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/community">Community</RouterLink>
+        </li>
       </ul>
 
       <div class="dropdown">
