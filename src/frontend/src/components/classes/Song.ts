@@ -11,7 +11,7 @@ export interface Song {
   title: string
   artists: Artist[]
   released_at: number
-  album: Album|string
+  album: Album | string
   cover: string
   genre: Genre[]
   added_at: string

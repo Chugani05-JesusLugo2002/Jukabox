@@ -24,7 +24,6 @@ onMounted(async () => {
     </SongItem>
   </ol>
 
-
   <h2 class="display-5 mt-3">Trending genres</h2>
 
   <h2 class="display-5 mt-3">Most liked playlists</h2>
