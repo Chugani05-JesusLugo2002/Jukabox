@@ -25,7 +25,11 @@ async function login() {
 
 <template>
   <ViewHeader>Login</ViewHeader>
-  <form @submit.prevent="login" class="container mt-5 p-4 border rounded bg-light" style="max-width: 400px;">
+  <form
+    @submit.prevent="login"
+    class="container mt-5 p-4 border rounded bg-light"
+    style="max-width: 400px"
+  >
     <div class="mb-3 h3">
       <label for="username" class="form-label">Username</label>
       <input
@@ -53,4 +57,3 @@ async function login() {
     <button type="submit" class="btn btn-primary w-100">Login</button>
   </form>
 </template>
-

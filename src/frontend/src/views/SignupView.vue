@@ -33,7 +33,11 @@ async function signup() {
 
 <template>
   <ViewHeader>Signup</ViewHeader>
-  <form @submit.prevent="signup" class="container mt-5 p-4 border rounded bg-light" style="max-width: 800px;">
+  <form
+    @submit.prevent="signup"
+    class="container mt-5 p-4 border rounded bg-light"
+    style="max-width: 800px"
+  >
     <div class="row mb-3 h3">
       <div class="col-6">
         <label for="username" class="form-label">Username</label>
@@ -115,4 +119,3 @@ async function signup() {
     <button type="submit" class="btn btn-primary w-100">Signup</button>
   </form>
 </template>
-
