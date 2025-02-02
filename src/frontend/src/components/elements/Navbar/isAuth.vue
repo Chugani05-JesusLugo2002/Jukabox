@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { useAuthStore } from '@/stores/useAuth';
+import { useAuthStore } from '@/stores/useAuth'
 import { ref } from 'vue'
 
 const logoutIcon = ref('bi bi-door-closed')

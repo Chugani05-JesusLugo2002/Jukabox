@@ -54,5 +54,26 @@ export const useAPI = () => {
     }
   }
 
-  return { getData, login, signup }
+  async function recoverUser(token: string): Promise<any> {
+    const url = API_URL + 'accounts/recover/'
+    console.log(JSON.stringify(token))
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: `{ "token": "${token}" }`,
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  return { getData, login, signup, recoverUser }
 }

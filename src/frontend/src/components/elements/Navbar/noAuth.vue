@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <div class="d-flex">
+    <RouterLink class="btn btn-outline-primary mx-2" to="/signup">Signup</RouterLink>
     <RouterLink class="btn btn-primary" to="/login">Login</RouterLink>
-    <RouterLink class="btn btn-outline-primary" to="/signup">Signup</RouterLink>
   </div>
 </template>
