@@ -3,13 +3,13 @@ import { onMounted, ref } from 'vue'
 
 import { useAPI } from '@/composables/useAPI'
 import ViewHeader from '@/components/ViewHeader.vue'
-import ArtistItem from '@/components/elements/ArtistItem.vue';
-import AlbumItem from '@/components/elements/AlbumItem.vue';
+import ArtistItem from '@/components/elements/ArtistItem.vue'
+import AlbumItem from '@/components/elements/AlbumItem.vue'
 import type { Artist, Album } from '@/components/classes/Artist'
 
 const { getData } = useAPI()
 const latestArtists = ref<Artist[]>([])
-  const latestAlbums = ref<Album[]>([])
+const latestAlbums = ref<Album[]>([])
 
 onMounted(async () => {
   latestArtists.value = await getData('artists/latest/')
