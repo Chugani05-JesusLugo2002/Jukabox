@@ -10,6 +10,11 @@ def genre_list(request: HttpRequest) -> JsonResponse:
     serializer = GenreSerializer(genres)
     return serializer.json_response()
 
+def genre_detail(request: HttpRequest, genre_slug: str) -> JsonResponse:
+    genre = Genre.objects.get(slug=genre_slug)
+    serializer = GenreSerializer(genre)
+    return serializer.json_response()
+
 def genre_songs(request: HttpRequest, genre_slug: str) -> JsonResponse:
     genre = Genre.objects.get(slug=genre_slug)
     songs = genre.songs.all()

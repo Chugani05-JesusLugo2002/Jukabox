@@ -1,9 +1,16 @@
 <script setup lang="ts">
 const { artist } = defineProps(['artist'])
+
+const artistDetailUrl = {
+  name: 'artist-detail',
+  params : {
+    artist_pk: artist.id
+  }
+}
 </script>
 
 <template>
-  <a class="fw-bold text-decoration-none">
+  <RouterLink :to="artistDetailUrl" class="fw-bold text-decoration-none">
     <div class="card border-0" style="width: 15rem">
       <img
         :src="artist.avatar"
@@ -14,5 +21,5 @@ const { artist } = defineProps(['artist'])
         <h5 class="text-center">{{ artist.name }}</h5>
       </div>
     </div>
-  </a>
+  </RouterLink>
 </template>

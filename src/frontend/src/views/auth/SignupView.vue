@@ -4,9 +4,11 @@ import { useAuthStore } from '@/stores/useAuth'
 import { ref } from 'vue'
 import type { User } from '@/components/classes/Authentication'
 import ViewHeader from '@/components/ViewHeader.vue'
+import { useRouter } from 'vue-router'
 
 const api = useAPI()
 const authStore = useAuthStore()
+const router = useRouter()
 
 const username = ref('')
 const first_name = ref('')
@@ -27,6 +29,7 @@ async function signup() {
   const user: User | null = await api.signup(signupData)
   if (user) {
     authStore.authenticate(user)
+    router.push(`/profile`)
   }
 }
 </script>

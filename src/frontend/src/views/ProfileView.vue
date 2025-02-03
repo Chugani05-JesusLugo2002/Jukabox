@@ -2,7 +2,7 @@
 import { useAuthStore } from '@/stores/useAuth'
 import ViewHeader from '@/components/ViewHeader.vue'
 
-const { isAuthenticated, user } = useAuthStore()
+const { user } = useAuthStore()
 </script>
 
 <template>

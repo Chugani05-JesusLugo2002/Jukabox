@@ -4,9 +4,11 @@ import { useAPI } from '@/composables/useAPI'
 import { useAuthStore } from '@/stores/useAuth'
 import { ref } from 'vue'
 import ViewHeader from '@/components/ViewHeader.vue'
+import { useRouter } from 'vue-router'
 
 const api = useAPI()
 const authStore = useAuthStore()
+const router = useRouter()
 
 const username = ref('')
 const password = ref('')
@@ -19,6 +21,7 @@ async function login() {
   const user: User | null = await api.login(loginData)
   if (user) {
     authStore.authenticate(user)
+    router.push(`/profile`)
   }
 }
 </script>
