@@ -3,7 +3,8 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import type { Song } from '@/components/classes/Song'
-import ViewHeader from '@/components/ViewHeader.vue'
+import ItemHeader from '@/components/elements/ItemHeader.vue'
+import UrlsContainer from '@/components/elements/UrlsContainer.vue'
 import { useAPI } from '@/composables/useAPI'
 
 const { getData } = useAPI()
@@ -18,10 +19,21 @@ onMounted(async () => {
 
 <template>
   <div v-if="song">
-    <!-- Este es el título -->
-    <ViewHeader>{{ song.title }}</ViewHeader>
+    <ItemHeader :image="song.cover" :name="song.title" :isRounded="false">
+      by <span v-for="artist in song.artists">{{ artist.name }}</span>
+    </ItemHeader>
 
-    <!-- Aqui va toda la mondá relacionada con la canción -->
+    <div class="row">
+      <div class="col-9">
+        <p class="h4">Reviews</p>
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </div>
+      <div class="col-3">
+        <UrlsContainer>Where to listen</UrlsContainer>
+        <h4>Stats</h4>
+        <h4>About</h4>
+      </div>
+    </div>
   </div>
 
   <p v-else>Loading song</p>

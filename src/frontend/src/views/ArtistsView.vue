@@ -29,8 +29,6 @@ onMounted(async () => {
   <div class="artist-grid d-flex flex-wrap gap-3 justify-content-center">
     <AlbumItem v-for="(album, index) in latestAlbums" :key="index" :album="album" />
   </div>
-
-  <h2 class="display-5 mt-3">Around the world!</h2>
 </template>
 
 <style scoped>

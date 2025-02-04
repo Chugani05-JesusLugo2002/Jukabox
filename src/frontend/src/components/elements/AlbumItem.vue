@@ -4,8 +4,8 @@ const { album } = defineProps(['album'])
 const albumDetailUrl = {
   name: 'album-detail',
   params: {
-    album_pk: album.id
-  }
+    album_pk: album.id,
+  },
 }
 </script>
 

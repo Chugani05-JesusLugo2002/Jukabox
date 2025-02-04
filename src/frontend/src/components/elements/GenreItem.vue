@@ -5,8 +5,8 @@ const style = `width: 15rem; height: 15rem; background-color: ${genre.color};`
 const genreDetailUrl = {
   name: 'genre-songs',
   params: {
-    genre_slug: genre.slug
-  }
+    genre_slug: genre.slug,
+  },
 }
 </script>
 

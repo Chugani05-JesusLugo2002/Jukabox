@@ -1,4 +1,4 @@
-import type { Song } from "./Song"
+import type { Song } from './Song'
 
 export interface Artist {
   id: number

@@ -3,9 +3,9 @@ const { artist } = defineProps(['artist'])
 
 const artistDetailUrl = {
   name: 'artist-detail',
-  params : {
-    artist_pk: artist.id
-  }
+  params: {
+    artist_pk: artist.id,
+  },
 }
 </script>
 
