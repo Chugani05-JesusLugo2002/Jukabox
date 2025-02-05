@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps(['image', 'name', 'isRounded'])
 
-const imgClass = props.isRounded ? 'img-fluid rounded-circle' : 'img-fluid'
+const imgClass = props.isRounded ? 'img-fluid rounded-circle' : 'img-fluid rounded'
 </script>
 
 <template>

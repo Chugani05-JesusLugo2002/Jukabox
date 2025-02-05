@@ -7,6 +7,7 @@ import type { Album } from '@/components/classes/Artist'
 import { useAPI } from '@/composables/useAPI'
 import ItemHeader from '@/components/elements/ItemHeader.vue'
 import SongListItem from '@/components/elements/SongListItem.vue'
+import ArtistsLabel from '@/components/elements/ArtistsLabel.vue'
 
 const { getData } = useAPI()
 const route = useRoute()
@@ -24,7 +25,7 @@ onMounted(async () => {
 <template>
   <div v-if="album">
     <ItemHeader :image="album.cover" :name="album.title">
-      by <RouterLink :to="artistDetailUrl" class="text-muted"><span v-for="artist in album.artists">{{ artist.name }}</span></RouterLink :to="albumDetailUrl">
+      <ArtistsLabel :artists="album.artists" />
     </ItemHeader>
 
     <ul class="list-group">
