@@ -20,7 +20,7 @@ onMounted(async () => {
 
 <template>
   <div v-if="artist">
-    <ItemHeader :image="artist.avatar" :name="artist.name" :isRounded="true"/>
+    <ItemHeader :image="artist.avatar" :name="artist.name" :isRounded="true" />
   </div>
 
   <p v-else>Loading artist</p>

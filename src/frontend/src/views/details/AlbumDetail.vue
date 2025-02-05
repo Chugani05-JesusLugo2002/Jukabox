@@ -24,7 +24,7 @@ onMounted(async () => {
 <template>
   <div v-if="album">
     <ItemHeader :image="album.cover" :name="album.title">
-      by <span v-for="artist in album.artists">{{ artist.name }}</span>
+      by <RouterLink :to="artistDetailUrl" class="text-muted"><span v-for="artist in album.artists">{{ artist.name }}</span></RouterLink :to="albumDetailUrl">
     </ItemHeader>
 
     <ul class="list-group">

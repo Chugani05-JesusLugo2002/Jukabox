@@ -26,12 +26,11 @@ onMounted(async () => {
     <div class="row">
       <div class="col-9">
         <p class="h4">Reviews</p>
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <input class="btn btn-primary" type="submit" value="Submit" />
       </div>
       <div class="col-3">
         <UrlsContainer>Where to listen</UrlsContainer>
         <h4>Stats</h4>
-        <h4>About</h4>
       </div>
     </div>
   </div>
