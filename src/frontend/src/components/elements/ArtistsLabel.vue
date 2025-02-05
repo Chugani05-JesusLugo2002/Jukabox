@@ -26,7 +26,9 @@ const lastArtist: FixedArtist = fixedArtists.slice(-1)[0]
   <p>
     By <RouterLink :to="firstArtist.url" class="text-muted">{{ firstArtist.name }}</RouterLink>
     <span v-if="artistsCount > 1">
-      <span v-if="artistsCount > 2" v-for="artist in fixedArtists.slice(1, -1)">, <RouterLink :to="artist.url" class="text-muted">{{ artist.name }}</RouterLink></span>
+      <span v-if="artistsCount > 2" v-for="artist in fixedArtists.slice(1, -1)"
+        >, <RouterLink :to="artist.url" class="text-muted">{{ artist.name }}</RouterLink></span
+      >
       and <RouterLink :to="lastArtist.url" class="text-muted">{{ lastArtist.name }}</RouterLink>
     </span>
   </p>

@@ -19,7 +19,7 @@ function sendReview() {
   if (comment.value) {
     alert(comment.value)
   } else {
-    alert("Escribe algo pendejito")
+    alert('Escribe algo pendejito')
   }
 }
 
@@ -40,21 +40,24 @@ onMounted(async () => {
         <p class="h4">Reviews</p>
         <form id="comment-input" class="mb-3" @submit.prevent="sendReview">
           <div class="form-floating">
-            <textarea v-model="comment" class="form-control mb-2" name="comment" id="comment"></textarea>
+            <textarea
+              v-model="comment"
+              class="form-control mb-2"
+              name="comment"
+              id="comment"
+            ></textarea>
             <label for="comment">Your comment...</label>
           </div>
           <input class="btn btn-primary" type="submit" value="Send" />
         </form>
-        
+
         <div id="comments-container">
-          <div class="alert alert-primary">
-            No comments yet. Write the first one! :)
-          </div>
+          <div class="alert alert-primary">No comments yet. Write the first one! :)</div>
         </div>
       </div>
       <div class="col-3">
         <UrlsContainer>Where to listen</UrlsContainer>
-        <StatsContainer>Stats</StatsContainer>
+        <StatsContainer :hearts="song.hearts">Stats</StatsContainer>
       </div>
     </div>
   </div>

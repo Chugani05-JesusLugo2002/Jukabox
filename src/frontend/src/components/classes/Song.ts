@@ -16,4 +16,5 @@ export interface Song {
   cover: string
   genre: Genre[]
   added_at: string
+  hearts: number
 }

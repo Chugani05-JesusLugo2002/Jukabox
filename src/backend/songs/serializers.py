@@ -21,4 +21,5 @@ class SongSerializer(BaseSerializer):
             'cover': self.build_url(instance.cover),
             'genre': GenreSerializer(instance.genre.all()).serialize(),
             'added_at': instance.added_at.isoformat(),
+            'hearts': instance.hearts.count(),
         }
