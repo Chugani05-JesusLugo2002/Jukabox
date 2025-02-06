@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
+import { useI18n } from "vue-i18n";
 import ExplorerFilterPill from './ExplorerFilterPill.vue'
-const filters = ['All', 'Songs', 'Artists', 'Albums', 'Playlists', 'Genres']
 
+const { locale, t } = useI18n();
 const query = ref('')
 </script>
 
@@ -16,11 +16,17 @@ const query = ref('')
       id="query"
       v-model="query"
       class="form-control input-lg"
-      placeholder="Let your heart guide you! <3"
+      :placeholder="$t('explore-page.placeholder')"
     />
   </div>
 
   <div class="d-flex justify-content-center align-items-center">
-    <ExplorerFilterPill v-for="filter in filters">{{ filter }}</ExplorerFilterPill>
+    
+    <ExplorerFilterPill>{{ $t("explore-page.pill1") }}</ExplorerFilterPill>
+    <ExplorerFilterPill>{{ $t("explore-page.pill2") }}</ExplorerFilterPill>
+    <ExplorerFilterPill>{{ $t("explore-page.pill3") }}</ExplorerFilterPill>
+    <ExplorerFilterPill>Albums</ExplorerFilterPill>
+    <ExplorerFilterPill>Playlists</ExplorerFilterPill>
+    <ExplorerFilterPill>{{ $t("explore-page.pill6") }}</ExplorerFilterPill>
   </div>
 </template>

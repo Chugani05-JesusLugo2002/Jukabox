@@ -3,7 +3,9 @@ import { RouterLink } from 'vue-router'
 import { useAuthStore } from '@/stores/useAuth'
 import isAuth from './elements/Navbar/isAuth.vue'
 import noAuth from './elements/Navbar/noAuth.vue'
+import { useI18n } from "vue-i18n";
 
+const { locale, t } = useI18n();
 const authStore = useAuthStore()
 </script>
 
@@ -19,16 +21,16 @@ const authStore = useAuthStore()
           <RouterLink class="nav-link" to="/home">Home</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/explore">Explore</RouterLink>
+          <RouterLink class="nav-link" to="/explore">{{ $t("navbar.explore") }}</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/songs">Songs</RouterLink>
+          <RouterLink class="nav-link" to="/songs">{{ $t("navbar.songs") }}</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/artists">Artists</RouterLink>
+          <RouterLink class="nav-link" to="/artists">{{ $t("navbar.artists") }}</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/community">Community</RouterLink>
+          <RouterLink class="nav-link" to="/community">{{ $t("navbar.community") }}</RouterLink>
         </li>
       </ul>
 

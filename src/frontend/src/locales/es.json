@@ -1,0 +1,33 @@
+{
+    "navbar": {
+        "explore": "Explorar",
+        "songs": "Canciones",
+        "artists": "Artistas",
+        "community": "Comunidad"
+    },
+
+    "explore-page": {
+        "title": "Explorar",
+        "pill1": "Todo",
+        "pill2": "Artistas",
+        "pill3": "Canciones",
+        "pill6": "Géneros",
+        "placeholder": "¡Deja que tu corazón te guie! <3"
+    },
+
+    "songs-page": {
+        "title": "Canciones",
+        "tag1": "Últimas canciones ",
+        "tag2": "Géneros de moda"
+    },
+
+    "artists-page": {
+        "title": "Artistas",
+        "tag1": "Más queridos",
+        "tag2": "Mejores albums"
+    },
+
+    "community-page": {
+        "title": "Comunidad"
+    }
+}

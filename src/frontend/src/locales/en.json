@@ -1,0 +1,33 @@
+{
+    "navbar": {
+        "explore": "Explore",
+        "songs": "Songs",
+        "artists": "Artists",
+        "community": "Community"
+    },
+
+    "explore-page": {
+        "title": "Explore",
+        "pill1": "All",
+        "pill2": "Artists",
+        "pill3": "Songs",
+        "pill6": "Genres",
+        "placeholder": "Let your heart guide you! <3"
+    },
+
+    "songs-page": {
+        "title": "Songs",
+        "tag1": "Latest songs",
+        "tag2": "Trending generes"
+    },
+
+    "artists-page": {
+        "title": "Artists",
+        "tag1": "Most loved",
+        "tag2": "Best albums"
+    },
+
+    "community-page": {
+        "title": "Community"
+    }
+}
