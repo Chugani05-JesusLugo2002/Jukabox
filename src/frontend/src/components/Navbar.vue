@@ -10,7 +10,7 @@ const authStore = useAuthStore()
 </script>
 
 <template>
-  <header class="bg-light mb-2 border-bottom">
+  <header class="mb-2 border-bottom">
     <nav class="navbar navbar-expand container d-flex flex-wrap justify-content-between">
       <div class="navbar-brand">
         <RouterLink to="/" class="fs-3 fw-bold nav-link">Jukabox</RouterLink>

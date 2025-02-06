@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 const { locale, t } = useI18n()
 
@@ -6,11 +7,30 @@ const changeLanguage = (lang: string) => {
   locale.value = lang
 }
 
-function changeTheme(mode: string) {}
+const themeIconClass = ref('')
+const theme = ref('')
+
+function changeTheme(mode: string) {
+  document.documentElement.setAttribute('data-bs-theme', mode)
+  localStorage.setItem('theme', mode)
+  theme.value = mode
+  themeIconClass.value = mode == 'dark' ? 'bi bi-moon-stars-fill' : 'bi bi-brightness-high-fill'
+}
+
+const footerClass = ref('container-fluid border-top bg-')
+
+onMounted(() => {
+  const previousTheme = localStorage.getItem('theme')
+  if (previousTheme) {
+    changeTheme(previousTheme)
+    theme.value = previousTheme
+    themeIconClass.value = previousTheme == 'dark' ? 'bi bi-moon-stars-fill' : 'bi bi-brightness-high-fill'
+  }
+})
 </script>
 
 <template>
-  <footer class="bg-light container-fluid border-top">
+  <footer :class="footerClass + theme">
     <div class="container d-flex justify-content-between py-3">
       <p class="text-muted">© Jukabox, 2025</p>
       <div class="d-flex">
@@ -21,12 +41,9 @@ function changeTheme(mode: string) {}
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <i class="bi bi-moon-stars-fill"></i>
+            <i :class="themeIconClass"></i>
           </button>
           <ul class="dropdown-menu">
-            <li class="dropdown-item" @click="changeTheme('auto')">
-              <i class="bi bi-circle-half"></i> Auto
-            </li>
             <li class="dropdown-item" @click="changeTheme('light')">
               <i class="bi bi-brightness-high-fill"></i> {{ $t('footer.light') }}
             </li>
