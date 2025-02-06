@@ -9,7 +9,7 @@ import Footer from './components/Footer.vue'
   <header>
     <Navbar />
   </header>
-  <main class="container my-3">
+  <main class="container mt-3 mb-5 pb-5">
     <RouterView />
   </main>
   <Footer />

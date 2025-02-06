@@ -36,5 +36,36 @@
 
     "community-page": {
         "title": "Comunidad"
+    },
+
+    "login": {
+        "title": "Iniciar sesión",
+        "username": "Nombre de usuario",
+        "password": "Contraseña",
+        "placeholder1": "Inserte su nombre de usuario",
+        "placeholder2": "Inserte su contraseña",
+        "button": "Iniciar sesión"
+    },
+
+    "register": {
+        "title": "Crear cuenta",
+        "username": "Nombre de usuario",
+        "password": "Contraseña",
+        "firstname": "Nombre",
+        "lastname": "Apellido",
+        "email": "Correo",
+        "repeatpassword": "Repetir contraseña",
+        "placeholder1": "Escriba su nombre de usuario",
+        "placeholder2": "Escriba su contraseña",
+        "placeholder3": "Escriba su nombre",
+        "placeholder4": "Escriba su apellido",
+        "placeholder5": "Escriba so correo",
+        "placeholder6": "Repita su contraseña",
+        "button": "Crear cuenta"
+    },
+
+    "noauth": {
+        "login": "Iniciar sesión",
+        "register": "Crear cuenta"
     }
 }
