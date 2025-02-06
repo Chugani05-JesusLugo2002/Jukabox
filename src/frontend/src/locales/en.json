@@ -6,6 +6,13 @@
         "community": "Community"
     },
 
+    "footer": {
+        "english": "English",
+        "spanish": "Spanish",
+        "dark": "Dark",
+        "light": "Light"
+    },
+
     "explore-page": {
         "title": "Explore",
         "pill1": "All",
