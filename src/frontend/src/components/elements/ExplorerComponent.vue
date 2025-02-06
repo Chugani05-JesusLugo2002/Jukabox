@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 import ExplorerFilterPill from './ExplorerFilterPill.vue'
 
-const { locale, t } = useI18n();
+const { locale, t } = useI18n()
 const query = ref('')
 </script>
 
@@ -21,12 +21,11 @@ const query = ref('')
   </div>
 
   <div class="d-flex justify-content-center align-items-center">
-    
-    <ExplorerFilterPill>{{ $t("explore-page.pill1") }}</ExplorerFilterPill>
-    <ExplorerFilterPill>{{ $t("explore-page.pill2") }}</ExplorerFilterPill>
-    <ExplorerFilterPill>{{ $t("explore-page.pill3") }}</ExplorerFilterPill>
+    <ExplorerFilterPill>{{ $t('explore-page.pill1') }}</ExplorerFilterPill>
+    <ExplorerFilterPill>{{ $t('explore-page.pill2') }}</ExplorerFilterPill>
+    <ExplorerFilterPill>{{ $t('explore-page.pill3') }}</ExplorerFilterPill>
     <ExplorerFilterPill>Albums</ExplorerFilterPill>
     <ExplorerFilterPill>Playlists</ExplorerFilterPill>
-    <ExplorerFilterPill>{{ $t("explore-page.pill6") }}</ExplorerFilterPill>
+    <ExplorerFilterPill>{{ $t('explore-page.pill6') }}</ExplorerFilterPill>
   </div>
 </template>

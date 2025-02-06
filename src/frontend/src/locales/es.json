@@ -1,71 +1,71 @@
 {
-    "navbar": {
-        "explore": "Explorar",
-        "songs": "Canciones",
-        "artists": "Artistas",
-        "community": "Comunidad"
-    },
+  "navbar": {
+    "explore": "Explorar",
+    "songs": "Canciones",
+    "artists": "Artistas",
+    "community": "Comunidad"
+  },
 
-    "footer": {
-        "english": "Inglés",
-        "spanish": "Español",
-        "dark": "Oscuro",
-        "light": "Claro"
-    },
+  "footer": {
+    "english": "Inglés",
+    "spanish": "Español",
+    "dark": "Oscuro",
+    "light": "Claro"
+  },
 
-    "explore-page": {
-        "title": "Explorar",
-        "pill1": "Todo",
-        "pill2": "Artistas",
-        "pill3": "Canciones",
-        "pill6": "Géneros",
-        "placeholder": "¡Deja que tu corazón te guie! <3"
-    },
+  "explore-page": {
+    "title": "Explorar",
+    "pill1": "Todo",
+    "pill2": "Artistas",
+    "pill3": "Canciones",
+    "pill6": "Géneros",
+    "placeholder": "¡Deja que tu corazón te guie! <3"
+  },
 
-    "songs-page": {
-        "title": "Canciones",
-        "tag1": "Últimas canciones ",
-        "tag2": "Géneros de moda"
-    },
+  "songs-page": {
+    "title": "Canciones",
+    "tag1": "Últimas canciones ",
+    "tag2": "Géneros de moda"
+  },
 
-    "artists-page": {
-        "title": "Artistas",
-        "tag1": "Más queridos",
-        "tag2": "Mejores albums"
-    },
+  "artists-page": {
+    "title": "Artistas",
+    "tag1": "Más queridos",
+    "tag2": "Mejores albums"
+  },
 
-    "community-page": {
-        "title": "Comunidad"
-    },
+  "community-page": {
+    "title": "Comunidad"
+  },
 
-    "login": {
-        "title": "Iniciar sesión",
-        "username": "Nombre de usuario",
-        "password": "Contraseña",
-        "placeholder1": "Inserte su nombre de usuario",
-        "placeholder2": "Inserte su contraseña",
-        "button": "Iniciar sesión"
-    },
+  "login": {
+    "title": "Iniciar sesión",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "placeholder1": "Inserte su nombre de usuario",
+    "placeholder2": "Inserte su contraseña",
+    "button": "Iniciar sesión"
+  },
 
-    "register": {
-        "title": "Crear cuenta",
-        "username": "Nombre de usuario",
-        "password": "Contraseña",
-        "firstname": "Nombre",
-        "lastname": "Apellido",
-        "email": "Correo",
-        "repeatpassword": "Repetir contraseña",
-        "placeholder1": "Escriba su nombre de usuario",
-        "placeholder2": "Escriba su contraseña",
-        "placeholder3": "Escriba su nombre",
-        "placeholder4": "Escriba su apellido",
-        "placeholder5": "Escriba so correo",
-        "placeholder6": "Repita su contraseña",
-        "button": "Crear cuenta"
-    },
+  "register": {
+    "title": "Crear cuenta",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "firstname": "Nombre",
+    "lastname": "Apellido",
+    "email": "Correo",
+    "repeatpassword": "Repetir contraseña",
+    "placeholder1": "Escriba su nombre de usuario",
+    "placeholder2": "Escriba su contraseña",
+    "placeholder3": "Escriba su nombre",
+    "placeholder4": "Escriba su apellido",
+    "placeholder5": "Escriba so correo",
+    "placeholder6": "Repita su contraseña",
+    "button": "Crear cuenta"
+  },
 
-    "noauth": {
-        "login": "Iniciar sesión",
-        "register": "Crear cuenta"
-    }
+  "noauth": {
+    "login": "Iniciar sesión",
+    "register": "Crear cuenta"
+  }
 }

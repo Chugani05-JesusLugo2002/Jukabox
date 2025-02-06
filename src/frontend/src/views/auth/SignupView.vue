@@ -5,9 +5,9 @@ import { ref } from 'vue'
 import type { User } from '@/components/classes/Authentication'
 import ViewHeader from '@/components/ViewHeader.vue'
 import { useRouter } from 'vue-router'
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 
-const { locale, t } = useI18n();
+const { locale, t } = useI18n()
 const api = useAPI()
 const authStore = useAuthStore()
 const router = useRouter()
@@ -37,7 +37,7 @@ async function signup() {
 </script>
 
 <template>
-  <ViewHeader>{{ $t("register.title") }}</ViewHeader>
+  <ViewHeader>{{ $t('register.title') }}</ViewHeader>
   <form
     @submit.prevent="signup"
     class="container mt-5 p-4 border rounded bg-light"
@@ -45,7 +45,7 @@ async function signup() {
   >
     <div class="row mb-3 h3">
       <div class="col-6">
-        <label for="username" class="form-label">{{ $t("register.username") }}</label>
+        <label for="username" class="form-label">{{ $t('register.username') }}</label>
         <input
           type="text"
           name="username"
@@ -57,7 +57,7 @@ async function signup() {
         />
       </div>
       <div class="col-6">
-        <label for="first_name" class="form-label">{{ $t("register.firstname") }}</label>
+        <label for="first_name" class="form-label">{{ $t('register.firstname') }}</label>
         <input
           type="text"
           name="first_name"
@@ -71,7 +71,7 @@ async function signup() {
     </div>
     <div class="row mb-3 h3">
       <div class="col-6">
-        <label for="last_name" class="form-label">{{ $t("register.lastname") }}</label>
+        <label for="last_name" class="form-label">{{ $t('register.lastname') }}</label>
         <input
           type="text"
           name="last_name"
@@ -83,7 +83,7 @@ async function signup() {
         />
       </div>
       <div class="col-6">
-        <label for="email" class="form-label">{{ $t("register.email") }}</label>
+        <label for="email" class="form-label">{{ $t('register.email') }}</label>
         <input
           type="email"
           name="email"
@@ -97,7 +97,7 @@ async function signup() {
     </div>
     <div class="row mb-3 h3">
       <div class="col-6">
-        <label for="password" class="form-label">{{ $t("register.password") }}</label>
+        <label for="password" class="form-label">{{ $t('register.password') }}</label>
         <input
           type="password"
           name="password"
@@ -109,7 +109,7 @@ async function signup() {
         />
       </div>
       <div class="col-6">
-        <label for="repeat_password" class="form-label">{{ $t("register.repeatpassword") }}</label>
+        <label for="repeat_password" class="form-label">{{ $t('register.repeatpassword') }}</label>
         <input
           type="password"
           name="repeat_password"
@@ -121,6 +121,6 @@ async function signup() {
         />
       </div>
     </div>
-    <button type="submit" class="btn btn-primary w-100">{{ $t("register.button") }}</button>
+    <button type="submit" class="btn btn-primary w-100">{{ $t('register.button') }}</button>
   </form>
 </template>

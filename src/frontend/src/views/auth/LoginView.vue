@@ -5,9 +5,9 @@ import { useAuthStore } from '@/stores/useAuth'
 import { ref } from 'vue'
 import ViewHeader from '@/components/ViewHeader.vue'
 import { useRouter } from 'vue-router'
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 
-const { locale, t } = useI18n();
+const { locale, t } = useI18n()
 const api = useAPI()
 const authStore = useAuthStore()
 const router = useRouter()
@@ -29,14 +29,14 @@ async function login() {
 </script>
 
 <template>
-  <ViewHeader>{{ $t("login.title") }}</ViewHeader>
+  <ViewHeader>{{ $t('login.title') }}</ViewHeader>
   <form
     @submit.prevent="login"
     class="container mt-5 p-4 border rounded bg-light"
     style="max-width: 400px"
   >
     <div class="mb-3 h3">
-      <label for="username" class="form-label">{{ $t("login.username") }}</label>
+      <label for="username" class="form-label">{{ $t('login.username') }}</label>
       <input
         type="text"
         name="username"
@@ -48,7 +48,7 @@ async function login() {
       />
     </div>
     <div class="mb-3 h3">
-      <label for="password" class="form-label">{{ $t("login.password") }}</label>
+      <label for="password" class="form-label">{{ $t('login.password') }}</label>
       <input
         type="password"
         name="password"
@@ -59,6 +59,6 @@ async function login() {
         required
       />
     </div>
-    <button type="submit" class="btn btn-primary w-100">{{ $t("login.button") }}</button>
+    <button type="submit" class="btn btn-primary w-100">{{ $t('login.button') }}</button>
   </form>
 </template>

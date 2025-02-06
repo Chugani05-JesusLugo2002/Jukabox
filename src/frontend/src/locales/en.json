@@ -1,71 +1,71 @@
 {
-    "navbar": {
-        "explore": "Explore",
-        "songs": "Songs",
-        "artists": "Artists",
-        "community": "Community"
-    },
+  "navbar": {
+    "explore": "Explore",
+    "songs": "Songs",
+    "artists": "Artists",
+    "community": "Community"
+  },
 
-    "footer": {
-        "english": "English",
-        "spanish": "Spanish",
-        "dark": "Dark",
-        "light": "Light"
-    },
+  "footer": {
+    "english": "English",
+    "spanish": "Spanish",
+    "dark": "Dark",
+    "light": "Light"
+  },
 
-    "explore-page": {
-        "title": "Explore",
-        "pill1": "All",
-        "pill2": "Artists",
-        "pill3": "Songs",
-        "pill6": "Genres",
-        "placeholder": "Let your heart guide you! <3"
-    },
+  "explore-page": {
+    "title": "Explore",
+    "pill1": "All",
+    "pill2": "Artists",
+    "pill3": "Songs",
+    "pill6": "Genres",
+    "placeholder": "Let your heart guide you! <3"
+  },
 
-    "songs-page": {
-        "title": "Songs",
-        "tag1": "Latest songs",
-        "tag2": "Trending generes"
-    },
+  "songs-page": {
+    "title": "Songs",
+    "tag1": "Latest songs",
+    "tag2": "Trending generes"
+  },
 
-    "artists-page": {
-        "title": "Artists",
-        "tag1": "Most loved",
-        "tag2": "Best albums"
-    },
+  "artists-page": {
+    "title": "Artists",
+    "tag1": "Most loved",
+    "tag2": "Best albums"
+  },
 
-    "community-page": {
-        "title": "Community"
-    },
+  "community-page": {
+    "title": "Community"
+  },
 
-    "login": {
-        "title": "Login",
-        "username": "Username",
-        "password": "Password",
-        "placeholder1": "Enter your username",
-        "placeholder2": "Enter your password",
-        "button": "Login"
-    },
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "placeholder1": "Enter your username",
+    "placeholder2": "Enter your password",
+    "button": "Login"
+  },
 
-    "register": {
-        "title": "Register",
-        "username": "Username",
-        "password": "Password",
-        "firstname": "First Name",
-        "lastname": "Last Name",
-        "email": "Email",
-        "repeatpassword": "Repeat password",
-        "placeholder1": "Enter your username",
-        "placeholder2": "Enter your password",
-        "placeholder3": "Enter your first name",
-        "placeholder4": "Enter your last name",
-        "placeholder5": "Enter your email",
-        "placeholder6": "Repite your password",
-        "button": "Register"
-    },
+  "register": {
+    "title": "Register",
+    "username": "Username",
+    "password": "Password",
+    "firstname": "First Name",
+    "lastname": "Last Name",
+    "email": "Email",
+    "repeatpassword": "Repeat password",
+    "placeholder1": "Enter your username",
+    "placeholder2": "Enter your password",
+    "placeholder3": "Enter your first name",
+    "placeholder4": "Enter your last name",
+    "placeholder5": "Enter your email",
+    "placeholder6": "Repite your password",
+    "button": "Register"
+  },
 
-    "noauth": {
-        "login": "Login",
-        "register": "Register"
-    }
+  "noauth": {
+    "login": "Login",
+    "register": "Register"
+  }
 }
