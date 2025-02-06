@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { inject } from 'vue'
 
-import { useAPI } from '@/composables/useAPI'
 import type { Song, Genre } from '@/components/classes/Song'
 import ViewHeader from '@/components/ViewHeader.vue'
 import SongItem from '@/components/elements/SongItem.vue'
@@ -9,14 +8,8 @@ import GenreItem from '@/components/elements/GenreItem.vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale, t } = useI18n()
-const { getData } = useAPI()
-const latestSongs = ref<Song[]>([])
-const latestGenres = ref<Genre[]>([])
-
-onMounted(async () => {
-  latestSongs.value = await getData('songs/latest/')
-  latestGenres.value = await getData('genres/')
-})
+const latestSongs = inject<Song[]>('latestSongs')
+const trendingGenres = inject<Genre[]>('trendingGenres')
 </script>
 
 <template>
@@ -28,8 +21,8 @@ onMounted(async () => {
   </div>
 
   <h2 class="display-5 mt-3">{{ $t('songs-page.tag2') }}</h2>
-  <div class="songs-grid d-flex flex-wrap gap-3 justify-content-center">
-    <GenreItem v-for="(genre, index) in latestGenres.slice(0, 5)" :key="index" :genre="genre" />
+  <div class="songs-grid d-flex flex-wrap gap-3 justify-content-center" v-if="trendingGenres">
+    <GenreItem v-for="(genre, index) in trendingGenres.slice(0, 5)" :key="index" :genre="genre" />
   </div>
 </template>
 
