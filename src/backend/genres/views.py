@@ -1,20 +1,24 @@
 from django.http import HttpRequest, JsonResponse
 
+from shared.utils import check_method
 from songs.serializers import SongSerializer
 
 from .models import Genre
 from .serializers import GenreSerializer
 
+@check_method('GET')
 def genre_list(request: HttpRequest) -> JsonResponse:
     genres = Genre.objects.all()
     serializer = GenreSerializer(genres)
     return serializer.json_response()
 
+@check_method('GET')
 def genre_detail(request: HttpRequest, genre_slug: str) -> JsonResponse:
     genre = Genre.objects.get(slug=genre_slug)
     serializer = GenreSerializer(genre)
     return serializer.json_response()
 
+@check_method('GET')
 def genre_songs(request: HttpRequest, genre_slug: str) -> JsonResponse:
     genre = Genre.objects.get(slug=genre_slug)
     songs = genre.songs.all()
