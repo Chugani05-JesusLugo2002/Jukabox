@@ -1,8 +1,13 @@
 asgiref==3.8.1
+certifi==2025.1.31
+charset-normalizer==3.4.1
 Django==5.1.5
 django-colorfield==0.11.0
 django-cors-headers==4.6.0
+idna==3.10
 musicbrainzngs==0.7.1
 pillow==11.1.0
+requests==2.32.3
 rust-just==1.38.0
 sqlparse==0.5.3
+urllib3==2.4.0

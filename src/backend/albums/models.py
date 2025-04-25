@@ -3,6 +3,7 @@ from django.db import models
 from shared.validators import validate_year_range
 
 class Album(models.Model):
+    mbid = models.CharField(max_length=255, unique=True)
     title = models.CharField(max_length=250)
     artists = models.ManyToManyField('artists.Artist', related_name='albums')
     released_at = models.SmallIntegerField(validators=[validate_year_range])
