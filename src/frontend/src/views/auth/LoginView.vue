@@ -2,16 +2,15 @@
 import type { User } from '@/components/classes/Authentication'
 import { useAPI } from '@/composables/useAPI'
 import { useAuthStore } from '@/stores/useAuth'
+import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 import ViewHeader from '@/components/ViewHeader.vue'
-import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 const { locale, t } = useI18n()
 const api = useAPI()
 const authStore = useAuthStore()
 const router = useRouter()
-
 const username = ref('')
 const password = ref('')
 
