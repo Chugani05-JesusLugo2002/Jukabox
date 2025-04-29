@@ -23,10 +23,12 @@ from django.shortcuts import redirect
 urlpatterns = [
     path('', lambda _: redirect('admin/')),
     path('admin/', admin.site.urls),
+    path('django-rq/', include('django_rq.urls')),
     path('api/v1/songs/', include('songs.urls')),
     path('api/v1/artists/', include('artists.urls')),
     path('api/v1/albums/', include('albums.urls')),
     path('api/v1/playlists/', include('playlists.urls')),
     path('api/v1/genres/', include('genres.urls')),
-    path('api/v1/accounts/', include('accounts.urls'))
+    path('api/v1/accounts/', include('accounts.urls')),
+    path('api/v1/import/', include('importer.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

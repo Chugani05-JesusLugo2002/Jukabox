@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'corsheaders',
     'colorfield',
+    'django_rq',
 
     'shared.apps.SharedConfig',
     'songs.apps.SongsConfig',
@@ -48,8 +49,17 @@ INSTALLED_APPS = [
     'albums.apps.AlbumsConfig',
     'genres.apps.GenresConfig',
     'users.apps.UsersConfig',
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
+    'importer.apps.ImporterConfig'
 ]
+
+RQ_QUEUES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
