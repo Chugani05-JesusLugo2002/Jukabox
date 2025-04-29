@@ -8,6 +8,7 @@ class ArtistSerializer(BaseSerializer):
     def serialize_instance(self, instance):
         return {
             'id': instance.pk,
+            'mbid': instance.mbid,
             'name': instance.name,
             'bio': instance.bio,
             'avatar': self.build_url(instance.avatar.url),

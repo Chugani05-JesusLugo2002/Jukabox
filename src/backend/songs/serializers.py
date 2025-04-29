@@ -14,6 +14,7 @@ class SongSerializer(BaseSerializer):
 
         return {
             'id': instance.pk,
+            'mbid': instance.mbid,
             'title': instance.title,
             'artists': ArtistSerializer(instance.artists.all(), request=self.request).serialize(),
             'album': album,

@@ -2,8 +2,7 @@
   "navbar": {
     "explore": "Explorar",
     "songs": "Canciones",
-    "artists": "Artistas",
-    "community": "Comunidad"
+    "artists": "Artistas"
   },
 
   "footer": {
@@ -32,10 +31,6 @@
     "title": "Artistas",
     "tag1": "Más queridos",
     "tag2": "Mejores albums"
-  },
-
-  "community-page": {
-    "title": "Comunidad"
   },
 
   "login": {

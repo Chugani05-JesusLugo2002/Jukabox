@@ -3,7 +3,7 @@ from django.db import models
 
 class Song(models.Model):
     mbid = models.CharField(max_length=255, unique=True)
-    title = models.CharField(max_length=250)
+    title = models.CharField(max_length=255)
     artists = models.ManyToManyField('artists.Artist', related_name='songs')
     album = models.ForeignKey('albums.Album', on_delete=models.PROTECT, related_name='songs')
     genre = models.ManyToManyField('genres.Genre', related_name='songs')

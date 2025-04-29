@@ -7,7 +7,6 @@ import HomeView from '@/views/HomeView.vue'
 import SongsView from '@/views/SongsView.vue'
 import ArtistsView from '@/views/ArtistsView.vue'
 import ExploreView from '@/views/ExploreView.vue'
-import CommunityView from '@/views/CommunityView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 
 import SongDetail from '@/views/details/SongDetail.vue'
@@ -33,8 +32,6 @@ const routes = [
   { path: '/artists/:artist_pk', component: ArtistDetail, name: 'artist-detail' },
 
   { path: '/albums/:album_pk', component: AlbumDetail, name: 'album-detail' },
-
-  { path: '/community', component: CommunityView, name: 'community' },
 
   { path: '/profile', component: ProfileView, name: 'my-profile' },
 ]

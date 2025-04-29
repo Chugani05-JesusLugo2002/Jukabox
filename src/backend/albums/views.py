@@ -6,11 +6,13 @@ from songs.serializers import SongSerializer
 from .models import Album
 from .serializers import AlbumSerializer
 
+
 @check_method('GET')
 def album_list(request: HttpRequest) -> JsonResponse:
     albums = Album.objects.all()
     serializer = AlbumSerializer(albums, request=request)
     return serializer.json_response()
+
 
 @check_method('GET')
 def album_detail(request: HttpRequest, album_pk: int) -> JsonResponse:
@@ -25,6 +27,7 @@ def album_songs(request: HttpRequest, album_pk: int) -> JsonResponse:
     songs = album.songs.all()
     serializer = SongSerializer(songs, request=request)
     return serializer.json_response()
+
 
 @check_method('GET')
 def latest_albums(request: HttpRequest) -> JsonResponse:
