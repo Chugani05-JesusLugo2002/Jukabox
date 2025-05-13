@@ -75,7 +75,7 @@ export const useAPI = () => {
   }
 
   async function importArtist(artist_mbid: string): Promise<any> {
-    const url = API_URL + 'importer/'
+    const url = API_URL + 'import/'
     try {
       const response = await fetch(url, {
         method: 'POST',

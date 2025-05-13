@@ -8,11 +8,12 @@ const { locale, t } = useI18n()
 const { importArtist } = useAPI()
 
 const mbid = ref("")
+const modalMessage = ref("")
 
 async function importToAPI(mbid: string) {
  if (mbid) {
     const response = await importArtist(mbid)
-    console.log(response)
+    modalMessage.value = response.message
  }
 }
 </script>
@@ -51,10 +52,28 @@ async function importToAPI(mbid: string) {
     />
     
     <div class="text-center">
-        <button type="button" class="btn btn-primary" @click="importToAPI(mbid)">
+        <button type="button" class="btn btn-primary" @click="importToAPI(mbid)" data-bs-toggle="modal" data-bs-target="#importerModal">
             {{ $t('importer-page.button') }}
         </button>
     </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="importerModal" tabindex="-1" aria-labelledby="importerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="importerModalLabel">Importing artist...</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{ modalMessage }}
+            </div>  
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok!</button>
+            </div>
+            </div>
+        </div>
+        </div>
   </div>
 
 </template>
