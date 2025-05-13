@@ -10,14 +10,12 @@ class SongSerializer(BaseSerializer):
         super().__init__(to_serialize, fields=fields, request=request)
 
     def serialize_instance(self, instance) -> dict:
-        album = AlbumSerializer(instance.album, request=self.request).serialize() if instance.album else 'Single'
-
         return {
             'id': instance.pk,
             'mbid': instance.mbid,
             'title': instance.title,
             'artists': ArtistSerializer(instance.artists.all(), request=self.request).serialize(),
-            'album': album,
+            'albums': AlbumSerializer(instance.albums.all(), request=self.request).serialize(),
             'cover': self.build_url(instance.cover),
             'genre': GenreSerializer(instance.genre.all()).serialize(),
             'added_at': instance.added_at.isoformat(),
