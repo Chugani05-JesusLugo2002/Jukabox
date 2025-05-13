@@ -12,8 +12,8 @@ const authStore = useAuthStore()
 <template>
   <header class="mb-2 border-bottom">
     <nav class="navbar navbar-expand container d-flex flex-wrap justify-content-between">
-      <div class="navbar-brand">
-        <RouterLink to="/" class="fs-3 fw-bold nav-link">Jukabox</RouterLink>
+      <div class="navbar-brand col-2">
+        <RouterLink to="/"><img src="/public/logo.png" alt="jukabox logo" class="img-fluid"></RouterLink>
       </div>
 
       <ul class="navbar-nav">
@@ -25,6 +25,9 @@ const authStore = useAuthStore()
         </li>
         <li class="nav-item">
           <RouterLink class="nav-link" to="/artists">{{ $t('navbar.artists') }}</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/importer">Importer</RouterLink>
         </li>
       </ul>
 

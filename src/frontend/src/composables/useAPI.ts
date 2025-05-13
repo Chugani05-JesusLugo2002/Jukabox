@@ -74,6 +74,26 @@ export const useAPI = () => {
     }
   }
 
+  async function importArtist(artist_mbid: string): Promise<any> {
+    const url = API_URL + 'importer/'
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: `{ "artist_mbid": "${artist_mbid}" }`,
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   async function userLogout(): Promise<any> {
     const url = API_URL + 'accounts/logout/'
     try {
@@ -94,5 +114,5 @@ export const useAPI = () => {
   }
 
 
-  return { getData, login, signup, recoverUser, userLogout }
+  return { getData, login, signup, recoverUser, userLogout, importArtist }
 }

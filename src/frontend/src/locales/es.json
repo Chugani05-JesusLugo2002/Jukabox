@@ -62,5 +62,19 @@
   "noauth": {
     "login": "Iniciar sesión",
     "register": "Crear cuenta"
+  },
+
+  "importer-page": {
+    "title": "Importa tus artistas",
+    "tag1": "Jukabox's importer is a Premium feature, it's available to all users just for a limited time.",
+    "paragraph1": "Jukabox no se ve implicada directamente con los datos de canciones, álbumes y artistas, por lo tanto trabaja con una API de terceros llamada MusicBrainz. Esta utiliza un sistema de identificación basado en lo que llaman <i>MBID</i>. Un <i>MBID</i> es un identificador único universal de 36 caracteres que se asigna permanentemente a cada entidad en la base de datos, es decir, artistas, grupos de lanzamiento, lanzamientos, grabaciones, obras, sellos, áreas, lugares y URL.",
+    "paragraph2": "Para buscar y obtener el <i>MBID</i> del artista a añadir:",
+    "paragraph3": "Este proceso puede llegar a tardar varios minutos, dependiendo de la cantidad de contenido del artista.",
+    "step1": "Entre a la página de MusicBrainz a traves de este <a href='https://musicbrainz.org/'>enlace</a>.",
+    "step2": "En el buscador inserte el nombre del artista que deseé añadir a Jukabox.",
+    "step3": "De los resultados obtenidos seleccione el deseado.",
+    "step4": "Estando en la página del artista, vaya a detalles y allí encontrara el <i>MBID</i>.",
+    "placeholder": "Inserta MBID de artista aquí...",
+    "button": "Añadir artista"
   }
 }

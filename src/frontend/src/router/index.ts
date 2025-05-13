@@ -13,6 +13,7 @@ import SongDetail from '@/views/details/SongDetail.vue'
 import ArtistDetail from '@/views/details/ArtistDetail.vue'
 import AlbumDetail from '@/views/details/AlbumDetail.vue'
 import GenreSongs from '@/views/details/GenreSongs.vue'
+import ImporterView from '@/views/ImporterView.vue'
 
 const routes = [
   { path: '/', redirect: 'home' },
@@ -34,6 +35,8 @@ const routes = [
   { path: '/albums/:album_pk', component: AlbumDetail, name: 'album-detail' },
 
   { path: '/profile', component: ProfileView, name: 'my-profile' },
+
+  { path: '/importer', component: ImporterView, name: 'importer' },
 ]
 
 const router = createRouter({
