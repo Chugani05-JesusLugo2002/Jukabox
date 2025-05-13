@@ -4,4 +4,4 @@ from .models import Album
 
 @admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
-    list_display = ('title', 'released_at')
+    list_display = ('title', 'released_at', 'added_at')
