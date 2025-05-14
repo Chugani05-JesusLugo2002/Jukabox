@@ -17,6 +17,6 @@ class Song(models.Model):
     
     @property
     def cover(self):
-        DEFAULT_COVER = 'covers/default.jpg'
-        return self.album.cover.url if self.album else DEFAULT_COVER
+        first_album = self.albums.first()
+        return first_album.cover if first_album else 'covers/default-song.png'
     

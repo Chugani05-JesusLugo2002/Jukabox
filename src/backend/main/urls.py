@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.shortcuts import redirect
 
+import shared.views
+
 urlpatterns = [
     path('', lambda _: redirect('admin/')),
     path('admin/', admin.site.urls),
@@ -31,4 +33,5 @@ urlpatterns = [
     path('api/v1/genres/', include('genres.urls')),
     path('api/v1/accounts/', include('accounts.urls')),
     path('api/v1/import/', include('importer.urls')),
+    path('api/v1/explore/', shared.views.explore, name='explorer')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,10 +1,31 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ExplorerFilterPill from './ExplorerFilterPill.vue'
+import ItemList from './ItemList.vue'
+import { useAPI } from '@/composables/useAPI'
 
 const { locale, t } = useI18n()
+const { getExplorerResult } = useAPI()
 const query = ref('')
+const type = ref('')
+const result = ref()
+
+async function searchInAPI() {
+  if (query.value) {
+    try {
+      result.value = await getExplorerResult(query.value, type.value)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  else {
+    result.value = ''
+  }
+}
+
+watch(query, searchInAPI)
+watch(type, searchInAPI)
 </script>
 
 <template>
@@ -21,11 +42,17 @@ const query = ref('')
   </div>
 
   <div class="d-flex justify-content-center align-items-center">
-    <ExplorerFilterPill>{{ $t('explore-page.pill1') }}</ExplorerFilterPill>
-    <ExplorerFilterPill>{{ $t('explore-page.pill2') }}</ExplorerFilterPill>
-    <ExplorerFilterPill>{{ $t('explore-page.pill3') }}</ExplorerFilterPill>
-    <ExplorerFilterPill>Albums</ExplorerFilterPill>
-    <ExplorerFilterPill>Playlists</ExplorerFilterPill>
-    <ExplorerFilterPill>{{ $t('explore-page.pill6') }}</ExplorerFilterPill>
+    <ExplorerFilterPill @click="type = ''">{{ $t('explore-page.pill1') }}</ExplorerFilterPill>
+    <ExplorerFilterPill @click="type = 'Artists'">{{ $t('explore-page.pill2') }}</ExplorerFilterPill>
+    <ExplorerFilterPill @click="type = 'Songs'">{{ $t('explore-page.pill3') }}</ExplorerFilterPill>
+    <ExplorerFilterPill @click="type = 'Albums'">{{ $t('explore-page.pill4') }}</ExplorerFilterPill>
+  </div>
+
+  <div v-if="result">
+    <ul class="list-group">
+      <ItemList v-for="artist in result.result.artists" :title="artist.name" :url="`/artists/${artist.id}/`" :image="artist.avatar" type="Artist"></ItemList>
+      <ItemList v-for="album in result.result.albums" :title="album.title" :url="`/albums/${album.id}/`" :image="album.cover" type="Album"></ItemList>
+      <ItemList v-for="song in result.result.songs" :title="song.title" :url="`/songs/${song.id}/`" :image="song.cover" type="Song"></ItemList>
+    </ul>
   </div>
 </template>
