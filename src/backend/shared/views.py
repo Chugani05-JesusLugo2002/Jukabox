@@ -19,19 +19,27 @@ def explore(request: HttpRequest) -> JsonResponse:
     query = request.data['query']
     match request.data['type']:
         case 'Artists':
-            artists = Artist.objects.filter(name__icontains=query)[:9]
-            result = {'artists': ArtistSerializer(artists, request=request).serialize()}
+            artists = Artist.objects.filter(name__icontains=query)
+            artists_with_album = Artist.objects.filter(albums__title__icontains=query)
+            queryset = artists | artists_with_album
+            result = {'artists': ArtistSerializer(queryset.distinct(), request=request).serialize()}
         case 'Songs':
-            songs = Song.objects.filter(title__icontains=query)[:9]
-            result = {'songs': SongSerializer(songs, request=request).serialize()}
+            songs = Song.objects.filter(title__icontains=query)
+            songs_with_album = Song.objects.filter(albums__title__icontains=query)
+            songs_with_artist = Song.objects.filter(artists__name__icontains=query)
+            queryset = songs | songs_with_album | songs_with_artist
+            result = {'songs': SongSerializer(queryset.distinct(), request=request).serialize()}
         case 'Albums':
-            albums = Album.objects.filter(title__icontains=query)[:9]
-            result = {'albums': AlbumSerializer(albums, request=request).serialize()}
+            albums = Album.objects.filter(title__icontains=query)
+            albums_with_song = Album.objects.filter(songs__title__icontains=query)
+            albums_with_artist = Album.objects.filter(artists__name__icontains=query)
+            queryset = albums | albums_with_song | albums_with_artist
+            result = {'albums': AlbumSerializer(queryset.distinct(), request=request).serialize()}
         case _:
             result = {}
-            artists = Artist.objects.filter(name__icontains=query)[:3]
-            albums = Album.objects.filter(title__icontains=query)[:3]
-            songs = Song.objects.filter(title__icontains=query)[:3]
+            artists = Artist.objects.filter(name__icontains=query)
+            albums = Album.objects.filter(title__icontains=query)
+            songs = Song.objects.filter(title__icontains=query)
             result['artists'] = ArtistSerializer(artists, request=request).serialize()
             result['albums'] = AlbumSerializer(albums, request=request).serialize()
             result['songs'] = SongSerializer(songs, request=request).serialize()
