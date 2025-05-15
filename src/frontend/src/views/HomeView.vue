@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useAuthStore } from '@/stores/useAuth'
+
+const authStore = useAuthStore()
+</script>
+
 <template>
   <div class="container">
     <div class="row mt-5">
@@ -8,7 +14,7 @@
         <p class="lead text-center">
           Discover, share, and connect through music. Explore your favorite songs, albums, and artists — all in one place. Jukabox is the ultimate social experience for music lovers.
         </p>
-        <div class="mt-3 d-flex flex-column align-items-center mt-5">
+        <div v-if="!authStore.isAuthenticated" class="mt-3 d-flex flex-column align-items-center mt-5">
           <router-link to="/login" class="btn btn-primary w-50">
             <i class="bi bi-box-arrow-in-right"></i> Login
           </router-link>
@@ -36,7 +42,7 @@
 
     <div class="row mt-5">
       <div class="col">
-        <img src="\public\imgs\explorer.png" class="img-fluid rounded" alt="Explorer example" />
+        <img src="/imgs/explorer.png" class="img-fluid rounded" alt="Explorer example" />
       </div>
       <div class="col text-center align-items-center mt-5">
         <h2 class="fw-bold"><i class="bi bi-search-heart"></i> Discover music you love</h2>
@@ -54,7 +60,7 @@
         </p>
       </div>
       <div class="col">
-        <img src="\public\imgs\importer.png" class="img-fluid rounded" alt="Importer example" />
+        <img src="/imgs/importer.png" class="img-fluid rounded" alt="Importer example" />
       </div>
     </div>
   </div>

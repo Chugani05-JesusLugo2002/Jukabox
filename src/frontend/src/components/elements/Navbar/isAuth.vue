@@ -16,7 +16,8 @@ const authStore = useAuthStore()
       aria-expanded="false"
     >
       <img
-        src="https://github.com/mdo.png"
+      v-if="authStore.user"
+        :src="authStore.user.avatar"
         alt="My profile avatar"
         class="rounded-circle"
         width="32"
