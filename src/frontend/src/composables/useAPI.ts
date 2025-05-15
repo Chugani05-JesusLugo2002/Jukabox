@@ -93,6 +93,26 @@ export const useAPI = () => {
       console.error(error)
     }
   }
+  
+  async function getExplorerResult(query: string, type: string): Promise<any> {
+    const url = API_URL + 'explore/'
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: `{ "query": "${query}", "type": "${type}" }`,
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   async function userLogout(): Promise<any> {
     const url = API_URL + 'accounts/logout/'
@@ -114,5 +134,5 @@ export const useAPI = () => {
   }
 
 
-  return { getData, login, signup, recoverUser, userLogout, importArtist }
+  return { getData, login, signup, recoverUser, userLogout, importArtist, getExplorerResult }
 }

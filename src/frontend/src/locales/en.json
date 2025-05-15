@@ -17,14 +17,14 @@
     "pill1": "All",
     "pill2": "Artists",
     "pill3": "Songs",
-    "pill6": "Genres",
+    "pill4": "Albums",
     "placeholder": "Let your heart guide you! <3"
   },
 
   "songs-page": {
     "title": "Songs",
     "tag1": "Latest songs",
-    "tag2": "Trending generes"
+    "tag2": "Trending genres"
   },
 
   "artists-page": {
