@@ -37,9 +37,9 @@ def explore(request: HttpRequest) -> JsonResponse:
             result = {'albums': AlbumSerializer(queryset.distinct(), request=request).serialize()}
         case _:
             result = {}
-            artists = Artist.objects.filter(name__icontains=query)
-            albums = Album.objects.filter(title__icontains=query)
-            songs = Song.objects.filter(title__icontains=query)
+            artists = Artist.objects.filter(name__icontains=query)[:5]
+            albums = Album.objects.filter(title__icontains=query)[:5]
+            songs = Song.objects.filter(title__icontains=query)[:5]
             result['artists'] = ArtistSerializer(artists, request=request).serialize()
             result['albums'] = AlbumSerializer(albums, request=request).serialize()
             result['songs'] = SongSerializer(songs, request=request).serialize()
