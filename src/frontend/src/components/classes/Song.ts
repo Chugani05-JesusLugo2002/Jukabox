@@ -1,12 +1,5 @@
 import type { Artist, Album } from './Artist'
 
-export interface Genre {
-  id: number
-  name: string
-  slug: string
-  color: string
-}
-
 export interface Song {
   id: number
   title: string
@@ -14,7 +7,6 @@ export interface Song {
   released_at: number
   album: Album | string
   cover: string
-  genre: Genre[]
   added_at: string
   hearts: number
 }

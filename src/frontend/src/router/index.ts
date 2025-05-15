@@ -12,7 +12,6 @@ import ProfileView from '@/views/ProfileView.vue'
 import SongDetail from '@/views/details/SongDetail.vue'
 import ArtistDetail from '@/views/details/ArtistDetail.vue'
 import AlbumDetail from '@/views/details/AlbumDetail.vue'
-import GenreSongs from '@/views/details/GenreSongs.vue'
 import ImporterView from '@/views/ImporterView.vue'
 
 const routes = [
@@ -26,8 +25,6 @@ const routes = [
 
   { path: '/songs', component: SongsView, name: 'song-list' },
   { path: '/songs/:song_pk', component: SongDetail, name: 'song-detail' },
-
-  { path: '/genres/:genre_slug/songs', component: GenreSongs, name: 'genre-songs' },
 
   { path: '/artists', component: ArtistsView, name: 'artist-list' },
   { path: '/artists/:artist_pk', component: ArtistDetail, name: 'artist-detail' },

@@ -4,9 +4,9 @@ import { useRoute } from 'vue-router'
 
 import type { Song } from '@/components/classes/Song'
 import ItemHeader from '@/components/elements/ItemHeader.vue'
-import UrlsContainer from '@/components/elements/UrlsContainer.vue'
-import StatsContainer from '@/components/elements/StatsContainer.vue'
-import ArtistsLabel from '@/components/elements/ArtistsLabel.vue'
+import UrlsContainer from '@/components/elements/includes/UrlsContainer.vue'
+import StatsContainer from '@/components/elements/includes/StatsContainer.vue'
+import ArtistsLabel from '@/components/elements/includes/ArtistsLabel.vue'
 import { useAPI } from '@/composables/useAPI'
 
 const { getData } = useAPI()
