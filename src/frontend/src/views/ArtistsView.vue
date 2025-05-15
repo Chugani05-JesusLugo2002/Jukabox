@@ -4,7 +4,8 @@ import { inject } from 'vue'
 import ViewHeader from '@/components/ViewHeader.vue'
 import ArtistItem from '@/components/elements/ArtistItem.vue'
 import AlbumItem from '@/components/elements/AlbumItem.vue'
-import type { Artist, Album } from '@/components/classes/Artist'
+import type { Artist } from '@/components/classes/Artist'
+import type { Album } from '@/components/classes/Album'
 import { useI18n } from 'vue-i18n'
 
 const { locale, t } = useI18n()

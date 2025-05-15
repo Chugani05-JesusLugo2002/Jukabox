@@ -29,8 +29,6 @@ urlpatterns = [
     path('api/v1/songs/', include('songs.urls')),
     path('api/v1/artists/', include('artists.urls')),
     path('api/v1/albums/', include('albums.urls')),
-    path('api/v1/playlists/', include('playlists.urls')),
-    path('api/v1/genres/', include('genres.urls')),
     path('api/v1/accounts/', include('accounts.urls')),
     path('api/v1/import/', include('importer.urls')),
     path('api/v1/explore/', shared.views.explore, name='explorer')

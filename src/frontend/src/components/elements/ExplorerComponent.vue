@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import ExplorerFilterPill from './ExplorerFilterPill.vue'
+import ExplorerFilterPill from './includes/ExplorerFilterPill.vue'
 import ItemList from './ItemList.vue'
 import { useAPI } from '@/composables/useAPI'
 

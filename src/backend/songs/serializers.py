@@ -2,7 +2,6 @@ from shared.serializers import BaseSerializer
 
 from artists.serializers import ArtistSerializer
 from albums.serializers import AlbumSerializer
-from genres.serializers import GenreSerializer
 
 
 class SongSerializer(BaseSerializer):
@@ -17,7 +16,6 @@ class SongSerializer(BaseSerializer):
             'artists': ArtistSerializer(instance.artists.all(), request=self.request).serialize(),
             'albums': AlbumSerializer(instance.albums.all(), request=self.request).serialize(),
             'cover': self.build_url(instance.cover.url),
-            'genre': GenreSerializer(instance.genre.all()).serialize(),
             'added_at': instance.added_at.isoformat(),
-            'hearts': instance.hearts.count(),
+            'likes': instance.likes.count(),
         }

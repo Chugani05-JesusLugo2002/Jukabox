@@ -80,4 +80,5 @@ def import_artist_data(mbid: str):
                     title=recording['title']
                 )
                 song.albums.add(album)
+                song.artists.set(album.artists.all())
                 song.save()

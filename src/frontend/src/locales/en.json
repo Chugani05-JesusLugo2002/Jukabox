@@ -23,8 +23,7 @@
 
   "songs-page": {
     "title": "Songs",
-    "tag1": "Latest songs",
-    "tag2": "Trending genres"
+    "tag1": "Latest songs"  
   },
 
   "artists-page": {
