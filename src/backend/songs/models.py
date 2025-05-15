@@ -6,7 +6,6 @@ class Song(models.Model):
     title = models.CharField(max_length=255)
     artists = models.ManyToManyField('artists.Artist', related_name='songs')
     albums = models.ManyToManyField('albums.Album', related_name='songs')
-    genre = models.ManyToManyField('genres.Genre', related_name='songs')
     added_at = models.DateTimeField(auto_now_add=True)
         
     class Meta:

@@ -45,9 +45,7 @@ INSTALLED_APPS = [
     'shared.apps.SharedConfig',
     'songs.apps.SongsConfig',
     'artists.apps.ArtistsConfig',
-    'playlists.apps.PlaylistsConfig',
     'albums.apps.AlbumsConfig',
-    'genres.apps.GenresConfig',
     'users.apps.UsersConfig',
     'accounts.apps.AccountsConfig',
     'importer.apps.ImporterConfig'
