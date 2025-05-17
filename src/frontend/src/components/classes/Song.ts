@@ -1,4 +1,5 @@
-import type { Artist, Album } from './Artist'
+import type { Artist } from './Artist'
+import type { Album } from './Album'
 
 export interface Song {
   id: number
@@ -8,5 +9,5 @@ export interface Song {
   album: Album | string
   cover: string
   added_at: string
-  hearts: number
+  likes: number
 }

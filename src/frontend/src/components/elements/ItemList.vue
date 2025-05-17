@@ -7,7 +7,7 @@ const props = defineProps(['title', 'url', 'image', 'type'])
         <img :src="image" :alt="title + ' image'" class="col-1 img-fluid">
         <div class="col">
             <h5>{{ title }}</h5>
-            <p class="fw-bold text-body-secondary">{{ type }}</p>
+            <p class="fw-bold text-body-secondary" v-if="type">{{ type }}</p>
         </div>
     </RouterLink>
 </template>

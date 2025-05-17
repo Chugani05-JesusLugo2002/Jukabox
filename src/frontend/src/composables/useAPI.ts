@@ -93,6 +93,27 @@ export const useAPI = () => {
       console.error(error)
     }
   }
+
+  async function like(id: number, type: string, token: string): Promise<any> {
+    const url = API_URL + `${type}s/like/`
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: `{ "${type}_id": "${id}" }`,
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.error(error)
+    }
+  }
   
   async function getExplorerResult(query: string, type: string): Promise<any> {
     const url = API_URL + 'explore/'
@@ -134,5 +155,5 @@ export const useAPI = () => {
   }
 
 
-  return { getData, login, signup, recoverUser, userLogout, importArtist, getExplorerResult }
+  return { getData, login, signup, recoverUser, userLogout, importArtist, getExplorerResult, like }
 }

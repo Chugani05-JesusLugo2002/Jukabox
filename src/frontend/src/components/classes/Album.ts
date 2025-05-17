@@ -6,6 +6,7 @@ export interface Album {
     title: string
     artists: Artist[]
     songs: Song[]
+    likes: number
     released_at: number
     cover: string
     added_at: string

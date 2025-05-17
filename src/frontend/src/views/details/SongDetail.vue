@@ -31,7 +31,7 @@ onMounted(async () => {
 
 <template>
   <div v-if="song">
-    <ItemHeader :image="song.cover" :name="song.title" :isRounded="false">
+    <ItemHeader :image="song.cover" :name="song.title" :isRounded="false" :itemId="song.id" :itemType="'song'">
       <ArtistsLabel :artists="song.artists" />
     </ItemHeader>
 
@@ -57,7 +57,7 @@ onMounted(async () => {
       </div>
       <div class="col-3">
         <UrlsContainer>Where to listen</UrlsContainer>
-        <StatsContainer :hearts="song.hearts">Stats</StatsContainer>
+        <StatsContainer :likes="song.likes" :comments="0">Stats</StatsContainer>
       </div>
     </div>
   </div>

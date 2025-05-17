@@ -6,6 +6,7 @@ app_name = 'artists'
 
 urlpatterns = [
     path('', views.artist_list, name='artist-list'),
+    path('like/', views.like_artist, name='like-artist'),
     path('<int:artist_pk>/', views.artist_detail, name='artist-detail'),
-    path('latest/', views.latest_artists, name='latest-artists')
+    path('<int:artist_pk>/albums/', views.artist_albums, name='artist-albums'),
 ]

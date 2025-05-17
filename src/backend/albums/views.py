@@ -1,6 +1,7 @@
 from django.http import HttpRequest, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
-from shared.utils import check_method
+from shared.utils import check_method, check_json_body, assert_body_fields, assert_token
 from songs.serializers import SongSerializer
 
 from .models import Album
@@ -28,6 +29,19 @@ def album_songs(request: HttpRequest, album_pk: int) -> JsonResponse:
     serializer = SongSerializer(songs, request=request)
     return serializer.json_response()
 
+@csrf_exempt
+@check_method('POST')
+@check_json_body
+@assert_body_fields('album_id')
+@assert_token
+def like_album(request: HttpRequest) -> JsonResponse:
+    album_id = request.data['album_id']
+    album = Album.objects.get(id=album_id)
+    if request.profile.liked_albums.filter(id=album_id).exists():
+        request.profile.liked_albums.remove(album)
+        return JsonResponse({'liked_albums': AlbumSerializer(request.profile.liked_albums.all()).serialize()})
+    request.profile.liked_albums.add(album)
+    return JsonResponse({'liked_albums': AlbumSerializer(request.profile.liked_albums.all()).serialize()})
 
 @check_method('GET')
 def latest_albums(request: HttpRequest) -> JsonResponse:

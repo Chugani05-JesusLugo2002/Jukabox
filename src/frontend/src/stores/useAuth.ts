@@ -22,7 +22,7 @@ export const useAuthStore = defineStore('auth', () => {
     isAuthenticated.value = false
     user.value = null
     localStorage.removeItem('token')
-    router.push('/')
+    router.push('/home')
   }
 
   onMounted(async () => {

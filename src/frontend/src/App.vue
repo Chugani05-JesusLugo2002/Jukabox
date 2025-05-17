@@ -12,17 +12,14 @@ import { useAPI } from './composables/useAPI'
 const { getData } = useAPI()
 
 const latestSongs = ref<Song[]>([])
-const latestArtists = ref<Artist[]>([])
 const latestAlbums = ref<Album[]>([])
 
 onMounted(async () => {
   latestSongs.value = await getData('songs/latest/')
-  latestArtists.value = await getData('artists/latest/')
   latestAlbums.value = await getData('albums/latest/')
 })
 
 provide('latestSongs', latestSongs)
-provide('latestArtists', latestArtists)
 provide('latestAlbums', latestAlbums)
 </script>
 
