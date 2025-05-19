@@ -1,10 +1,6 @@
 from django.contrib import admin
 
-from .models import SongLink, ArtistLink, AlbumLink
-
-@admin.register(SongLink)
-class SongLinkAdmin(admin.ModelAdmin):
-    pass
+from .models import ArtistLink, AlbumLink
 
 @admin.register(AlbumLink)
 class AlbumLinkAdmin(admin.ModelAdmin):

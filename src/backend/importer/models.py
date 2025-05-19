@@ -15,11 +15,3 @@ class AlbumLink(models.Model):
     @property
     def url_type(self):
         return 'spotify'
-    
-class SongLink(models.Model):
-    url = models.URLField()
-    song = models.ForeignKey('songs.Song', on_delete=models.CASCADE, related_name='links', blank=True, null=True)
-
-    @property
-    def url_type(self):
-        return 'spotify'

@@ -16,9 +16,3 @@ def import_artist(request: HttpRequest) -> JsonResponse:
     mbid = request.data['artist_mbid']
     import_artist_data.delay(mbid)
     return JsonResponse({'message': f'Adding artist with MBID {mbid}'})
-
-@csrf_exempt
-def test(request):
-    mbz.set_useragent('Jukabox', '0.1', 'jukabox.site@gmail.com')
-    artist = mbz.get_artist_by_id('a6c6897a-7415-4f8d-b5a5-3a5e05f3be67', includes=['url-rels'])
-    return JsonResponse({'result': artist})

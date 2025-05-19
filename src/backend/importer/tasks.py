@@ -8,7 +8,7 @@ from datetime import datetime
 from artists.models import Artist
 from albums.models import Album
 from songs.models import Song
-from .models import ArtistLink, AlbumLink, SongLink
+from .models import ArtistLink, AlbumLink
 
 logger = logging.getLogger(__name__)
 
@@ -87,7 +87,7 @@ def import_artist_data(mbid: str):
             queue = django_rq.get_queue('default')
             download_cover_job = queue.enqueue(import_cover_data, release_mbid, album)
 
-            release_songs = mbz.browse_recordings(release=release_mbid, includes=['url-rels'])
+            release_songs = mbz.browse_recordings(release=release_mbid)
             logger.info(release_songs)
             for recording in release_songs['recording-list']:
                 song, created = Song.objects.get_or_create(
@@ -97,10 +97,3 @@ def import_artist_data(mbid: str):
                 song.albums.add(album)
                 song.artists.set(album.artists.all())
                 song.save()
-
-                for url in recording['url-relation-list']:
-                    if url['type'] == 'free streaming':
-                        song_link = SongLink.objects.get_or_create(
-                            url=url['target'],
-                            song=song
-                        )
