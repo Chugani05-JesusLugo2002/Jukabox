@@ -3,11 +3,10 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import ItemHeader from '@/components/elements/ItemHeader.vue'
-import SongListItem from '@/components/elements/SongListItem.vue'
 import type { Artist } from '@/components/classes/Artist'
 import { useAPI } from '@/composables/useAPI'
 import type { Album } from '@/components/classes/Album'
-import ItemList from '@/components/elements/ItemList.vue'
+import AlbumItem from '@/components/elements/AlbumItem.vue'
 
 const { getData } = useAPI()
 const route = useRoute()
@@ -28,10 +27,20 @@ onMounted(async () => {
 
     <div v-if="albums">
       <h5>Albums</h5>
-
-      <ItemList v-for="album in albums" :title="album.title" :image="album.cover" :url="`/albums/${album.id}/`"></ItemList>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <AlbumItem v-for="album in albums" :title="album.title" :image="album.cover" :url="`/albums/${album.id}/`"></AlbumItem>
+      </div>
     </div>
   </div>
 
   <p v-else>Loading artist</p>
 </template>
+
+<style scoped>
+.album-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start;
+}
+</style>
