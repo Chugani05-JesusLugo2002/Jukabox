@@ -1,8 +1,7 @@
 {
   "navbar": {
     "explore": "Explorar",
-    "songs": "Canciones",
-    "artists": "Artistas"
+    "music": "Música"
   },
 
   "footer": {
@@ -21,16 +20,11 @@
     "placeholder": "¡Deja que tu corazón te guie! <3"
   },
 
-  "songs-page": {
-    "title": "Canciones",
-    "tag1": "Últimas canciones"
-  },
-
-  "artists-page": {
-    "title": "Artistas",
-    "tag1": "Más queridos",
-    "tag2": "Mejores albums"
-  },
+  "music-page": {
+    "title": "Música",
+    "tag1": "Mejores albums",
+    "tag2": "Últimas canciones"
+    },
 
   "login": {
     "title": "Iniciar sesión",

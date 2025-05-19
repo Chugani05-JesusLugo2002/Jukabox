@@ -1,8 +1,7 @@
 {
   "navbar": {
     "explore": "Explore",
-    "songs": "Songs",
-    "artists": "Artists"
+    "music": "Music"
   },
 
   "footer": {
@@ -21,15 +20,10 @@
     "placeholder": "Let your heart guide you! <3"
   },
 
-  "songs-page": {
-    "title": "Songs",
-    "tag1": "Latest songs"  
-  },
-
-  "artists-page": {
-    "title": "Artists",
-    "tag1": "Most loved",
-    "tag2": "Best albums"
+  "music-page": {
+    "title": "Music",
+    "tag1": "Best albums",
+    "tag2": "Latest songs"
   },
 
   "login": {

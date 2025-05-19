@@ -21,7 +21,7 @@ const authStore = useAuthStore()
           <RouterLink class="nav-link" to="/explore">{{ $t('navbar.explore') }}</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/artists">{{ $t('navbar.artists') }}</RouterLink>
+          <RouterLink class="nav-link" to="/music">{{ $t('navbar.music') }}</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink class="nav-link" to="/importer">Importer</RouterLink>
