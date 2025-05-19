@@ -133,6 +133,27 @@ export const useAPI = () => {
       console.error(error)
     }
   }
+
+  async function addReview(songId: number, comment: string, token: string): Promise<any> {
+    const url = API_URL + `songs/${songId}/add-review/`
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: `{ "comment": "${comment}" }`,
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.error(error)
+    }
+  }
   
   async function getExplorerResult(query: string, type: string): Promise<any> {
     const url = API_URL + 'explore/'
@@ -174,5 +195,5 @@ export const useAPI = () => {
   }
 
 
-  return { getData, login, signup, getMyProfile, userLogout, importArtist, getExplorerResult, like, getLikedItems }
+  return { getData, login, signup, getMyProfile, userLogout, importArtist, getExplorerResult, like, addReview, getLikedItems }
 }

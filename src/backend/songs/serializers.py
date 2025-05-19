@@ -31,6 +31,5 @@ class ReviewSerializer(BaseSerializer):
             'id': instance.pk,
             'author': UserSerializer(instance.author, request=self.request).serialize(),
             'comment': instance.comment,
-            'score': instance.score,
             'created_at': instance.created_at.isoformat(),
         }
