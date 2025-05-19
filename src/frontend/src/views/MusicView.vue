@@ -14,10 +14,10 @@ const latestSongs = inject<Song[]>('latestSongs')
 </script>
 
 <template>
-  <ViewHeader>{{ $t('artists-page.title') }}</ViewHeader>
+  <ViewHeader>{{ $t('music-page.title') }}</ViewHeader>
 
   <section v-if="latestAlbums">
-    <h2 class="display-5 mt-3">{{ $t('artists-page.tag2') }}</h2>
+    <h2 class="display-5 mt-3">{{ $t('music-page.tag1') }}</h2>
     <div class="mix-grid d-flex flex-wrap gap-3 justify-content-center">
       <AlbumItem v-for="(album, index) in latestAlbums" :key="index" :album="album" />
     </div>
@@ -25,7 +25,7 @@ const latestSongs = inject<Song[]>('latestSongs')
   <p v-else>Loading....</p>
 
   <section v-if="latestSongs">
-    <h2 class="display-5 mt-3">{{ $t('songs-page.tag1') }}</h2>
+    <h2 class="display-5 mt-3">{{ $t('music-page.tag2') }}</h2>
     <div class="mix-grid d-flex flex-wrap gap-3 justify-content-center">
       <SongItem v-for="(song, index) in latestSongs" :key="index" :song="song" />
     </div>

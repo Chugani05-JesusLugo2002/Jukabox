@@ -4,8 +4,7 @@ import LoginView from '@/views/auth/LoginView.vue'
 import SignupView from '@/views/auth/SignupView.vue'
 
 import HomeView from '@/views/HomeView.vue'
-import SongsView from '@/views/SongsView.vue'
-import ArtistsView from '@/views/ArtistsView.vue'
+import MusicView from '@/views/MusicView.vue'
 import ExploreView from '@/views/ExploreView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 
@@ -22,11 +21,11 @@ const routes = [
   { path: '/signup', component: SignupView, name: 'signup' },
 
   { path: '/explore', component: ExploreView, name: 'explore' },
+  
+  { path: '/music', component: MusicView, name: 'artist-list' },
 
-  { path: '/songs', component: SongsView, name: 'song-list' },
   { path: '/songs/:song_pk', component: SongDetail, name: 'song-detail' },
 
-  { path: '/artists', component: ArtistsView, name: 'artist-list' },
   { path: '/artists/:artist_pk', component: ArtistDetail, name: 'artist-detail' },
 
   { path: '/albums/:album_pk', component: AlbumDetail, name: 'album-detail' },

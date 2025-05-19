@@ -27,8 +27,8 @@ onMounted(async () => {
 
     <div v-if="albums">
       <h5>Albums</h5>
-      <div class="d-flex flex-wrap gap-3 justify-content-center">
-        <AlbumItem v-for="album in albums" :title="album.title" :image="album.cover" :url="`/albums/${album.id}/`"></AlbumItem>
+      <div class="album-grid d-flex flex-wrap gap-3 justify-content-center">
+        <AlbumItem v-for="album in albums" :album="album"></AlbumItem>
       </div>
     </div>
   </div>
