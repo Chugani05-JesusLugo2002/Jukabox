@@ -11,5 +11,6 @@ urlpatterns = [
     path('<int:user_id>/liked_albums/', views.liked_albums, name='liked-albums'),
     path('<int:user_id>/liked_artists/', views.liked_artists, name='liked-artists'),
     path('<int:user_id>/reviews/', views.user_reviews, name='user-reviews'),
-    path('my-profile/', views.my_profile, name='my-profile')
+    path('my-profile/', views.my_profile, name='my-profile'),
+    path('change-profile/', views.change_profile, name='change-profile')
 ]
