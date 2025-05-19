@@ -2,45 +2,46 @@
 import { useAuthStore } from '@/stores/useAuth'
 import { useAPI } from '@/composables/useAPI'
 import ViewHeader from '@/components/ViewHeader.vue'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
-const { user } = useAuthStore()
+const route = useRoute()
 const { getData } = useAPI()
+const user = ref()
+const userFound = ref(false)
 
-const likedSongs = await getData(`users/${user?.id}/liked_songs/`)
-
-
+onMounted(async () => {
+  user.value = await getData(`users/${route.params['profile_slug']}/`)
+  userFound.value = !user.value.hasOwnProperty('error')
+})
 </script>
 
 <template>
-  <div v-if="user" class="container py-4">
-    <ViewHeader>
-      <div class="d-flex align-items-center gap-4">
-        <img
-          :src="user.avatar"
-          alt="Foto de perfil"
-          class="rounded-circle border border-white shadow"
-          style="width: 250px; height: 250px; object-fit: cover;"
-        />
-        <div>
-          <div>
-            <p class="text-dark">@{{ user.username }}</p>
+  <div v-if="userFound" class="container py-4">
+    <div class="row">
+      <img :src="user.avatar" alt="Foto de perfil" class="col-2 rounded-circle"/>
+      <div class="col">
+        <h1 class="row">@{{ user.username }}</h1>
+        <div class="row mt-5">
+          <div class="col-1 d-flex flex-column align-items-center mx-2">
+            <h4>{{ user.reviews_count }}</h4>
+            <h5 class="text-secondary">Reviews</h5>
           </div>
-
-          <div class="mt-4 row text-center">
-            <div class="col">
-              <!-- <div class="fw-bold fs-4">{{ user.followers.length }}</div> -->
-              <small class="text-secondary">{{ $t('profile-page.followers') }}:</small>
-            </div>
-            <div class="col">
-              <!-- <div class="fw-bold fs-4">{{ user.following.length }}</div> -->
-              <small class="text-secondary">{{ $t('profile-page.following') }}:</small>
-            </div>
+          <div class="col-1 d-flex flex-column align-items-center mx-2">
+            <h4>{{ user.liked_songs_count }}</h4>
+            <h5 class="text-secondary">Liked songs</h5>
           </div>
-          
+          <div class="col-1 d-flex flex-column align-items-center mx-2">
+            <h4>{{ user.liked_albums_count }}</h4>
+            <h5 class="text-secondary">Liked albums</h5>
+          </div>
+          <div class="col-1 d-flex flex-column align-items-center mx-2">
+            <h4>{{ user.liked_artists_count }}</h4>
+            <h5 class="text-secondary">Liked artists</h5>
+          </div>
         </div>
       </div>
-    </ViewHeader>
+    </div>
 
     <div class="mt-4">
       <p v-if="user.bio" class="text-secondary">
@@ -82,9 +83,7 @@ const likedSongs = await getData(`users/${user?.id}/liked_songs/`)
     </div>
   </div>
 
-  <ViewHeader v-else>
-    <div class="alert alert-warning text-center">
-      No deberías estar aquí :(
-    </div>
-  </ViewHeader>
+  <div class="alert alert-warning text-center" v-else>
+    El usuario no existe!
+  </div>
 </template>

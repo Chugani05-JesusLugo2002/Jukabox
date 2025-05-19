@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import SongLink, ArtistLink, AlbumLink
+
+@admin.register(SongLink)
+class SongLinkAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(AlbumLink)
+class AlbumLinkAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(ArtistLink)
+class ArtistLinkAdmin(admin.ModelAdmin):
+    pass

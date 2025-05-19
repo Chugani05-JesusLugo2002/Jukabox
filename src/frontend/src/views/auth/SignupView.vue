@@ -31,7 +31,7 @@ async function signup() {
   const user: User | null = await api.signup(signupData)
   if (user) {
     authStore.authenticate(user)
-    router.push(`/profile`)
+    router.push(`/profiles/${user.slug}`)
   }
 }
 </script>

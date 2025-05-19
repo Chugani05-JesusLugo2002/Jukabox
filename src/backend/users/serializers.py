@@ -14,5 +14,10 @@ class UserSerializer(BaseSerializer):
             'last_name': instance.user.last_name,
             'email': instance.user.email,
             'bio': instance.bio,
-            'avatar': self.build_url(instance.avatar.url)
+            'avatar': self.build_url(instance.avatar.url),
+            'slug': instance.slug,
+            'liked_songs_count': instance.liked_songs.count(),
+            'liked_albums_count': instance.liked_albums.count(),
+            'liked_artists_count': instance.liked_artists.count(),
+            'reviews_count': instance.reviews.count()
         }

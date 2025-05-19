@@ -27,8 +27,6 @@
     },
 
   "profile-page": {
-    "followers": "Seguidores",
-    "following": "Siguiendo",
     "nobiomessage": "Este usuario aún no tiene una bio.",
     "featuredsongs": "Canciones destacadas"
   },

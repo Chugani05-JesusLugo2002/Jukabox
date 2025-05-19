@@ -22,7 +22,7 @@ async function login() {
   const user: User | null = await api.login(loginData)
   if (user) {
     authStore.authenticate(user)
-    router.push(`/profile`)
+    router.push(`/profiles/${user.slug}`)
   }
 }
 </script>

@@ -17,8 +17,11 @@ def user_list(request: HttpRequest) -> JsonResponse:
     return serializer.json_response()
 
 @check_method('GET')
-def user_detail(request: HttpRequest, user_id: int) -> JsonResponse:
-    user = Profile.objects.get(pk=user_id)
+def user_detail(request: HttpRequest, user_slug: str) -> JsonResponse:
+    try:
+        user = Profile.objects.get(slug=user_slug)
+    except Profile.DoesNotExist:
+        return JsonResponse({'error': 'User not exists'}, status=404)
     serializer = UserSerializer(user, request=request)
     return serializer.json_response()
 
@@ -29,26 +32,26 @@ def my_profile(request: HttpRequest) -> JsonResponse:
     return serializer.json_response()
 
 @check_method('GET')
-def liked_songs(request: HttpRequest, user_id: int) -> JsonResponse:
-    user = Profile.objects.get(pk=user_id)
+def liked_songs(request: HttpRequest, user_slug: str) -> JsonResponse:
+    user = Profile.objects.get(slug=user_slug)
     serializer = SongSerializer(user.liked_songs.all(), request=request)
     return serializer.json_response()
 
 @check_method('GET')
-def liked_albums(request: HttpRequest, user_id: int) -> JsonResponse:
-    user = Profile.objects.get(pk=user_id)
+def liked_albums(request: HttpRequest, user_slug: str) -> JsonResponse:
+    user = Profile.objects.get(slug=user_slug)
     serializer = AlbumSerializer(user.liked_albums.all(), request=request)
     return serializer.json_response()
 
 @check_method('GET')
-def liked_artists(request: HttpRequest, user_id: int) -> JsonResponse:
-    user = Profile.objects.get(pk=user_id)
+def liked_artists(request: HttpRequest, user_slug: str) -> JsonResponse:
+    user = Profile.objects.get(slug=user_slug)
     serializer = ArtistSerializer(user.liked_artists.all(), request=request)
     return serializer.json_response()
 
 @check_method('GET')
-def user_reviews(request: HttpRequest, user_id: int) -> JsonResponse:
-    user = Profile.objects.get(pk=user_id)
+def user_reviews(request: HttpRequest, user_slug: str) -> JsonResponse:
+    user = Profile.objects.get(slug=user_slug)
     serializer = ReviewSerializer(user.reviews.all(), request=request)
     return serializer.json_response()
 

@@ -6,8 +6,8 @@ import SignupView from '@/views/auth/SignupView.vue'
 import HomeView from '@/views/HomeView.vue'
 import MusicView from '@/views/MusicView.vue'
 import ExploreView from '@/views/ExploreView.vue'
-import ProfileView from '@/views/ProfileView.vue'
 
+import ProfileView from '@/views/details/ProfileView.vue'
 import SongDetail from '@/views/details/SongDetail.vue'
 import ArtistDetail from '@/views/details/ArtistDetail.vue'
 import AlbumDetail from '@/views/details/AlbumDetail.vue'
@@ -30,7 +30,7 @@ const routes = [
 
   { path: '/albums/:album_pk', component: AlbumDetail, name: 'album-detail' },
 
-  { path: '/profile', component: ProfileView, name: 'my-profile' },
+  { path: '/profiles/:profile_slug', component: ProfileView, name: 'profile-detail' },
 
   { path: '/importer', component: ImporterView, name: 'importer' },
 ]

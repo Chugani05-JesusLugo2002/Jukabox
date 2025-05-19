@@ -45,8 +45,6 @@
   },
 
   "profile-page": {
-    "followers": "Followers",
-    "following": "Following",
     "nobiomessage": "This user has no bio yet.",
     "featuredsongs": "Featured Songs"
   },

@@ -26,12 +26,9 @@ const authStore = useAuthStore()
     </a>
     <ul class="dropdown-menu">
       <li>
-        <RouterLink to="/profile" class="dropdown-item"
+        <RouterLink :to="'/profiles/' + authStore.user.slug" class="dropdown-item"
           ><i class="bi bi-person-circle"></i> My profile</RouterLink
         >
-      </li>
-      <li>
-        <a class="dropdown-item" href="#"><i class="bi bi-moon"></i> Change theme</a>
       </li>
       <li>
         <a class="dropdown-item" href="#"><i class="bi bi-gear" id="settings-icon"></i> Settings</a>
