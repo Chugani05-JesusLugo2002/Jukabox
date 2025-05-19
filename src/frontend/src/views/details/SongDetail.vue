@@ -8,24 +8,32 @@ import UrlsContainer from '@/components/elements/includes/UrlsContainer.vue'
 import StatsContainer from '@/components/elements/includes/StatsContainer.vue'
 import ArtistsLabel from '@/components/elements/includes/ArtistsLabel.vue'
 import { useAPI } from '@/composables/useAPI'
+import Comment from '@/components/elements/includes/Comment.vue'
+import { useAuthStore } from '@/stores/useAuth.ts'
 
-const { getData } = useAPI()
+const { getData, addReview } = useAPI()
+const authStore = useAuthStore()
+
 const route = useRoute()
 const song = ref<null | Song>(null)
 
-let comment = ref('')
+const comment = ref('')
+const songComments = ref('')
 
-function sendReview() {
+async function sendReview(id: number) {
   if (comment.value) {
-    alert(comment.value)
+    const response = await addReview(id, comment.value, authStore.user.token)
+    songComments.value = await getData(`songs/${id}/reviews/`)
+    comment.value = ''
   } else {
-    alert('Escribe algo pendejito')
+    alert('Missing comment')
   }
 }
 
 onMounted(async () => {
   const song_pk = route.params['song_pk']
   song.value = await getData(`songs/${song_pk}/`)
+  songComments.value = await getData(`songs/${song_pk}/reviews/`)
 })
 </script>
 
@@ -38,21 +46,25 @@ onMounted(async () => {
     <div class="row">
       <div class="col-9">
         <p class="h4">Reviews</p>
-        <form id="comment-input" class="mb-3" @submit.prevent="sendReview">
+        <form id="comment-input" class="mb-3" @submit.prevent="sendReview(song.id)" v-if="authStore.isAuthenticated">
           <div class="form-floating">
-            <textarea
+            <input
+              type="text"
               v-model="comment"
               class="form-control mb-2"
               name="comment"
               id="comment"
-            ></textarea>
+            ></input>
             <label for="comment">Your comment...</label>
           </div>
           <input class="btn btn-primary" type="submit" value="Send" />
         </form>
 
         <div id="comments-container">
-          <div class="alert alert-primary">No comments yet. Write the first one! :)</div>
+          <div v-if="songComments.length > 0">
+            <Comment v-for="comment in songComments" :comment="comment"></Comment>
+          </div>
+          <div v-else class="alert alert-primary">No comments yet. Write the first one! :)</div>
         </div>
       </div>
       <div class="col-3">

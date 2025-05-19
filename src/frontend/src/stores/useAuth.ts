@@ -25,19 +25,5 @@ export const useAuthStore = defineStore('auth', () => {
     router.push('/home')
   }
 
-  onMounted(async () => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      const { getMyProfile } = useAPI()
-      const { authenticate, logout } = useAuthStore()
-      const user = await getMyProfile(token)
-      if (user) {
-        authenticate(user)
-      } else {
-        logout()
-      }
-    }
-  })
-
   return { isAuthenticated, user, authenticate, logout }
 })

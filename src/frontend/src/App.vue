@@ -9,22 +9,22 @@ import type { Album } from './components/classes/Album'
 import { useAPI } from './composables/useAPI'
 import { useAuthStore } from './stores/useAuth'
 
-const { getData } = useAPI()
+const { getMyProfile, getData } = useAPI()
+const { authenticate, logout } = useAuthStore()
 
 const latestSongs = ref<Song[]>([])
 const latestAlbums = ref<Album[]>([])
 
 onMounted(async () => {
   const token = localStorage.getItem('token')
+  console.log(token)
   if (token) {
-    const { getMyProfile } = useAPI()
-      const { authenticate, logout } = useAuthStore()
-      const user = await getMyProfile(token)
-      if (user) {
-        authenticate(user)
-      } else {
-        logout()
-      }
+    const user = await getMyProfile(token)
+    if (user) {
+      authenticate(user)
+    } else {
+      console.log(user)
+    }
   }
 
   latestSongs.value = await getData('songs/latest/')

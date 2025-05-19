@@ -32,7 +32,7 @@ def like_song(request: HttpRequest, song_pk: int) -> JsonResponse:
 @csrf_exempt
 @check_method('POST')
 @check_json_body
-@assert_body_fields('comment', 'score')
+@assert_body_fields('comment')
 @assert_token
 def add_review(request: HttpRequest, song_pk: int) -> JsonResponse:
     song = Song.objects.get(pk=song_pk)
@@ -40,7 +40,6 @@ def add_review(request: HttpRequest, song_pk: int) -> JsonResponse:
         author=request.profile,
         song=song,
         comment=request.data['comment'],
-        score=request.data['score']
     )
     serializer = ReviewSerializer(new_review, request=request)
     return serializer.json_response()
@@ -54,6 +53,6 @@ def latest_songs(request: HttpRequest) -> JsonResponse:
 @check_method('GET')
 def song_reviews(request: HttpRequest, song_pk: int) -> JsonResponse:
     song = Song.objects.get(pk=song_pk)
-    serializer = ReviewSerializer(song.reviews, request=request)
+    serializer = ReviewSerializer(song.reviews.all().order_by('-created_at'), request=request)
     return serializer.json_response()   
 

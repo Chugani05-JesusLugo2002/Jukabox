@@ -25,12 +25,14 @@ async function likeItem() {
 }
 
 onMounted(async () => {
-  const likedItems = await getLikedItems(user.id, props.itemType)
-  likedItems.forEach(item => {
-    if (item.id == props.itemId) {
-      heartColor.value = 'text-danger'
-    }
-  });
+  if (user) {
+    const likedItems = await getLikedItems(user.id, props.itemType)
+    likedItems.forEach(item => {
+      if (item.id == props.itemId) {
+        heartColor.value = 'text-danger'
+      }
+    });
+  }
 })
 </script>
 
@@ -44,7 +46,7 @@ onMounted(async () => {
       <p class="text-muted h5"><slot></slot></p>
     </div>
     <div class="col-1 display-5 d-flex align-items-center" v-if="isAuthenticated">
-      <i :class="'bi bi-heart-fill likeButton ' + heartColor" @click="likeItem"></i>
+      <i v-if="user" :class="'bi bi-heart-fill likeButton ' + heartColor" @click="likeItem"></i>
     </div>
   </div>
 </template>
