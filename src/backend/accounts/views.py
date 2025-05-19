@@ -51,14 +51,3 @@ def user_logout(request: HttpRequest) -> JsonResponse:
         return JsonResponse({'error': 'Nobody is logged for log out. How this happen? :o'}, status=500)
     logout(request)
     return JsonResponse({'message': 'User logged out'}, status=200)
-
-
-@csrf_exempt
-@check_method('POST')
-@check_json_body
-@assert_body_fields('token')
-def recover_user(request: HttpRequest) -> JsonResponse:
-    token = request.data['token']
-    profile = Profile.objects.get(token=token)
-    serializer = UserSerializer(profile, request=request)
-    return serializer.json_response()

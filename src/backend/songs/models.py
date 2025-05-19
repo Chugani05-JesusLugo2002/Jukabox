@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Song(models.Model):
@@ -18,4 +19,15 @@ class Song(models.Model):
     def cover(self):
         first_album = self.albums.first()
         return first_album.cover if first_album else 'covers/default-song.png'
+    
+
+class Review(models.Model):
+    author = models.ForeignKey('users.Profile', on_delete=models.CASCADE, related_name='reviews')
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='reviews')
+    comment = models.TextField(blank=True)
+    score = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Comment by {self.author} in {self.song}'
     
