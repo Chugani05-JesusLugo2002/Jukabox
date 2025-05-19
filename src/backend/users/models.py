@@ -1,9 +1,11 @@
 from django.db import models
 from django.conf import settings
 import uuid
+from django.utils.text import slugify
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    slug = models.SlugField(unique=True)
     avatar = models.ImageField(upload_to='avatars/', default='avatars/default.jpg')
     token = models.UUIDField(default=uuid.uuid4)
     bio = models.TextField(blank=True)
@@ -14,3 +16,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.user.username)
+        super().save(*args, **kwargs)
+    
+    

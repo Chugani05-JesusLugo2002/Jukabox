@@ -8,6 +8,7 @@ from datetime import datetime
 from artists.models import Artist
 from albums.models import Album
 from songs.models import Song
+from .models import ArtistLink, AlbumLink, SongLink
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +35,7 @@ def import_cover_data(release_mbid: str, album: Album):
 def import_artist_data(mbid: str):
     mbz.set_useragent('Jukabox', '0.1', 'jukabox.site@gmail.com')
     try:
-        mbz_artist = mbz.get_artist_by_id(mbid, includes=['release-groups'])['artist']
+        mbz_artist = mbz.get_artist_by_id(mbid, includes=['release-groups', 'url-rels'])['artist']
     except:
         return 
     
@@ -43,8 +44,15 @@ def import_artist_data(mbid: str):
         name=mbz_artist['name']
     )
 
+    for url in mbz_artist['url-relation-list']:
+        if url['type'] == 'free streaming':
+            artist_link = ArtistLink.objects.get_or_create(
+                url=url['target'],
+                artist=artist
+            )
+
     for release_group in mbz_artist['release-group-list']:
-        main_release = mbz.browse_releases(release_group=release_group['id'], release_status='official', limit=1, includes=['artist-credits'])['release-list']
+        main_release = mbz.browse_releases(release_group=release_group['id'], release_status='official', limit=1, includes=['artist-credits', 'url-rels'])['release-list']
         if main_release:
             release_mbid = main_release[0]['id']
             date = main_release[0]['date']
@@ -60,6 +68,13 @@ def import_artist_data(mbid: str):
                 released_at=release_date
             )
 
+            for url in main_release[0]['url-relation-list']:
+                if url['type'] == 'free streaming':
+                    album_link = AlbumLink.objects.get_or_create(
+                        url=url['target'],
+                        album=album
+                    )
+
             for release_artist in main_release[0]['artist-credit']:
                 artists = set()
                 artist, created = Artist.objects.get_or_create(
@@ -72,7 +87,7 @@ def import_artist_data(mbid: str):
             queue = django_rq.get_queue('default')
             download_cover_job = queue.enqueue(import_cover_data, release_mbid, album)
 
-            release_songs = mbz.browse_recordings(release=release_mbid)
+            release_songs = mbz.browse_recordings(release=release_mbid, includes=['url-rels'])
             logger.info(release_songs)
             for recording in release_songs['recording-list']:
                 song, created = Song.objects.get_or_create(
@@ -82,3 +97,10 @@ def import_artist_data(mbid: str):
                 song.albums.add(album)
                 song.artists.set(album.artists.all())
                 song.save()
+
+                for url in recording['url-relation-list']:
+                    if url['type'] == 'free streaming':
+                        song_link = SongLink.objects.get_or_create(
+                            url=url['target'],
+                            song=song
+                        )

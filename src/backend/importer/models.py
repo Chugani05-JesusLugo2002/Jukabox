@@ -1,3 +1,25 @@
 from django.db import models
 
-# Create your models here.
+class ArtistLink(models.Model):
+    url = models.URLField()
+    artist = models.ForeignKey('artists.Artist', on_delete=models.CASCADE, related_name='links', blank=True, null=True)
+
+    @property
+    def url_type(self):
+        return 'spotify'
+    
+class AlbumLink(models.Model):
+    url = models.URLField()
+    album = models.ForeignKey('albums.Album', on_delete=models.CASCADE, related_name='links', blank=True, null=True)
+
+    @property
+    def url_type(self):
+        return 'spotify'
+    
+class SongLink(models.Model):
+    url = models.URLField()
+    song = models.ForeignKey('songs.Song', on_delete=models.CASCADE, related_name='links', blank=True, null=True)
+
+    @property
+    def url_type(self):
+        return 'spotify'
