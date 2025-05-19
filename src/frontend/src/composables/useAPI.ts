@@ -54,15 +54,15 @@ export const useAPI = () => {
     }
   }
 
-  async function recoverUser(token: string): Promise<any> {
-    const url = API_URL + 'accounts/recover/'
+  async function getMyProfile(token: string): Promise<any> {
+    const url = API_URL + 'users/my-profile/'
     try {
       const response = await fetch(url, {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: `{ "token": "${token}" }`,
+          'Authorization': `Bearer ${token}`
+        }
       })
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
@@ -155,5 +155,5 @@ export const useAPI = () => {
   }
 
 
-  return { getData, login, signup, recoverUser, userLogout, importArtist, getExplorerResult, like }
+  return { getData, login, signup, getMyProfile, userLogout, importArtist, getExplorerResult, like }
 }

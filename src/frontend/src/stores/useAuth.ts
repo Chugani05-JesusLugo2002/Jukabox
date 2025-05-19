@@ -28,9 +28,9 @@ export const useAuthStore = defineStore('auth', () => {
   onMounted(async () => {
     const token = localStorage.getItem('token')
     if (token) {
-      const { recoverUser } = useAPI()
+      const { getMyProfile } = useAPI()
       const { authenticate, logout } = useAuthStore()
-      const user = await recoverUser(token)
+      const user = await getMyProfile(token)
       if (user) {
         authenticate(user)
       } else {
