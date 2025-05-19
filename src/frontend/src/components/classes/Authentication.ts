@@ -5,6 +5,7 @@ import type { Artist } from "./Artist"
 export interface User {
   id: number
   token: string
+  slug: string
   username: string
   first_name: string
   last_name: string

@@ -4,6 +4,8 @@ export interface Artist {
   bio: string
   avatar: string
   added_at: string
+  lbz_url: string
+  links: object[]
 }
 
 

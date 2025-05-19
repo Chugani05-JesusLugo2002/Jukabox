@@ -10,4 +10,5 @@ export interface Song {
   cover: string
   added_at: string
   likes: number
+  lbz_url: string
 }

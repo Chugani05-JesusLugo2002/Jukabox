@@ -26,8 +26,8 @@ async function likeItem() {
 
 onMounted(async () => {
   if (user) {
-    const likedItems = await getLikedItems(user.id, props.itemType)
-    likedItems.forEach(item => {
+    const likedItems = await getLikedItems(user.slug, props.itemType)
+    likedItems.forEach((item: any) => {
       if (item.id == props.itemId) {
         heartColor.value = 'text-danger'
       }

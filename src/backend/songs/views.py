@@ -2,6 +2,7 @@ from django.http import HttpRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from shared.utils import check_method, check_json_body, assert_body_fields, assert_token
+from importer.serializers import LinkSerializer
 
 from .models import Song, Review
 from .serializers import SongSerializer, ReviewSerializer
@@ -17,6 +18,14 @@ def song_detail(request: HttpRequest, song_pk: int) -> JsonResponse:
     song = Song.objects.get(pk=song_pk)
     serializer = SongSerializer(song, request=request)
     return serializer.json_response()
+
+
+@check_method('GET')
+def song_links(request: HttpRequest, song_pk: int) -> JsonResponse:
+    song = Song.objects.get(pk=song_pk)
+    result = [LinkSerializer(album.links.all()).serialize() for album in song.albums.all()]
+    return JsonResponse({'result': result})
+
 
 @csrf_exempt
 @check_method('POST')

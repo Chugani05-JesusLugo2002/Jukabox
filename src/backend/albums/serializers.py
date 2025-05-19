@@ -1,6 +1,7 @@
 from shared.serializers import BaseSerializer
 
 from artists.serializers import ArtistSerializer
+from importer.serializers import LinkSerializer
 
 
 class AlbumSerializer(BaseSerializer):
@@ -17,5 +18,6 @@ class AlbumSerializer(BaseSerializer):
             'likes': instance.likes.count(),
             'cover': self.build_url(instance.cover.url),
             'added_at': instance.added_at.isoformat(),
-            'lbz_url': instance.lbz_url 
+            'lbz_url': instance.lbz_url,
+            'links': LinkSerializer(instance.links.all()).serialize()
         }

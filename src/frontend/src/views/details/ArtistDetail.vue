@@ -7,6 +7,7 @@ import type { Artist } from '@/components/classes/Artist'
 import { useAPI } from '@/composables/useAPI'
 import type { Album } from '@/components/classes/Album'
 import AlbumItem from '@/components/elements/AlbumItem.vue'
+import UrlsContainer from '@/components/elements/includes/UrlsContainer.vue'
 
 const { getData } = useAPI()
 const route = useRoute()
@@ -24,6 +25,8 @@ onMounted(async () => {
 <template>
   <div v-if="artist">
     <ItemHeader :name="artist.name" :isRounded="true" :itemId="artist.id" :itemType="'artist'"/>
+
+    <UrlsContainer :lbz_link="artist.lbz_url" :artist_links="artist.links"/>
 
     <div v-if="albums">
       <h5>Albums</h5>

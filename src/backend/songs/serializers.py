@@ -4,6 +4,7 @@ from artists.serializers import ArtistSerializer
 from albums.serializers import AlbumSerializer
 from users.serializers import UserSerializer
 
+from importer.serializers import LinkSerializer
 
 class SongSerializer(BaseSerializer):
     def __init__(self, to_serialize, *, fields=[], request=None):
@@ -19,7 +20,7 @@ class SongSerializer(BaseSerializer):
             'cover': self.build_url(instance.cover.url),
             'added_at': instance.added_at.isoformat(),
             'likes': instance.likes.count(),
-            'lbz_url': instance.lbz_url
+            'lbz_url': instance.lbz_url,
         }
     
 
