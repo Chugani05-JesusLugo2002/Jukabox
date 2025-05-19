@@ -26,6 +26,13 @@
     "tag2": "Últimas canciones"
     },
 
+  "profile-page": {
+    "followers": "Seguidores",
+    "following": "Siguiendo",
+    "nobiomessage": "Este usuario aún no tiene una bio.",
+    "featuredsongs": "Canciones destacadas"
+  },
+
   "login": {
     "title": "Iniciar sesión",
     "username": "Nombre de usuario",
