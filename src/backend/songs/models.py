@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Song(models.Model):
@@ -19,6 +18,10 @@ class Song(models.Model):
     def cover(self):
         first_album = self.albums.first()
         return first_album.cover if first_album else 'covers/default-song.png'
+    
+    @property
+    def lbz_url(self):
+        return f'https://listenbrainz.org/player/?recording_mbids={self.mbid}'
     
 
 class Review(models.Model):

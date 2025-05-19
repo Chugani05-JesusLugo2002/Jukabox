@@ -19,6 +19,7 @@ class SongSerializer(BaseSerializer):
             'cover': self.build_url(instance.cover.url),
             'added_at': instance.added_at.isoformat(),
             'likes': instance.likes.count(),
+            'lbz_url': instance.lbz_url
         }
     
 

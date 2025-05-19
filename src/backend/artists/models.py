@@ -11,3 +11,7 @@ class Artist(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def lbz_url(self):
+        return f'https://listenbrainz.org/artist/{self.mbid}/'

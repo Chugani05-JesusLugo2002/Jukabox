@@ -12,5 +12,6 @@ class ArtistSerializer(BaseSerializer):
             'name': instance.name,
             'bio': instance.bio,
             'added_at': instance.added_at.isoformat(),
-            'likes': instance.likes.count()
+            'likes': instance.likes.count(),
+            'lbz_url': instance.lbz_url
         }
