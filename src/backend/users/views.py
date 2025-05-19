@@ -51,3 +51,10 @@ def user_reviews(request: HttpRequest, user_id: int) -> JsonResponse:
     user = Profile.objects.get(pk=user_id)
     serializer = ReviewSerializer(user.reviews.all(), request=request)
     return serializer.json_response()
+
+@check_method('POST')
+@assert_token
+def change_profile(request: HttpRequest) -> JsonResponse:
+    request.profile.bio = request.data['bio']
+    request.profile.save()
+    return JsonResponse({"message": "User profile changed!"})
