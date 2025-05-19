@@ -74,6 +74,25 @@ export const useAPI = () => {
     }
   }
 
+  async function getLikedItems(userId: string, itemType: string): Promise<any> {
+    const url = API_URL + `users/${userId}/liked_${itemType}s/`
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   async function importArtist(artist_mbid: string): Promise<any> {
     const url = API_URL + 'import/'
     try {
@@ -95,7 +114,7 @@ export const useAPI = () => {
   }
 
   async function like(id: number, type: string, token: string): Promise<any> {
-    const url = API_URL + `${type}s/like/`
+    const url = API_URL + `${type}s/${id}/like/`
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -155,5 +174,5 @@ export const useAPI = () => {
   }
 
 
-  return { getData, login, signup, getMyProfile, userLogout, importArtist, getExplorerResult, like }
+  return { getData, login, signup, getMyProfile, userLogout, importArtist, getExplorerResult, like, getLikedItems }
 }

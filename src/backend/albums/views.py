@@ -31,13 +31,10 @@ def album_songs(request: HttpRequest, album_pk: int) -> JsonResponse:
 
 @csrf_exempt
 @check_method('POST')
-@check_json_body
-@assert_body_fields('album_id')
 @assert_token
-def like_album(request: HttpRequest) -> JsonResponse:
-    album_id = request.data['album_id']
-    album = Album.objects.get(id=album_id)
-    if request.profile.liked_albums.filter(id=album_id).exists():
+def like_album(request: HttpRequest, album_pk: int) -> JsonResponse:
+    album = Album.objects.get(pk=album_pk)
+    if request.profile.liked_albums.filter(pk=album_pk).exists():
         request.profile.liked_albums.remove(album)
         return JsonResponse({'liked_albums': AlbumSerializer(request.profile.liked_albums.all()).serialize()})
     request.profile.liked_albums.add(album)

@@ -20,13 +20,10 @@ def song_detail(request: HttpRequest, song_pk: int) -> JsonResponse:
 
 @csrf_exempt
 @check_method('POST')
-@check_json_body
-@assert_body_fields('song_id')
 @assert_token
-def like_song(request: HttpRequest) -> JsonResponse:
-    song_id = request.data['song_id']
-    song = Song.objects.get(id=song_id)
-    if request.profile.liked_songs.filter(id=song_id).exists():
+def like_song(request: HttpRequest, song_pk: int) -> JsonResponse:
+    song = Song.objects.get(pk=song_pk)
+    if request.profile.liked_songs.filter(pk=song_pk).exists():
         request.profile.liked_songs.remove(song)
     else:
         request.profile.liked_songs.add(song)

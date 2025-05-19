@@ -7,48 +7,31 @@ const props = defineProps(['itemId', 'image', 'name', 'isRounded', 'itemType'])
 
 const imgClass = props.isRounded ? 'img-fluid rounded-circle' : 'img-fluid rounded'
 
-const { like } = useAPI()
+const { like, getLikedItems } = useAPI()
 const { user, isAuthenticated } = useAuthStore()
 
 const heartColor = ref('')
-
-switch (props.itemType) {
-  case 'song':
-    user?.liked_songs.forEach(song => {
-      if (song.id == props.itemId) {
-        heartColor.value = 'text-danger'
-      }
-    });
-    break;
-  case 'album':
-    user?.liked_albums.forEach(song => {
-        if (song.id == props.itemId) {
-          heartColor.value = 'text-danger'
-        }
-      });
-    break;
-  case 'artist':
-    user?.liked_artists.forEach(song => {
-        if (song.id == props.itemId) {
-          heartColor.value = 'text-danger'
-        }
-      });
-    break;
-
-  default:
-    break;
-}
 
 async function likeItem() {
   if (user) {
     try {
       const response = await like(props.itemId, props.itemType, user.token)
+      console.log(response)
       heartColor.value = heartColor.value ? '' : 'text-danger'
     } catch (error) {
       console.error(error)
     }
   }
 }
+
+onMounted(async () => {
+  const likedItems = await getLikedItems(user.id, props.itemType)
+  likedItems.forEach(item => {
+    if (item.id == props.itemId) {
+      heartColor.value = 'text-danger'
+    }
+  });
+})
 </script>
 
 <template>

@@ -15,13 +15,10 @@ def artist_list(request: HttpRequest) -> JsonResponse:
 
 @csrf_exempt
 @check_method('POST')
-@check_json_body
-@assert_body_fields('artist_id')
 @assert_token
-def like_artist(request: HttpRequest) -> JsonResponse:
-    artist_id = request.data['artist_id']
-    artist = Artist.objects.get(id=artist_id)
-    if request.profile.liked_artists.filter(id=artist_id).exists():
+def like_artist(request: HttpRequest, artist_pk: int) -> JsonResponse:
+    artist = Artist.objects.get(pk=artist_pk)
+    if request.profile.liked_artists.filter(pk=artist_pk).exists():
         request.profile.liked_artists.remove(artist)
         return JsonResponse({'liked_artists': ArtistSerializer(request.profile.liked_artists.all()).serialize()})
     request.profile.liked_artists.add(artist)
