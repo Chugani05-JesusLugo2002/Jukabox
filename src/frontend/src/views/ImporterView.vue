@@ -63,7 +63,6 @@ async function importToAPI(mbid: string) {
       </button>
     </div>
 
-    <!-- Modal -->
     <div
       class="modal fade"
       id="importerModal"

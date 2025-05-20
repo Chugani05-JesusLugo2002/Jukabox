@@ -54,9 +54,7 @@ const authStore = useAuthStore()
         class="col-md-6 text-center d-flex flex-column justify-content-center order-2 order-md-1 mt-5"
       >
         <h2 class="fw-bold"><i class="bi bi-cloud-download"></i> {{ $t('home-page.tag3') }}</h2>
-        <p class="lead">
-          {{ $t('home-page.text3') }}
-        </p>
+        <p class="lead" v-html="$t('home-page.text3')"></p>
       </div>
       <div class="col-md-6 order-1">
         <img src="/imgs/importer.png" class="img-fluid rounded" alt="Importer example" />

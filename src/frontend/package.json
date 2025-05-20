@@ -25,6 +25,7 @@
   "devDependencies": {
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node22": "^22.0.0",
+    "@types/bootstrap": "^5.2.10",
     "@types/node": "^22.10.7",
     "@types/vue": "^1.0.31",
     "@vitejs/plugin-vue": "^5.2.1",

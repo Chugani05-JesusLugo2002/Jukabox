@@ -1,9 +1,10 @@
 import type { LoginData, SignupData } from '@/components/classes/Authentication'
+import type { User } from '@/components/classes/Authentication'
 
 export const useAPI = () => {
   const API_URL = 'http://localhost:8000/api/v1/'
 
-  async function getData(path: string): Promise<any> {
+  async function getData(path: string): Promise<object|undefined> {
     const url = API_URL + path
     try {
       const response = await fetch(url)
@@ -14,7 +15,7 @@ export const useAPI = () => {
     }
   }
 
-  async function userLogin(loginData: LoginData): Promise<any> {
+  async function userLogin(loginData: LoginData): Promise<User|undefined> {
     const url = API_URL + 'accounts/login/'
     try {
       const response = await fetch(url, {
@@ -27,8 +28,7 @@ export const useAPI = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
-      const data = await response.json()
-      return data
+      return await response.json()
     } catch (error) {
       console.error(error)
     }

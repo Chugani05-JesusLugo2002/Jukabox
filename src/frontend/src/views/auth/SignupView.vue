@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+import { useRouter } from 'vue-router'
 import { useAPI } from '@/composables/useAPI'
 import { useAuthStore } from '@/stores/useAuth'
-import { ref } from 'vue'
+
 import type { User } from '@/components/classes/Authentication'
 import ViewHeader from '@/components/ViewHeader.vue'
-import { useRouter } from 'vue-router'
 
 const { userSignup } = useAPI()
 const authStore = useAuthStore()
@@ -26,7 +28,7 @@ async function signup() {
     password: password.value,
     repeat_password: repeat_password.value,
   }
-  const user: User | null = await userSignup(signupData)
+  const user: User|undefined = await userSignup(signupData)
   if (user) {
     authStore.authenticate(user)
     router.push(`/profiles/${user.slug}`)
