@@ -7,7 +7,7 @@ const authStore = useAuthStore()
 <template>
   <div class="container">
     <div class="row mt-5 justify-content-center">
-      <div class="col-md-8 text-center">
+      <div class="col-10 text-center">
         <h1 class="display-5 fw-bold text-body-emphasis mb-3">
           <i class="bi bi-boombox-fill"></i> {{ $t('home-page.tag1') }}
         </h1>
@@ -38,10 +38,10 @@ const authStore = useAuthStore()
     </div> -->
 
     <div class="row mt-5">
-      <div class="col">
+      <div class="col-md-6">
         <img src="/imgs/explorer.png" class="img-fluid rounded" alt="Explorer example" />
       </div>
-      <div class="col text-center align-items-center mt-5">
+      <div class="col-md-6 text-center d-flex flex-column justify-content-center mt-5">
         <h2 class="fw-bold"><i class="bi bi-search-heart"></i> {{ $t('home-page.tag2') }}</h2>
         <p class="lead">
           {{ $t('home-page.text2') }}
@@ -50,13 +50,13 @@ const authStore = useAuthStore()
     </div>
 
     <div class="row mt-5">
-      <div class="col text-center align-items-center mt-5">
+      <div class="col-md-6 text-center d-flex flex-column justify-content-center order-2 order-md-1 mt-5">
         <h2 class="fw-bold"><i class="bi bi-cloud-download"></i> {{ $t('home-page.tag3') }}</h2>
         <p class="lead">
           {{ $t('home-page.text3') }}
         </p>
       </div>
-      <div class="col">
+      <div class="col-md-6 order-1">
         <img src="/imgs/importer.png" class="img-fluid rounded" alt="Importer example" />
       </div>
     </div>
