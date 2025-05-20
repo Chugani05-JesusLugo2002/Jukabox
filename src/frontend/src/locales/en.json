@@ -12,7 +12,14 @@
   },
 
   "home-page": {
-    "": ""
+    "tag1": "Welcome to Jukabox",
+    "tag2": "Discover music you love",
+    "tag3": "Can't find an artist?",
+    "text1": "Discover, share, and connect through music. Explore your favorite songs, albums, and artists — all in one place. Jukabox is the ultimate social experience for music lovers.",
+    "text2": "Use the Explorer to search for your favorite songs, artists, or albums. Discover new music, follow other users who share your taste, and share your favorite discoveries with your friends.",
+    "text3": "Use the Importer to bring in artists not yet available on Jukabox. Our integration with <strong>MusicBrainz</strong> lets you fetch artist profiles directly from a global music database.",
+    "button1": "Login",
+    "button2": "Register"
   },
 
   "explore-page": {
