@@ -24,9 +24,9 @@ onMounted(async () => {
 
 <template>
   <div v-if="artist">
-    <ItemHeader :name="artist.name" :isRounded="true" :itemId="artist.id" :itemType="'artist'"/>
+    <ItemHeader :name="artist.name" :isRounded="true" :itemId="artist.id" :itemType="'artist'" />
 
-    <UrlsContainer :lbz_link="artist.lbz_url" :artist_links="artist.links"/>
+    <UrlsContainer :lbz_link="artist.lbz_url" :artist_links="artist.links" />
 
     <div v-if="albums">
       <h5>Albums</h5>

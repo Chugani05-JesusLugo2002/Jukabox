@@ -61,8 +61,8 @@ export const useAPI = () => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
@@ -80,8 +80,8 @@ export const useAPI = () => {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       })
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
@@ -120,7 +120,7 @@ export const useAPI = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: `{ "${type}_id": "${id}" }`,
       })
@@ -141,7 +141,7 @@ export const useAPI = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: `{ "comment": "${comment}" }`,
       })
@@ -154,7 +154,7 @@ export const useAPI = () => {
       console.error(error)
     }
   }
-  
+
   async function getExplorerResult(query: string, type: string): Promise<any> {
     const url = API_URL + 'explore/'
     try {
@@ -194,6 +194,16 @@ export const useAPI = () => {
     }
   }
 
-
-  return { getData, login, signup, getMyProfile, userLogout, importArtist, getExplorerResult, like, addReview, getLikedItems }
+  return {
+    getData,
+    login,
+    signup,
+    getMyProfile,
+    userLogout,
+    importArtist,
+    getExplorerResult,
+    like,
+    addReview,
+    getLikedItems,
+  }
 }

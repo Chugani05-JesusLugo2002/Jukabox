@@ -18,8 +18,7 @@ async function searchInAPI() {
     } catch (e) {
       console.error(e)
     }
-  }
-  else {
+  } else {
     result.value = ''
   }
 }
@@ -43,16 +42,36 @@ watch(type, searchInAPI)
 
   <div class="d-flex justify-content-center align-items-center">
     <ExplorerFilterPill @click="type = ''">{{ $t('explore-page.pill1') }}</ExplorerFilterPill>
-    <ExplorerFilterPill @click="type = 'Artists'">{{ $t('explore-page.pill2') }}</ExplorerFilterPill>
+    <ExplorerFilterPill @click="type = 'Artists'">{{
+      $t('explore-page.pill2')
+    }}</ExplorerFilterPill>
     <ExplorerFilterPill @click="type = 'Songs'">{{ $t('explore-page.pill3') }}</ExplorerFilterPill>
     <ExplorerFilterPill @click="type = 'Albums'">{{ $t('explore-page.pill4') }}</ExplorerFilterPill>
   </div>
 
   <div v-if="result">
     <ul class="list-group">
-      <ItemList v-for="artist in result.result.artists" :title="artist.name" :url="`/artists/${artist.id}/`" :image="artist.avatar" type="Artist"></ItemList>
-      <ItemList v-for="album in result.result.albums" :title="album.title" :url="`/albums/${album.id}/`" :image="album.cover" type="Album"></ItemList>
-      <ItemList v-for="song in result.result.songs" :title="song.title" :url="`/songs/${song.id}/`" :image="song.cover" type="Song"></ItemList>
+      <ItemList
+        v-for="artist in result.result.artists"
+        :title="artist.name"
+        :url="`/artists/${artist.id}/`"
+        :image="artist.avatar"
+        type="Artist"
+      ></ItemList>
+      <ItemList
+        v-for="album in result.result.albums"
+        :title="album.title"
+        :url="`/albums/${album.id}/`"
+        :image="album.cover"
+        type="Album"
+      ></ItemList>
+      <ItemList
+        v-for="song in result.result.songs"
+        :title="song.title"
+        :url="`/songs/${song.id}/`"
+        :image="song.cover"
+        type="Song"
+      ></ItemList>
     </ul>
   </div>
 </template>

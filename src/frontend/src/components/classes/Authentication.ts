@@ -1,6 +1,6 @@
-import type { Song } from "./Song"
-import type { Album } from "./Album"
-import type { Artist } from "./Artist"
+import type { Song } from './Song'
+import type { Album } from './Album'
+import type { Artist } from './Artist'
 
 export interface User {
   id: number

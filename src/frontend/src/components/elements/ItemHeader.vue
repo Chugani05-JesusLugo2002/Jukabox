@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useAPI } from '@/composables/useAPI';
-import { useAuthStore } from '@/stores/useAuth';
-import { onMounted, ref } from 'vue';
+import { useAPI } from '@/composables/useAPI'
+import { useAuthStore } from '@/stores/useAuth'
+import { onMounted, ref } from 'vue'
 
 const props = defineProps(['itemId', 'image', 'name', 'isRounded', 'itemType'])
 
@@ -30,7 +30,7 @@ onMounted(async () => {
       if (item.id == props.itemId) {
         heartColor.value = 'text-danger'
       }
-    });
+    })
   }
 })
 </script>

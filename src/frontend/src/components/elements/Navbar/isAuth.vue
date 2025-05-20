@@ -16,7 +16,7 @@ const authStore = useAuthStore()
       aria-expanded="false"
     >
       <img
-      v-if="authStore.user"
+        v-if="authStore.user"
         :src="authStore.user.avatar"
         alt="My profile avatar"
         class="rounded-circle"

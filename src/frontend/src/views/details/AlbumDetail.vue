@@ -37,7 +37,7 @@ onMounted(async () => {
         </ul>
       </div>
       <div class="col-3">
-        <UrlsContainer :item_type="'album'" :item_id="album.id" :lbz_link="album.lbz_url"/>
+        <UrlsContainer :item_type="'album'" :item_id="album.id" :lbz_link="album.lbz_url" />
         <StatsContainer :likes="album.likes">Stats</StatsContainer>
       </div>
     </div>

@@ -7,5 +7,3 @@ export interface Artist {
   lbz_url: string
   links: object[]
 }
-
-

@@ -19,7 +19,7 @@ onMounted(async () => {
 <template>
   <div v-if="userFound" class="container py-4">
     <div class="row">
-      <img :src="user.avatar" alt="Foto de perfil" class="col-2 rounded-circle"/>
+      <img :src="user.avatar" alt="Foto de perfil" class="col-2 rounded-circle" />
       <div class="col">
         <h1 class="row">@{{ user.username }}</h1>
         <div class="row mt-5">
@@ -59,23 +59,50 @@ onMounted(async () => {
       </div>
       <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
         </div>
         <div class="carousel-inner">
           <div v-for="song in likedSongs" class="carousel-item">
-            <img :src="song.cover" class="d-block w-100" alt="...">
+            <img :src="song.cover" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <h5>{{ song.title }}</h5>
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -83,7 +110,5 @@ onMounted(async () => {
     </div>
   </div>
 
-  <div class="alert alert-warning text-center" v-else>
-    El usuario no existe!
-  </div>
+  <div class="alert alert-warning text-center" v-else>El usuario no existe!</div>
 </template>

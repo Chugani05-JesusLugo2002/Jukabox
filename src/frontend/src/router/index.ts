@@ -21,7 +21,7 @@ const routes = [
   { path: '/signup', component: SignupView, name: 'signup' },
 
   { path: '/explore', component: ExploreView, name: 'explore' },
-  
+
   { path: '/music', component: MusicView, name: 'artist-list' },
 
   { path: '/songs/:song_pk', component: SongDetail, name: 'song-detail' },

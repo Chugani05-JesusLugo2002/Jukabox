@@ -24,7 +24,8 @@ onMounted(() => {
   if (previousTheme) {
     changeTheme(previousTheme)
     theme.value = previousTheme
-    themeIconClass.value = previousTheme == 'dark' ? 'bi bi-moon-stars-fill' : 'bi bi-brightness-high-fill'
+    themeIconClass.value =
+      previousTheme == 'dark' ? 'bi bi-moon-stars-fill' : 'bi bi-brightness-high-fill'
   }
 })
 </script>
