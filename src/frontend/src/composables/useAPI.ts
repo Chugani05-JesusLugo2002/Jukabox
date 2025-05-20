@@ -54,26 +54,6 @@ export const useAPI = () => {
     }
   }
 
-  async function getMyProfile(token: string): Promise<any> {
-    const url = API_URL + 'users/my-profile/'
-    try {
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-      const data = await response.json()
-      return data
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   async function getLikedItems(userId: string, itemType: string): Promise<any> {
     const url = API_URL + `users/${userId}/liked_${itemType}s/`
     try {
@@ -198,7 +178,6 @@ export const useAPI = () => {
     getData,
     login,
     signup,
-    getMyProfile,
     userLogout,
     importArtist,
     getExplorerResult,

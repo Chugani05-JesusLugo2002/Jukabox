@@ -1,29 +1,18 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
-import { useAuthStore } from '@/stores/useAuth'
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
-const logoutIcon = ref('bi bi-door-closed')
+import { useAuthStore } from '@/stores/useAuth'
+
+import LogoElement from './LogoElement.vue'
+
 const authStore = useAuthStore()
+const logoutIcon = ref('bi bi-door-closed')
 </script>
 
 <template>
-  <div class="dropdown">
-    <a
-      class="dropdown-toggle text-body-emphasis"
-      type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      <img
-        v-if="authStore.user"
-        :src="authStore.user.avatar"
-        alt="My profile avatar"
-        class="rounded-circle"
-        width="32"
-        height="32"
-      />
-    </a>
+  <div class="dropdown" v-if="authStore.isAuthenticated && authStore.user">
+    <LogoElement :user="authStore.user" />
     <ul class="dropdown-menu">
       <li>
         <RouterLink :to="'/profiles/' + authStore.user.slug" class="dropdown-item"
@@ -44,5 +33,12 @@ const authStore = useAuthStore()
         </button>
       </li>
     </ul>
+  </div>
+
+  <div class="d-flex" v-else>
+    <RouterLink class="btn btn-outline-primary mx-2" to="/signup">{{
+      $t('noauth.register')
+    }}</RouterLink>
+    <RouterLink class="btn btn-primary" to="/login">{{ $t('noauth.login') }}</RouterLink>
   </div>
 </template>
