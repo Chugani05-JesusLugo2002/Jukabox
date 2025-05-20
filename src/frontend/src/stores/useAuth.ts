@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { useAPI } from '@/composables/useAPI'
 import { useRouter } from 'vue-router'
 
@@ -18,7 +18,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function logout() {
     const { userLogout } = useAPI()
-    const response = await userLogout()
+    await userLogout()
     isAuthenticated.value = false
     user.value = null
     localStorage.removeItem('token')

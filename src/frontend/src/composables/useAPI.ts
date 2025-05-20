@@ -1,8 +1,12 @@
-import type { LoginData, SignupData } from '@/components/classes/Authentication'
-import type { User } from '@/components/classes/Authentication'
+import type { LoginData, SignupData, User } from '@/components/classes/Authentication'
+import type { JSONResponse } from '@/components/classes/JSONResponse'
+import { useAuthStore } from '@/stores/useAuth'
+import { useToast } from 'vue-toast-notification'
 
 export const useAPI = () => {
   const API_URL = 'http://localhost:8000/api/v1/'
+  const authStore = useAuthStore()
+  const toast = useToast()
 
   async function getData(path: string): Promise<object|undefined> {
     const url = API_URL + path
@@ -26,7 +30,9 @@ export const useAPI = () => {
         body: JSON.stringify(loginData),
       })
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
       }
       return await response.json()
     } catch (error) {
@@ -34,7 +40,7 @@ export const useAPI = () => {
     }
   }
 
-  async function userSignup(signupData: SignupData): Promise<any> {
+  async function userSignup(signupData: SignupData): Promise<User|undefined> {
     const url = API_URL + 'accounts/signup/'
     try {
       const response = await fetch(url, {
@@ -45,7 +51,9 @@ export const useAPI = () => {
         body: JSON.stringify(signupData),
       })
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
       }
       const data = await response.json()
       return data
@@ -64,7 +72,9 @@ export const useAPI = () => {
         },
       })
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
       }
       const data = await response.json()
       return data
@@ -73,21 +83,23 @@ export const useAPI = () => {
     }
   }
 
-  async function importArtist(artist_mbid: string): Promise<any> {
+  async function importArtist(artist_mbid: string): Promise<JSONResponse|undefined> {
     const url = API_URL + 'import/'
     try {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authStore.user?.token}`
         },
         body: `{ "artist_mbid": "${artist_mbid}" }`,
       })
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
       }
-      const data = await response.json()
-      return data
+      return await response.json()
     } catch (error) {
       console.error(error)
     }
@@ -105,7 +117,9 @@ export const useAPI = () => {
         body: `{ "${type}_id": "${id}" }`,
       })
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
       }
       const data = await response.json()
       return data
@@ -126,7 +140,9 @@ export const useAPI = () => {
         body: `{ "comment": "${comment}" }`,
       })
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
       }
       const data = await response.json()
       return data
@@ -146,7 +162,9 @@ export const useAPI = () => {
         body: `{ "query": "${query}", "type": "${type}" }`,
       })
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
       }
       const data = await response.json()
       return data
@@ -165,7 +183,9 @@ export const useAPI = () => {
         },
       })
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
       }
       const data = await response.json()
       return data

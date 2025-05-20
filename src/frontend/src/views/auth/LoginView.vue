@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { Toast } from 'bootstrap'
 
 import type { User } from '@/components/classes/Authentication'
 
@@ -9,7 +8,6 @@ import { useAPI } from '@/composables/useAPI'
 import { useAuthStore } from '@/stores/useAuth'
 
 import ViewHeader from '@/components/ViewHeader.vue'
-import ToastElement from '@/components/elements/Toast/ToastElement.vue'
 
 const { userLogin } = useAPI()
 const authStore = useAuthStore()
@@ -26,18 +24,11 @@ async function login() {
   if (user) {
     authStore.authenticate(user)
     router.push(`/profiles/${user.slug}`)
-  } else {
-    const userNotFoundToast = document.getElementById('userNotFoundToast')
-    if (userNotFoundToast) {
-      Toast.getOrCreateInstance(userNotFoundToast).show()
-    }
   }
 }
 </script>
 
 <template>
-  <ToastElement :id="'userNotFoundToast'" :title="'Error!'" :type="'danger'">User not found!</ToastElement>
-
   <ViewHeader>{{ $t('login.title') }}</ViewHeader>
   <form
     @submit.prevent="login"
