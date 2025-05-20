@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import ThemeSelector from '../elements/FooterComponent/ThemeSelector.vue'
-import LanguageSelector from '../elements/FooterComponent/LanguageSelector.vue';
+import LanguageSelector from '../elements/FooterComponent/LanguageSelector.vue'
 
 const footerClass = ref('container-fluid border-top bg-')
 
@@ -20,7 +20,7 @@ onMounted(() => {
   if (previousTheme) {
     changeTheme(previousTheme)
     theme.value = previousTheme
-    themeIconClass.value = 
+    themeIconClass.value =
       previousTheme == 'dark' ? 'bi bi-moon-stars-fill' : 'bi bi-brightness-high-fill'
   }
 })
@@ -31,8 +31,8 @@ onMounted(() => {
     <div class="container d-flex justify-content-between py-3">
       <p class="text-muted">© Jukabox, 2025</p>
       <div class="d-flex">
-        <ThemeSelector @change-theme="changeTheme" :theme-icon-class="themeIconClass"/>
-        <LanguageSelector/>
+        <ThemeSelector @change-theme="changeTheme" :theme-icon-class="themeIconClass" />
+        <LanguageSelector />
       </div>
     </div>
   </footer>

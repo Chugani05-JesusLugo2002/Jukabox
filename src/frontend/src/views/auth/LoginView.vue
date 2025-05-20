@@ -9,7 +9,7 @@ import { useAuthStore } from '@/stores/useAuth'
 
 import ViewHeader from '@/components/ViewHeader.vue'
 
-const api = useAPI()
+const { userLogin } = useAPI()
 const authStore = useAuthStore()
 const router = useRouter()
 const username = ref('')
@@ -20,7 +20,7 @@ async function login() {
     username: username.value,
     password: password.value,
   }
-  const user: User | null = await api.login(loginData)
+  const user: User | null = await userLogin(loginData)
   if (user) {
     authStore.authenticate(user)
     router.push(`/profiles/${user.slug}`)
@@ -35,7 +35,7 @@ async function login() {
     class="container mt-5 p-4 border rounded bg-light"
     style="max-width: 400px"
   >
-    <div class="mb-3 h3">
+    <div class="mb-3 h5">
       <label for="username" class="form-label">{{ $t('login.username') }}</label>
       <input
         type="text"
@@ -47,7 +47,7 @@ async function login() {
         required
       />
     </div>
-    <div class="mb-3 h3">
+    <div class="mb-3 h5">
       <label for="password" class="form-label">{{ $t('login.password') }}</label>
       <input
         type="password"
@@ -59,6 +59,7 @@ async function login() {
         required
       />
     </div>
-    <button type="submit" class="btn btn-primary w-100">{{ $t('login.button') }}</button>
+    <button type="submit" class="btn btn-primary w-100"><i class="bi bi-box-arrow-in-right"></i> {{ $t('login.button') }}</button>
+    <p class="text-center mt-3">No account? <RouterLink to="/signup">Sign up!</RouterLink></p>
   </form>
 </template>

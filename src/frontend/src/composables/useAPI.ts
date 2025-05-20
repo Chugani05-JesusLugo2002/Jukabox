@@ -14,7 +14,7 @@ export const useAPI = () => {
     }
   }
 
-  async function login(loginData: LoginData): Promise<any> {
+  async function userLogin(loginData: LoginData): Promise<any> {
     const url = API_URL + 'accounts/login/'
     try {
       const response = await fetch(url, {
@@ -34,7 +34,7 @@ export const useAPI = () => {
     }
   }
 
-  async function signup(signupData: SignupData): Promise<any> {
+  async function userSignup(signupData: SignupData): Promise<any> {
     const url = API_URL + 'accounts/signup/'
     try {
       const response = await fetch(url, {
@@ -176,8 +176,8 @@ export const useAPI = () => {
 
   return {
     getData,
-    login,
-    signup,
+    userLogin,
+    userSignup,
     userLogout,
     importArtist,
     getExplorerResult,

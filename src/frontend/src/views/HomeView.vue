@@ -50,7 +50,9 @@ const authStore = useAuthStore()
     </div>
 
     <div class="row mt-5">
-      <div class="col-md-6 text-center d-flex flex-column justify-content-center order-2 order-md-1 mt-5">
+      <div
+        class="col-md-6 text-center d-flex flex-column justify-content-center order-2 order-md-1 mt-5"
+      >
         <h2 class="fw-bold"><i class="bi bi-cloud-download"></i> {{ $t('home-page.tag3') }}</h2>
         <p class="lead">
           {{ $t('home-page.text3') }}
