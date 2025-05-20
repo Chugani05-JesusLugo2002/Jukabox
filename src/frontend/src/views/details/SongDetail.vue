@@ -19,7 +19,6 @@ const song = ref<null | Song>(null)
 
 const comment = ref('')
 const songComments = ref('')
-const songLinks = ref('')
 
 async function sendReview(id: number) {
   if (comment.value && authStore.user) {
@@ -34,7 +33,6 @@ async function sendReview(id: number) {
 onMounted(async () => {
   const song_pk = route.params['song_pk']
   song.value = await getData(`songs/${song_pk}/`)
-  songLinks.value = await getData(`songs/${song_pk}/links/`)
   songComments.value = await getData(`songs/${song_pk}/reviews/`)
 })
 </script>
@@ -70,7 +68,7 @@ onMounted(async () => {
         </div>
       </div>
       <div class="col-3">
-        <UrlsContainer :lbz_link="song.lbz_url" :links="songLinks"/>
+        <UrlsContainer :item_type="'song'" :item_id="song.id" :lbz_link="song.lbz_url"/>
         <StatsContainer :likes="song.likes" :comments="0">Stats</StatsContainer>
       </div>
     </div>

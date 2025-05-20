@@ -4,8 +4,8 @@ from .models import ArtistLink, AlbumLink
 
 @admin.register(AlbumLink)
 class AlbumLinkAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['url_type', 'album']
 
 @admin.register(ArtistLink)
 class ArtistLinkAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['url_type', 'artist']

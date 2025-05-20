@@ -10,4 +10,5 @@ export interface Album {
     released_at: number
     cover: string
     added_at: string
+    lbz_url: string
   }

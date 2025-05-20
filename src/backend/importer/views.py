@@ -5,8 +5,6 @@ from shared.utils import check_method, check_json_body, assert_body_fields
 
 from .tasks import import_artist_data
 
-import musicbrainzngs as mbz    
-
 
 @csrf_exempt
 @check_method('POST')

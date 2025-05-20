@@ -8,13 +8,10 @@ class Album(models.Model):
     released_at = models.DateField()
     cover = models.ImageField(upload_to='covers/', default='covers/default.jpg')
     added_at = models.DateField(auto_now_add=True)
+    lbz_url = models.URLField()
 
     class Meta:
         ordering = ('title',)
 
     def __str__(self):
         return self.title 
-    
-    @property
-    def lbz_url(self):
-        return f'https://listenbrainz.org/album/{self.mbid}/'

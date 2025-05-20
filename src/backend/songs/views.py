@@ -24,7 +24,7 @@ def song_detail(request: HttpRequest, song_pk: int) -> JsonResponse:
 def song_links(request: HttpRequest, song_pk: int) -> JsonResponse:
     song = Song.objects.get(pk=song_pk)
     result = [LinkSerializer(album.links.all()).serialize() for album in song.albums.all()]
-    return JsonResponse({'result': result})
+    return JsonResponse(result[0], safe=False)
 
 
 @csrf_exempt

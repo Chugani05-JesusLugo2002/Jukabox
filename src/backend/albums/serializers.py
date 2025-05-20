@@ -19,5 +19,4 @@ class AlbumSerializer(BaseSerializer):
             'cover': self.build_url(instance.cover.url),
             'added_at': instance.added_at.isoformat(),
             'lbz_url': instance.lbz_url,
-            'links': LinkSerializer(instance.links.all()).serialize()
         }

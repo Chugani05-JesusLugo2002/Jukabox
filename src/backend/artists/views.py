@@ -1,11 +1,12 @@
 from django.http import HttpRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from shared.utils import check_method, assert_body_fields, check_json_body, assert_token
+from shared.utils import check_method, assert_token
+from albums.serializers import AlbumSerializer
+from importer.serializers import LinkSerializer
 
 from .models import Artist
 from .serializers import ArtistSerializer
-from albums.serializers import AlbumSerializer
 
 @check_method('GET')
 def artist_list(request: HttpRequest) -> JsonResponse:
@@ -36,4 +37,9 @@ def artist_albums(request: HttpRequest, artist_pk: int) -> JsonResponse:
     artist = Artist.objects.get(pk=artist_pk)
     serializer = AlbumSerializer(artist.albums.all(), request=request)
     return serializer.json_response()
-    
+
+@check_method('GET')
+def artist_links(request: HttpRequest, artist_pk: int) -> JsonResponse:
+    artist = Artist.objects.get(pk=artist_pk)
+    serializer = LinkSerializer(artist.links.all())
+    return serializer.json_response()

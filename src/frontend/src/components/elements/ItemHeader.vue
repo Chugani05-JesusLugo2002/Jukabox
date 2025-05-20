@@ -16,7 +16,6 @@ async function likeItem() {
   if (user) {
     try {
       const response = await like(props.itemId, props.itemType, user.token)
-      console.log(response)
       heartColor.value = heartColor.value ? '' : 'text-danger'
     } catch (error) {
       console.error(error)

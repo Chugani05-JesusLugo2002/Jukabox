@@ -1,13 +1,13 @@
 import django_rq
-
-import musicbrainzngs as mbz
 import os
 import logging
 from datetime import datetime
+import musicbrainzngs as mbz
 
 from artists.models import Artist
 from albums.models import Album
 from songs.models import Song
+
 from .models import ArtistLink, AlbumLink
 
 logger = logging.getLogger(__name__)
@@ -46,10 +46,18 @@ def import_artist_data(mbid: str):
 
     for url in mbz_artist['url-relation-list']:
         if url['type'] == 'free streaming':
+            target = url['target']
             artist_link = ArtistLink.objects.get_or_create(
-                url=url['target'],
+                url=target,
                 artist=artist
             )
+            if 'spotify' in target:
+                spotify_uid = target.split('/')[-1]
+                statify_url = f'https://statify-front.onrender.com/artists/{spotify_uid}'
+                statify_link = ArtistLink.objects.get_or_create(
+                    url=statify_url,
+                    artist=artist
+                )
 
     for release_group in mbz_artist['release-group-list']:
         main_release = mbz.browse_releases(release_group=release_group['id'], release_status='official', limit=1, includes=['artist-credits', 'url-rels'])['release-list']
@@ -65,15 +73,24 @@ def import_artist_data(mbid: str):
             album, created = Album.objects.get_or_create(
                 mbid=release_mbid,
                 title=main_release[0]['title'],
-                released_at=release_date
+                released_at=release_date,
+                lbz_url=f'https://listenbrainz.org/album/{release_group['id']}/'
             )
 
             for url in main_release[0]['url-relation-list']:
                 if url['type'] == 'free streaming':
+                    target = url['target']
                     album_link = AlbumLink.objects.get_or_create(
-                        url=url['target'],
+                        url=target,
                         album=album
                     )
+                    if 'spotify' in target:
+                        spotify_uid = target.split('/')[-1]
+                        statify_url = f'https://statify-front.onrender.com/albums/{spotify_uid}'
+                        statify_link = AlbumLink.objects.get_or_create(
+                            url=statify_url,
+                            album=album
+                        ) 
 
             for release_artist in main_release[0]['artist-credit']:
                 artists = set()

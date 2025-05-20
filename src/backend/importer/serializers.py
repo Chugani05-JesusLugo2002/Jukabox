@@ -7,4 +7,5 @@ class LinkSerializer(BaseSerializer):
     def serialize_instance(self, instance) -> dict:
         return {
             'url': instance.url,
+            'url_type': instance.url_type 
         }
