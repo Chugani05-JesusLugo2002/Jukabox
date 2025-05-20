@@ -5,10 +5,8 @@ import { ref } from 'vue'
 import type { User } from '@/components/classes/Authentication'
 import ViewHeader from '@/components/ViewHeader.vue'
 import { useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
 
-const { locale, t } = useI18n()
-const api = useAPI()
+const { signup } = useAPI()
 const authStore = useAuthStore()
 const router = useRouter()
 
@@ -28,7 +26,7 @@ async function signup() {
     password: password.value,
     repeat_password: repeat_password.value,
   }
-  const user: User | null = await api.signup(signupData)
+  const user: User | null = await signup(signupData)
   if (user) {
     authStore.authenticate(user)
     router.push(`/profiles/${user.slug}`)
@@ -43,8 +41,8 @@ async function signup() {
     class="container mt-5 p-4 border rounded bg-light"
     style="max-width: 800px"
   >
-    <div class="row mb-3 h3">
-      <div class="col-6">
+    <div class="row mb-3 h5">
+      <div class="col-12">
         <label for="username" class="form-label">{{ $t('register.username') }}</label>
         <input
           type="text"
@@ -56,7 +54,7 @@ async function signup() {
           required
         />
       </div>
-      <div class="col-6">
+      <div class="col-md-6 mt-3">
         <label for="first_name" class="form-label">{{ $t('register.firstname') }}</label>
         <input
           type="text"
@@ -68,9 +66,7 @@ async function signup() {
           required
         />
       </div>
-    </div>
-    <div class="row mb-3 h3">
-      <div class="col-6">
+      <div class="col-md-6 mt-3">
         <label for="last_name" class="form-label">{{ $t('register.lastname') }}</label>
         <input
           type="text"
@@ -82,7 +78,7 @@ async function signup() {
           required
         />
       </div>
-      <div class="col-6">
+      <div class="col-12 mt-3">
         <label for="email" class="form-label">{{ $t('register.email') }}</label>
         <input
           type="email"
@@ -94,9 +90,7 @@ async function signup() {
           required
         />
       </div>
-    </div>
-    <div class="row mb-3 h3">
-      <div class="col-6">
+      <div class="col-md-6 mt-3">
         <label for="password" class="form-label">{{ $t('register.password') }}</label>
         <input
           type="password"
@@ -108,7 +102,7 @@ async function signup() {
           required
         />
       </div>
-      <div class="col-6">
+      <div class="col-md-6 mt-3">
         <label for="repeat_password" class="form-label">{{ $t('register.repeatpassword') }}</label>
         <input
           type="password"

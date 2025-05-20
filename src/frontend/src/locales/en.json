@@ -66,7 +66,7 @@
   },
 
   "register": {
-    "title": "Register",
+    "title": "Sign Up",
     "username": "Username",
     "password": "Password",
     "firstname": "First Name",
@@ -79,7 +79,7 @@
     "placeholder4": "Enter your last name",
     "placeholder5": "Enter your email",
     "placeholder6": "Repite your password",
-    "button": "Register"
+    "button": "Sign Up"
   },
 
   "noauth": {
