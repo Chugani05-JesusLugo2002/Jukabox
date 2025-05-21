@@ -1,7 +1,7 @@
 import type { User } from '@/components/classes/Authentication'
-import type { Song } from '@/components/classes/Song';
-import type { Album } from '@/components/classes/Album';
-import type { Artist } from '@/components/classes/Artist';
+import type { Song } from '@/components/classes/Song'
+import type { Album } from '@/components/classes/Album'
+import type { Artist } from '@/components/classes/Artist'
 import type { JSONResponse } from '@/components/classes/JSONResponse'
 
 import { useAuthStore } from '@/stores/useAuth'
@@ -31,7 +31,7 @@ export const useSocial = () => {
     }
   }
 
-  async function likeItem(id: number, type: string): Promise<JSONResponse|undefined> {
+  async function likeItem(id: number, type: string): Promise<JSONResponse | undefined> {
     const url = API_URL + `${type}s/${id}/like/`
     try {
       const response = await fetch(url, {
@@ -53,7 +53,10 @@ export const useSocial = () => {
     }
   }
 
-  async function getLikedItems(userId: string, itemType: string): Promise<Song[]|Artist[]|Album[]|undefined> {
+  async function getLikedItems(
+    userId: string,
+    itemType: string,
+  ): Promise<Song[] | Artist[] | Album[] | undefined> {
     const url = API_URL + `users/${userId}/liked_${itemType}s/`
     try {
       const response = await fetch(url, {

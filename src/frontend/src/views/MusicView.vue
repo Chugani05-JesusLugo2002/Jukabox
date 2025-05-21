@@ -22,12 +22,18 @@ const latestAlbums = inject<Album[]>('latestAlbums')
       <h2 class="display-5 my-3">{{ $t('music-page.tag1') }}</h2>
     </template>
     <template #default>
-      <MusicItem v-for="album in mostLikedAlbums" :key="album.id" :id="album.id" :img="album.cover" :type="'albums'">
+      <MusicItem
+        v-for="album in mostLikedAlbums"
+        :key="album.id"
+        :id="album.id"
+        :img="album.cover"
+        :type="'albums'"
+      >
         <template #default>
           {{ album.title }}
         </template>
         <template #extra>
-          <ArtistLabel v-if="album.artists.length > 0" :artist="album.artists[0]"/>
+          <ArtistLabel v-if="album.artists.length > 0" :artist="album.artists[0]" />
         </template>
       </MusicItem>
     </template>
@@ -38,12 +44,18 @@ const latestAlbums = inject<Album[]>('latestAlbums')
       <h2 class="display-5 my-3">{{ $t('music-page.tag2') }}</h2>
     </template>
     <template #default>
-      <MusicItem v-for="song in mostLikedSongs" :key="song.id" :id="song.id" :img="song.cover" :type="'songs'">
+      <MusicItem
+        v-for="song in mostLikedSongs"
+        :key="song.id"
+        :id="song.id"
+        :img="song.cover"
+        :type="'songs'"
+      >
         <template #default>
           {{ song.title }}
         </template>
         <template #extra>
-          <ArtistLabel v-if="song.artists.length > 0" :artist="song.artists[0]"/>
+          <ArtistLabel v-if="song.artists.length > 0" :artist="song.artists[0]" />
         </template>
       </MusicItem>
     </template>
@@ -54,12 +66,18 @@ const latestAlbums = inject<Album[]>('latestAlbums')
       <h2 class="display-5 my-3">{{ $t('music-page.tag3') }}</h2>
     </template>
     <template #default>
-      <MusicItem v-for="album in latestAlbums" :key="album.id" :id="album.id" :img="album.cover" :type="'albums'">
+      <MusicItem
+        v-for="album in latestAlbums"
+        :key="album.id"
+        :id="album.id"
+        :img="album.cover"
+        :type="'albums'"
+      >
         <template #default>
           {{ album.title }}
         </template>
         <template #extra>
-          <ArtistLabel v-if="album.artists.length > 0" :artist="album.artists[0]"/>
+          <ArtistLabel v-if="album.artists.length > 0" :artist="album.artists[0]" />
         </template>
       </MusicItem>
     </template>

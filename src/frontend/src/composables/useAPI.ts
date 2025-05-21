@@ -157,6 +157,6 @@ export const useAPI = () => {
     userLogout,
     importArtist,
     getExplorerResult,
-    addReview
+    addReview,
   }
 }

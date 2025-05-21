@@ -46,9 +46,20 @@ onMounted(async () => {
     <div class="row">
       <div class="col-9">
         <p class="h4">Reviews</p>
-        <form id="comment-input" class="mb-3" @submit.prevent="sendReview(song.id)" v-if="authStore.isAuthenticated">
+        <form
+          id="comment-input"
+          class="mb-3"
+          @submit.prevent="sendReview(song.id)"
+          v-if="authStore.isAuthenticated"
+        >
           <div class="form-floating">
-            <input type="text" name="comment" id="comment" class="from-control mb-2" v-model="comment">
+            <input
+              type="text"
+              name="comment"
+              id="comment"
+              class="from-control mb-2"
+              v-model="comment"
+            />
             <label for="comment">Your comment...</label>
           </div>
           <input class="btn btn-primary" type="submit" value="Send" />
@@ -56,13 +67,17 @@ onMounted(async () => {
 
         <div id="comments-container">
           <div v-if="songComments.length > 0">
-            <Comment v-for="(comment, index) in songComments" :key="index" :comment="comment"></Comment>
+            <Comment
+              v-for="(comment, index) in songComments"
+              :key="index"
+              :comment="comment"
+            ></Comment>
           </div>
           <div v-else class="alert alert-primary">No comments yet. Write the first one! :)</div>
         </div>
       </div>
       <div class="col-3">
-        <UrlsContainer :item_type="'song'" :item_id="song.id" :lbz_link="song.lbz_url"/>
+        <UrlsContainer :item_type="'song'" :item_id="song.id" :lbz_link="song.lbz_url" />
         <StatsContainer :likes="song.likes" :comments="0">Stats</StatsContainer>
       </div>
     </div>
