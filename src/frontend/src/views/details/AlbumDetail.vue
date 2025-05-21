@@ -2,20 +2,19 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import type { Song } from '@/components/classes/Song'
-import type { Album } from '@/components/classes/Album'
 import { useAPI } from '@/composables/useAPI'
-import ItemHeader from '@/components/elements/ItemHeader.vue'
-import SongListItem from '@/components/elements/SongListItem.vue'
+
+import ItemHeader from '@/components/elements/shared/ItemHeader.vue'
 import ArtistsLabel from '@/components/elements/includes/ArtistsLabel.vue'
-import UrlsContainer from '@/components/elements/includes/UrlsContainer.vue'
-import StatsContainer from '@/components/elements/includes/StatsContainer.vue'
+import UrlsContainer from '@/components/elements/shared/UrlsContainer.vue'
+import StatsContainer from '@/components/elements/shared/StatsContainer.vue'
+import MusicItemList from '@/components/elements/shared/MusicItemList.vue'
 
 const { getData } = useAPI()
 const route = useRoute()
 
-const album = ref<Album | null>(null)
-const songs = ref<Song[]>([])
+const album = ref()
+const songs = ref()
 
 onMounted(async () => {
   const album_pk = route.params['album_pk']
@@ -31,14 +30,20 @@ onMounted(async () => {
     </ItemHeader>
 
     <div class="row">
-      <div class="col">
-        <ul class="list-group">
-          <SongListItem v-for="song in songs" :key="song.id" :song="song"></SongListItem>
-        </ul>
+      <div class="col order-lg-1 order-2">
+        <MusicItemList
+          v-for="song in songs"
+          :key="song.id"
+          :id="song.id"
+          :title="song.title"
+          :likes="song.likes"
+          :reviews="song.reviews"
+          :type="'songs'"
+        />
       </div>
-      <div class="col-3">
-        <UrlsContainer :item_type="'album'" :item_id="album.id" :lbz_link="album.lbz_url" />
-        <StatsContainer :likes="album.likes">Stats</StatsContainer>
+      <div class="col-lg-3 col-12 order-1">
+        <UrlsContainer :type="'albums'" :id="album.id" :lbzUrl="album.lbz_url" />
+        <StatsContainer :likes="album.likes"></StatsContainer>
       </div>
     </div>
   </div>

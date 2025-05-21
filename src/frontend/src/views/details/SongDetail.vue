@@ -2,38 +2,36 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import type { Song } from '@/components/classes/Song'
-import ItemHeader from '@/components/elements/ItemHeader.vue'
-import UrlsContainer from '@/components/elements/includes/UrlsContainer.vue'
-import StatsContainer from '@/components/elements/includes/StatsContainer.vue'
-import ArtistsLabel from '@/components/elements/includes/ArtistsLabel.vue'
 import { useAPI } from '@/composables/useAPI'
-import Comment from '@/components/elements/includes/Comment.vue'
 import { useAuthStore } from '@/stores/useAuth.ts'
 
-const { getData, addReview } = useAPI()
+import ItemHeader from '@/components/elements/shared/ItemHeader.vue'
+import UrlsContainer from '@/components/elements/shared/UrlsContainer.vue'
+import StatsContainer from '@/components/elements/shared/StatsContainer.vue'
+import ArtistsLabel from '@/components/elements/includes/ArtistsLabel.vue'
+import CreateReviewInput from '@/components/elements/SongDetailView/CreateReviewInput.vue'
+import AlertComp from '@/components/gui/AlertComp.vue'
+import ReviewItem from '@/components/elements/SongDetailView/ReviewItem.vue'
+
+const { getData } = useAPI()
 const authStore = useAuthStore()
-
 const route = useRoute()
-const song = ref<null | Song>(null)
 
-const comment = ref('')
-const songComments = ref('')
+const song = ref()
+const comments = ref()
 
-async function sendReview(id: number) {
-  if (comment.value && authStore.user) {
-    const response = await addReview(id, comment.value, authStore.user.token)
-    songComments.value = await getData(`songs/${id}/reviews/`)
-    comment.value = ''
-  } else {
-    alert('Missing comment')
+async function updateComments(songId: number) {
+  if (song.value) {
+    comments.value = await getData(`songs/${songId}/reviews/`)
   }
 }
 
 onMounted(async () => {
   const song_pk = route.params['song_pk']
   song.value = await getData(`songs/${song_pk}/`)
-  songComments.value = await getData(`songs/${song_pk}/reviews/`)
+  if (song.value) {
+    await updateComments(song.value.id)
+  }
 })
 </script>
 
@@ -45,25 +43,20 @@ onMounted(async () => {
 
     <div class="row">
       <div class="col-9">
-        <p class="h4">Reviews</p>
-        <form id="comment-input" class="mb-3" @submit.prevent="sendReview(song.id)" v-if="authStore.isAuthenticated">
-          <div class="form-floating">
-            <input type="text" name="comment" id="comment" class="from-control mb-2" v-model="comment">
-            <label for="comment">Your comment...</label>
+        <h4>Reviews</h4>
+        <CreateReviewInput :songId="song.id" v-if="authStore.isAuthenticated" @sentReview="updateComments(song.id)"/>
+        <div v-if="comments">
+          <div v-if="comments.length > 0">
+            <ReviewItem v-for="(review, index) in comments" :key="index" :comment="review">
+                {{ review.comment }}
+            </ReviewItem>
           </div>
-          <input class="btn btn-primary" type="submit" value="Send" />
-        </form>
-
-        <div id="comments-container">
-          <div v-if="songComments.length > 0">
-            <Comment v-for="(comment, index) in songComments" :key="index" :comment="comment"></Comment>
-          </div>
-          <div v-else class="alert alert-primary">No comments yet. Write the first one! :)</div>
+          <AlertComp :style="'info'" v-else>No comments yet. Write the first one! :)</AlertComp>
         </div>
       </div>
       <div class="col-3">
-        <UrlsContainer :item_type="'song'" :item_id="song.id" :lbz_link="song.lbz_url"/>
-        <StatsContainer :likes="song.likes" :comments="0">Stats</StatsContainer>
+        <UrlsContainer :type="'songs'" :id="song.id" :lbzUrl="song.lbz_url" />
+        <StatsContainer :likes="song.likes" :reviews="song.reviews"></StatsContainer>
       </div>
     </div>
   </div>

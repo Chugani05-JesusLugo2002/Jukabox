@@ -19,18 +19,26 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div v-if="artist">
-        <h1><RouterLink :to="`/artists/${artist.id}`" class="text-black">{{ artist.name }}</RouterLink> - Albums</h1>
-        <div class="row display-6 my-3">
-            <div class="col-5">Album</div>
-            <div class="col-5">Year</div>
-            <div class="col-2 text-end">Stats</div>
-        </div>
-        <MusicItemList v-for="album in albums" :key="album.id" :title="album.title" :type="'albums'" :id="album.id" :likes="album.likes">
-            {{ album.released_at.slice(0,4) }}
-        </MusicItemList>
+  <div v-if="artist">
+    <h1>
+      <RouterLink :to="`/artists/${artist.id}`" class="text-black">{{ artist.name }}</RouterLink> -
+      Albums
+    </h1>
+    <div class="row display-6 my-3">
+      <div class="col-5">Album</div>
+      <div class="col-5">Year</div>
+      <div class="col-2 text-end">Stats</div>
     </div>
-    <div v-else>
-        Loading artist albums...
-    </div>
+    <MusicItemList
+      v-for="album in albums"
+      :key="album.id"
+      :title="album.title"
+      :type="'albums'"
+      :id="album.id"
+      :likes="album.likes"
+    >
+      {{ album.released_at.slice(0, 4) }}
+    </MusicItemList>
+  </div>
+  <div v-else>Loading artist albums...</div>
 </template>

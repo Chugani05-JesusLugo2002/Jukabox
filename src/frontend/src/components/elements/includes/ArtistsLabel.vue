@@ -1,4 +1,6 @@
 <script setup lang="ts">
+/* eslint-disable vue/no-use-v-if-with-v-for */
+/* eslint-disable vue/require-v-for-key */
 import { ref } from 'vue'
 
 import type { Artist } from '../../classes/Artist'

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/useAuth'
-import LikeButton from './shared/LikeButton.vue'
+import LikeButton from './LikeButton.vue'
 
 const authStore = useAuthStore()
 
 const { id, img, title, type } = defineProps<{
   id: number
   title: string
-  type: 'artist'|'album'|'song'
+  type: 'artist' | 'album' | 'song'
   img?: string
 }>()
 </script>
@@ -22,9 +22,7 @@ const { id, img, title, type } = defineProps<{
       <p class="text-muted h5"><slot></slot></p>
     </div>
     <div class="col-1 display-5 d-flex align-items-center" v-if="authStore.isAuthenticated">
-      <LikeButton :id="id" :type="type"/>
+      <LikeButton :id="id" :type="type" />
     </div>
   </div>
 </template>
-
-
