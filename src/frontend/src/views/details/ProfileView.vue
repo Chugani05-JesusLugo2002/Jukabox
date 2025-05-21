@@ -1,113 +1,93 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/stores/useAuth'
 import { useAPI } from '@/composables/useAPI'
-import ViewHeader from '@/components/layout/ViewHeader.vue'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import ItemsSection from '@/components/elements/shared/ItemsSection.vue'
+import MusicItem from '@/components/elements/shared/MusicItem.vue'
+import AlertComp from '@/components/gui/AlertComp.vue'
 
 const route = useRoute()
 const { getData } = useAPI()
 const user = ref()
 const userFound = ref(false)
 
+const likedAlbums = ref()
+const likedSongs = ref()
+
 onMounted(async () => {
-  user.value = await getData(`users/${route.params['profile_slug']}/`)
+  const userSlug = route.params['profile_slug']
+  user.value = await getData(`users/${userSlug}/`)
   userFound.value = !user.value.hasOwnProperty('error')
+  likedAlbums.value = await getData(`users/${userSlug}/liked_albums/`)
+  likedSongs.value = await getData(`users/${userSlug}/liked_songs/`)
 })
 </script>
 
 <template>
   <div v-if="userFound" class="container py-4">
     <div class="row">
-      <img :src="user.avatar" alt="Foto de perfil" class="col-2 rounded-circle" />
+      <img :src="user.avatar" alt="profile picture" class="col-2 rounded-circle" />
       <div class="col">
-        <h1 class="row">@{{ user.username }}</h1>
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="mb-0">@{{ user.username }}</h1>
+          <RouterLink :to="'/settings/'" class="text-reset">
+            <i class="bi bi-gear" id="settings-icon" style="font-size: 2.5rem;"></i>
+          </RouterLink>
+        </div>
         <div class="row mt-5">
           <div class="col-1 d-flex flex-column align-items-center mx-2">
             <h4>{{ user.reviews_count }}</h4>
-            <h5 class="text-secondary">Reviews</h5>
+            <h5 class="text-secondary">{{ $t('profile-page.reviews') }}</h5>
           </div>
           <div class="col-1 d-flex flex-column align-items-center mx-2">
             <h4>{{ user.liked_songs_count }}</h4>
-            <h5 class="text-secondary">Liked songs</h5>
+            <h5 class="text-secondary">{{ $t('profile-page.songs') }}</h5>
           </div>
           <div class="col-1 d-flex flex-column align-items-center mx-2">
             <h4>{{ user.liked_albums_count }}</h4>
-            <h5 class="text-secondary">Liked albums</h5>
+            <h5 class="text-secondary">{{ $t('profile-page.albums') }}</h5>
           </div>
           <div class="col-1 d-flex flex-column align-items-center mx-2">
             <h4>{{ user.liked_artists_count }}</h4>
-            <h5 class="text-secondary">Liked artists</h5>
+            <h5 class="text-secondary">{{ $t('profile-page.artists') }}</h5>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="mt-4">
-      <p v-if="user.bio" class="text-secondary">
+    <div class="mt-4 lead">
+      <p v-if="user.bio">
         {{ user.bio }}
       </p>
-      <p v-else>
-        {{ $t('profile-page.nobiomessage') }}
-      </p>
     </div>
 
-    <div class="mt-4 row text-center">
-      <div class="col">
-        <!-- <div class="fw-bold fs-4">{{ user.songs.length }}</div> -->
-        <small class="text-secondary">{{ $t('profile-page.featuredsongs') }}</small>
-      </div>
-      <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
+    <ItemsSection class="my-5">
+      <template #header>
+        <p class="display-6">{{ $t('profile-page.albums') }}</p>
+      </template>
+      <template #default>
+        <div v-if="likedAlbums">
+          <MusicItem v-for="album in likedAlbums" :key="album.id" :id="album.id" :img="album.cover" :type="'albums'">
+            {{ album.title }}
+          </MusicItem>
         </div>
-        <div class="carousel-inner">
-          <div v-for="song in likedSongs" class="carousel-item">
-            <img :src="song.cover" class="d-block w-100" alt="..." />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>{{ song.title }}</h5>
-            </div>
-          </div>
+        <AlertComp :style="'info'">{{ $t('profile-page.placeholder1') }}</AlertComp>
+      </template>
+    </ItemsSection>
+
+    <ItemsSection class="my-5">
+      <template #header>
+        <p class="display-6">{{ $t('profile-page.songs') }}</p>
+      </template>
+      <template #default>
+        <div v-if="likedSongs">
+          <MusicItem v-for="song in likedSongs" :key="song.id" :id="song.id" :img="song.cover" :type="'songs'">
+            {{ song.title }}
+          </MusicItem>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
+        <AlertComp :style="'info'">{{ $t('profile-page.placeholder2') }}</AlertComp>
+      </template>
+    </ItemsSection>
   </div>
 
   <div class="alert alert-warning text-center" v-else>El usuario no existe!</div>

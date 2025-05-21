@@ -20,7 +20,7 @@ const logoutIcon = ref('bi bi-door-closed')
         >
       </li>
       <li>
-        <a class="dropdown-item" href="#"><i class="bi bi-gear" id="settings-icon"></i> Settings</a>
+        <RouterLink :to="'/settings/'" class="dropdown-item"><i class="bi bi-gear" id="settings-icon"></i> Settings</RouterLink>
       </li>
       <li>
         <button

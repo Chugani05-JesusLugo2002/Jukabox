@@ -6,6 +6,7 @@ import SignupView from '@/views/auth/SignupView.vue'
 import HomeView from '@/views/HomeView.vue'
 import MusicView from '@/views/MusicView.vue'
 import ExploreView from '@/views/ExploreView.vue'
+import SettingView from '@/views/SettingView.vue'
 
 import ProfileView from '@/views/details/ProfileView.vue'
 import SongDetail from '@/views/details/SongDetail.vue'
@@ -37,6 +38,8 @@ const routes = [
   { path: '/profiles/:profile_slug', component: ProfileView, name: 'profile-detail' },
 
   { path: '/importer', component: ImporterView, name: 'importer' },
+
+  { path: '/settings', component: SettingView, name: 'settings' },
 ]
 
 const router = createRouter({

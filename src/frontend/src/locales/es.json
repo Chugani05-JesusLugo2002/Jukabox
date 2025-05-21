@@ -28,7 +28,8 @@
     "pill2": "Artistas",
     "pill3": "Canciones",
     "pill4": "Álbumes",
-    "placeholder": "¡Deja que tu corazón te guie! <3"
+    "placeholder": "¡Deja que tu corazón te guie! <3",
+    "alert": "¡Aún no has buscado nada! ¡Intenta con tu canción favorita!"
   },
 
   "music-page": {
@@ -40,7 +41,8 @@
 
   "importer-page": {
     "title": "Importa tus artistas",
-    "tag1": "Jukabox's importer is a Premium feature, it's available to all users just for a limited time.",
+    "alert1": "El importador de Jukabox es una función Premium, pero está disponible para todos los usuarios por tiempo limitado.",
+    "alert2": "¡Necesitas iniciar sesión para usar esta función!",
     "paragraph1": "Jukabox no se ve implicada directamente con los datos de canciones, álbumes y artistas, por lo tanto trabaja con una API de terceros llamada MusicBrainz. Esta utiliza un sistema de identificación basado en lo que llaman <i>MBID</i>. Un <i>MBID</i> es un identificador único universal de 36 caracteres que se asigna permanentemente a cada entidad en la base de datos, es decir, artistas, grupos de lanzamiento, lanzamientos, grabaciones, obras, sellos, áreas, lugares y URL.",
     "paragraph2": "Para buscar y obtener el <i>MBID</i> del artista a añadir:",
     "paragraph3": "Este proceso puede llegar a tardar varios minutos, dependiendo de la cantidad de contenido del artista.",
@@ -53,8 +55,24 @@
   },
 
   "profile-page": {
-    "nobiomessage": "Este usuario aún no tiene una bio.",
-    "featuredsongs": "Canciones destacadas"
+    "reviews": "Reseñas",
+    "songs": "Canciones gustadas",
+    "albums": "Álbumes gustadas",
+    "artists": "Artistas gustadas",
+    "placeholder1": "No hay álbumes que te gusten por el momento :(",
+    "placeholder2": "No hay canciones que te gusten por el momento :("
+  },
+
+  "setting-page": {
+    "title": "Ajustes del perfil",
+    "pic": "Foto de perfil",
+    "placeholder": "Escribe algo sobre ti...",
+    "button1": "Guardar cambios",
+    "button2": "Abandonar la plataforma",
+    "modaltitle": "¿Estás seguro?",
+    "modaltext": "Esta acción eliminará permanentemente tu cuenta y todos los datos relacionados.",
+    "modalbutton1": "Cancelar",
+    "modalbutton2": "Sí, abandonar"
   },
 
   "login": {

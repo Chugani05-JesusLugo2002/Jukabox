@@ -28,7 +28,7 @@ async function importToAPI(mbidInput: string) {
 <template>
   <ViewHeader>{{ $t('importer-page.title') }}</ViewHeader>
 
-  <AlertComp :style="'info'">{{ $t('importer-page.tag1') }}</AlertComp>
+  <AlertComp :style="'info'">{{ $t('importer-page.alert1') }}</AlertComp>
 
   <div class="mb-4 px-3">
     <div class="mb-3" v-html="$t('importer-page.paragraph1')"></div>
@@ -61,6 +61,6 @@ async function importToAPI(mbidInput: string) {
       </div>
     </form>
 
-    <AlertComp :style="'warning'" v-else>You need to be logged in to use this feature!</AlertComp>
+    <AlertComp :style="'warning'" v-else>{{ $t('importer-page.alert2') }}</AlertComp>
   </div>
 </template>

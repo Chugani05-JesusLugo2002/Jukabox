@@ -28,7 +28,8 @@
     "pill2": "Artists",
     "pill3": "Songs",
     "pill4": "Albums",
-    "placeholder": "Let your heart guide you! <3"
+    "placeholder": "Let your heart guide you! <3",
+    "alert": "No search yet! Try searching for your favorite song!"
   },
 
   "music-page": {
@@ -40,7 +41,8 @@
 
   "importer-page": {
     "title": "Import your artists",
-    "tag1": "Jukabox's importer is a Premium feature, it's available to all users just for a limited time.",
+    "alert1": "Jukabox's importer is a Premium feature, it's available to all users just for a limited time.",
+    "alert2": "You need to be logged in to use this feature!",
     "paragraph1": "Jukabox isn't directly involved with song, album, and artist data; instead, it works with a third-party API called MusicBrainz. This API uses an identification system based on what they call <i>MBID</i>. An <i>MBID</i> is a 36 character Universally Unique Identifier that is permanently assigned to each entity in the database, i.e. artists, release groups, releases, recordings, works, labels, areas, places and URLs.",
     "paragraph2": "To search and obtain the <i>MBID</i> of the artist to add:",
     "paragraph3": "This process may take several minutes, depending on the amount of content the artist has.",
@@ -53,8 +55,24 @@
   },
 
   "profile-page": {
-    "nobiomessage": "This user has no bio yet.",
-    "featuredsongs": "Featured Songs"
+    "reviews": "Reviews",
+    "songs": "Liked songs",
+    "albums": "Liked albums",
+    "artists": "Liked artists",
+    "placeholder1": "There are no liked albums at the moment :(",
+    "placeholder2": "There are no liked songs at the moment :("
+  },
+
+  "setting-page": {
+    "title": "Profile settings",
+    "pic": "Profile picture",
+    "placeholder": "Write something about yourself...",
+    "button1": "Save changes",
+    "button2": "Leave platform",
+    "modaltitle": "Are you sure?",
+    "modaltext": "This action will permanently delete your account and all related data.",
+    "modalbutton1": "Cancel",
+    "modalbutton2": "Yes, leave"
   },
 
   "login": {
