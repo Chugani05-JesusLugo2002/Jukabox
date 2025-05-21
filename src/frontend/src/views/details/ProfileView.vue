@@ -5,11 +5,11 @@ import { useRoute } from 'vue-router'
 import ItemsSection from '@/components/elements/shared/ItemsSection.vue'
 import MusicItem from '@/components/elements/shared/MusicItem.vue'
 import AlertComp from '@/components/gui/AlertComp.vue'
+import StatCounter from '@/components/elements/ProfileView/StatCounter.vue'
 
 const route = useRoute()
 const { getData } = useAPI()
 const user = ref()
-const userFound = ref(false)
 
 const likedAlbums = ref()
 const likedSongs = ref()
@@ -17,40 +17,29 @@ const likedSongs = ref()
 onMounted(async () => {
   const userSlug = route.params['profile_slug']
   user.value = await getData(`users/${userSlug}/`)
-  userFound.value = !user.value.hasOwnProperty('error')
   likedAlbums.value = await getData(`users/${userSlug}/liked_albums/`)
   likedSongs.value = await getData(`users/${userSlug}/liked_songs/`)
 })
 </script>
 
 <template>
-  <div v-if="userFound" class="container py-4">
+  <div v-if="user" class="container py-4">
     <div class="row">
-      <img :src="user.avatar" alt="profile picture" class="col-2 rounded-circle" />
+      <div class="col-lg-2 col-4">
+        <img :src="user.avatar" alt="profile picture" class="img-fluid rounded-circle"/>
+      </div>
       <div class="col">
-        <div class="d-flex justify-content-between align-items-center">
-          <h1 class="mb-0">@{{ user.username }}</h1>
-          <RouterLink :to="'/settings/'" class="text-reset">
-            <i class="bi bi-gear" id="settings-icon" style="font-size: 2.5rem;"></i>
+        <div class="row d-flex justify-content-between">
+          <h1 class="col-11 mb-0">@{{ user.username }}</h1>
+          <RouterLink :to="'/settings/'" class="col text-reset text-end">
+            <i class="bi bi-gear" id="settings-icon" style="font-size: 2.5rem"></i>
           </RouterLink>
         </div>
-        <div class="row mt-5">
-          <div class="col-1 d-flex flex-column align-items-center mx-2">
-            <h4>{{ user.reviews_count }}</h4>
-            <h5 class="text-secondary">{{ $t('profile-page.reviews') }}</h5>
-          </div>
-          <div class="col-1 d-flex flex-column align-items-center mx-2">
-            <h4>{{ user.liked_songs_count }}</h4>
-            <h5 class="text-secondary">{{ $t('profile-page.songs') }}</h5>
-          </div>
-          <div class="col-1 d-flex flex-column align-items-center mx-2">
-            <h4>{{ user.liked_albums_count }}</h4>
-            <h5 class="text-secondary">{{ $t('profile-page.albums') }}</h5>
-          </div>
-          <div class="col-1 d-flex flex-column align-items-center mx-2">
-            <h4>{{ user.liked_artists_count }}</h4>
-            <h5 class="text-secondary">{{ $t('profile-page.artists') }}</h5>
-          </div>
+        <div class="row h-100 d-flex justify-content-between mt-5">
+          <StatCounter :stat="user.reviews_count">{{ $t('profile-page.reviews') }}</StatCounter>
+          <StatCounter :stat="user.liked_songs_count">{{ $t('profile-page.songs') }}</StatCounter>
+          <StatCounter :stat="user.liked_albums_count">{{ $t('profile-page.albums') }}</StatCounter>
+          <StatCounter :stat="user.liked_artists_count">{{ $t('profile-page.artists') }}</StatCounter>
         </div>
       </div>
     </div>
@@ -67,11 +56,19 @@ onMounted(async () => {
       </template>
       <template #default>
         <div v-if="likedAlbums">
-          <MusicItem v-for="album in likedAlbums" :key="album.id" :id="album.id" :img="album.cover" :type="'albums'">
-            {{ album.title }}
-          </MusicItem>
+          <div v-if="likedAlbums.length > 0" class="row">
+            <MusicItem
+              v-for="album in likedAlbums"
+              :key="album.id"
+              :id="album.id"
+              :img="album.cover"
+              :type="'albums'"
+            >
+              {{ album.title }}
+            </MusicItem>
+          </div>
+          <AlertComp :style="'info'" v-else>{{ $t('profile-page.placeholder1') }}</AlertComp>
         </div>
-        <AlertComp :style="'info'">{{ $t('profile-page.placeholder1') }}</AlertComp>
       </template>
     </ItemsSection>
 
@@ -81,11 +78,19 @@ onMounted(async () => {
       </template>
       <template #default>
         <div v-if="likedSongs">
-          <MusicItem v-for="song in likedSongs" :key="song.id" :id="song.id" :img="song.cover" :type="'songs'">
-            {{ song.title }}
-          </MusicItem>
+          <div v-if="likedSongs.length > 0" class="row">
+            <MusicItem
+              v-for="song in likedSongs"
+              :key="song.id"
+              :id="song.id"
+              :img="song.cover"
+              :type="'songs'"
+            >
+              {{ song.title }}
+            </MusicItem>
+          </div>
+          <AlertComp v-else :style="'info'">{{ $t('profile-page.placeholder2') }}</AlertComp>
         </div>
-        <AlertComp :style="'info'">{{ $t('profile-page.placeholder2') }}</AlertComp>
       </template>
     </ItemsSection>
   </div>

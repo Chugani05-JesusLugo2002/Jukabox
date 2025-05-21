@@ -62,6 +62,51 @@ export const useAPI = () => {
     }
   }
 
+  async function updateProfile(bio: string): Promise<JSONResponse | undefined> {
+    const url = API_URL + 'users/change-profile/'
+    try {
+      const formData = new FormData()
+      formData.append('bio', bio)
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authStore.user?.token}`,
+        },
+        body: formData,
+      })
+      if (!response.ok) {
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
+      }
+      return await response.json()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function deleteProfile(): Promise<JSONResponse | undefined> {
+    const url = API_URL + 'users/leave/'
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authStore.user?.token}`,
+        }
+      })
+      if (!response.ok) {
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
+      }
+      return await response.json()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   async function importArtist(artist_mbid: string): Promise<JSONResponse | undefined> {
     const url = API_URL + 'import/'
     try {
@@ -84,7 +129,7 @@ export const useAPI = () => {
     }
   }
 
-  async function getExplorerResult(query: string, type: string): Promise<object[]|undefined> {
+  async function getExplorerResult(query: string, type: string): Promise<object[] | undefined> {
     const url = API_URL + 'explore/'
     try {
       const response = await fetch(url, {
@@ -106,7 +151,7 @@ export const useAPI = () => {
     }
   }
 
-  async function userLogout(): Promise<JSONResponse|undefined> {
+  async function userLogout(): Promise<JSONResponse | undefined> {
     const url = API_URL + 'accounts/logout/'
     try {
       const response = await fetch(url, {
@@ -134,5 +179,7 @@ export const useAPI = () => {
     userLogout,
     importArtist,
     getExplorerResult,
+    updateProfile,
+    deleteProfile
   }
 }

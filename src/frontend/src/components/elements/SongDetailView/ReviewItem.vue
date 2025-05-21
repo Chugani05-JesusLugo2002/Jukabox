@@ -2,10 +2,10 @@
 const { comment } = defineProps(['comment'])
 
 function formatDateTime(input: string): string {
-    const date = new Date(input);
-    const datePart = date.toISOString().split('T')[0];
-    const timePart = date.toTimeString().split(' ')[0].slice(0, 5);
-    return `${datePart}, ${timePart}`;
+  const date = new Date(input)
+  const datePart = date.toISOString().split('T')[0]
+  const timePart = date.toTimeString().split(' ')[0].slice(0, 5)
+  return `${datePart}, ${timePart}`
 }
 </script>
 

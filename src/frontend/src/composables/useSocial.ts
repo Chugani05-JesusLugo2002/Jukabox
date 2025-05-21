@@ -38,7 +38,7 @@ export const useSocial = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${authStore.user?.token}`,
+          'Authorization': `Bearer ${authStore.user?.token}`,
         },
         body: `{ "${type}_id": "${id}" }`,
       })
@@ -83,7 +83,7 @@ export const useSocial = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${authStore.user?.token}`,
+          'Authorization': `Bearer ${authStore.user?.token}`,
         },
         body: `{ "comment": "${comment}" }`,
       })

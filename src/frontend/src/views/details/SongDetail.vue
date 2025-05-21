@@ -44,11 +44,15 @@ onMounted(async () => {
     <div class="row">
       <div class="col-9">
         <h4>Reviews</h4>
-        <CreateReviewInput :songId="song.id" v-if="authStore.isAuthenticated" @sentReview="updateComments(song.id)"/>
+        <CreateReviewInput
+          :songId="song.id"
+          v-if="authStore.isAuthenticated"
+          @sentReview="updateComments(song.id)"
+        />
         <div v-if="comments">
           <div v-if="comments.length > 0">
             <ReviewItem v-for="(review, index) in comments" :key="index" :comment="review">
-                {{ review.comment }}
+              {{ review.comment }}
             </ReviewItem>
           </div>
           <AlertComp :style="'info'" v-else>No comments yet. Write the first one! :)</AlertComp>
