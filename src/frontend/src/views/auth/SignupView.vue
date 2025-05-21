@@ -28,7 +28,7 @@ async function signup() {
     password: password.value,
     repeat_password: repeat_password.value,
   }
-  const user: User|undefined = await userSignup(signupData)
+  const user: User | undefined = await userSignup(signupData)
   if (user) {
     authStore.authenticate(user)
     router.push(`/profiles/${user.slug}`)
@@ -117,7 +117,11 @@ async function signup() {
         />
       </div>
     </div>
-    <button type="submit" class="btn btn-primary w-100"><i class="bi bi-person-fill-add"></i> {{ $t('register.button') }}</button>
-    <p class="text-center mt-3">Already had an account? <RouterLink to="/login">Log in!</RouterLink></p>
+    <button type="submit" class="btn btn-primary w-100">
+      <i class="bi bi-person-fill-add"></i> {{ $t('register.button') }}
+    </button>
+    <p class="text-center mt-3">
+      Already had an account? <RouterLink to="/login">Log in!</RouterLink>
+    </p>
   </form>
 </template>

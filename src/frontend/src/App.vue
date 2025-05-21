@@ -14,7 +14,8 @@ const { getData } = useAPI()
 const { getMyProfile } = useSocial()
 const { authenticate } = useAuthStore()
 
-const latestSongs = ref<Song[]>([])
+const mostLikedSongs = ref<Song[]>([])
+const mostLikedAlbums = ref<Album[]>([])
 const latestAlbums = ref<Album[]>([])
 
 onBeforeMount(async () => {
@@ -26,11 +27,13 @@ onBeforeMount(async () => {
     }
   }
 
-  latestSongs.value = await getData('songs/latest/')
+  mostLikedSongs.value = await getData('songs/most-liked/')
+  mostLikedAlbums.value = await getData('albums/most-liked/')
   latestAlbums.value = await getData('albums/latest/')
 })
 
-provide('latestSongs', latestSongs)
+provide('mostLikedSongs', mostLikedSongs)
+provide('mostLikedAlbums', mostLikedAlbums)
 provide('latestAlbums', latestAlbums)
 </script>
 

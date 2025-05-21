@@ -55,7 +55,13 @@ def add_review(request: HttpRequest, song_pk: int) -> JsonResponse:
 
 @check_method('GET')
 def latest_songs(request: HttpRequest) -> JsonResponse:
-    songs = Song.objects.all().order_by('-added_at')[:5]
+    songs = Song.objects.all()[:6]
+    serializer = SongSerializer(songs, request=request)
+    return serializer.json_response()
+
+@check_method('GET')
+def most_liked_songs(request: HttpRequest) -> JsonResponse:
+    songs = Song.objects.all().order_by('-likes')[:6]
     serializer = SongSerializer(songs, request=request)
     return serializer.json_response()   
 

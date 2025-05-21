@@ -12,4 +12,5 @@ urlpatterns = [
     path('<int:song_pk>/add-review/', views.add_review, name='add-review'),
     path('<int:song_pk>/reviews/', views.song_reviews, name='song-reviews'),
     path('latest/', views.latest_songs, name='latest-songs'),
+    path('most-liked/', views.most_liked_songs, name='most-liked-songs'),
 ]

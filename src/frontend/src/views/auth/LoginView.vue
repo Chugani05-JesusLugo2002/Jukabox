@@ -20,7 +20,7 @@ async function login() {
     username: username.value,
     password: password.value,
   }
-  const user: User|undefined = await userLogin(loginData)
+  const user: User | undefined = await userLogin(loginData)
   if (user) {
     authStore.authenticate(user)
     router.push(`/profiles/${user.slug}`)
@@ -59,7 +59,9 @@ async function login() {
         required
       />
     </div>
-    <button type="submit" class="btn btn-primary w-100"><i class="bi bi-box-arrow-in-right"></i> {{ $t('login.button') }}</button>
+    <button type="submit" class="btn btn-primary w-100">
+      <i class="bi bi-box-arrow-in-right"></i> {{ $t('login.button') }}
+    </button>
     <p class="text-center mt-3">No account? <RouterLink to="/signup">Sign up!</RouterLink></p>
   </form>
 </template>

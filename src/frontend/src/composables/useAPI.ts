@@ -8,7 +8,7 @@ export const useAPI = () => {
   const authStore = useAuthStore()
   const toast = useToast()
 
-  async function getData(path: string): Promise<object|undefined> {
+  async function getData(path: string): Promise<object | undefined> {
     const url = API_URL + path
     try {
       const response = await fetch(url)
@@ -19,7 +19,7 @@ export const useAPI = () => {
     }
   }
 
-  async function userLogin(loginData: LoginData): Promise<User|undefined> {
+  async function userLogin(loginData: LoginData): Promise<User | undefined> {
     const url = API_URL + 'accounts/login/'
     try {
       const response = await fetch(url, {
@@ -40,7 +40,7 @@ export const useAPI = () => {
     }
   }
 
-  async function userSignup(signupData: SignupData): Promise<User|undefined> {
+  async function userSignup(signupData: SignupData): Promise<User | undefined> {
     const url = API_URL + 'accounts/signup/'
     try {
       const response = await fetch(url, {
@@ -83,14 +83,14 @@ export const useAPI = () => {
     }
   }
 
-  async function importArtist(artist_mbid: string): Promise<JSONResponse|undefined> {
+  async function importArtist(artist_mbid: string): Promise<JSONResponse | undefined> {
     const url = API_URL + 'import/'
     try {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authStore.user?.token}`
+          Authorization: `Bearer ${authStore.user?.token}`,
         },
         body: `{ "artist_mbid": "${artist_mbid}" }`,
       })

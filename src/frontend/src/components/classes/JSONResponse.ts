@@ -1,1 +1,1 @@
-export type JSONResponse = Record<'message'|'error', string>
+export type JSONResponse = Record<'message' | 'error', string>

@@ -6,7 +6,7 @@ import ItemHeader from '@/components/elements/ItemHeader.vue'
 import type { Artist } from '@/components/classes/Artist'
 import { useAPI } from '@/composables/useAPI'
 import type { Album } from '@/components/classes/Album'
-import AlbumItem from '@/components/elements/AlbumItem.vue'
+import AlbumItem from '@/components/elements/MusicView/AlbumItem.vue'
 import UrlsContainer from '@/components/elements/includes/UrlsContainer.vue'
 
 const { getData } = useAPI()

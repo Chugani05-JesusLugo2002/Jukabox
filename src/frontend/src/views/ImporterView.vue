@@ -56,15 +56,12 @@ async function importToAPI(mbidInput: string) {
         required
       />
       <div class="text-center">
-        <button
-          type="submit"
-          class="btn btn-primary"
-        >
-        <i class="bi bi-cloud-arrow-up"></i> | {{ $t('importer-page.button') }}
+        <button type="submit" class="btn btn-primary">
+          <i class="bi bi-cloud-arrow-up"></i> | {{ $t('importer-page.button') }}
         </button>
       </div>
     </form>
-  
+
     <div class="alert alert-warning text-center fw-bold" role="alert" v-else>
       You need to be logged in to use this feature!
     </div>

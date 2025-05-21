@@ -43,7 +43,13 @@ def like_album(request: HttpRequest, album_pk: int) -> JsonResponse:
 
 @check_method('GET')
 def latest_albums(request: HttpRequest) -> JsonResponse:
-    albums = Album.objects.all().order_by('-added_at')[:5]
+    albums = Album.objects.all().order_by('-added_at')[:6]
+    serializer = AlbumSerializer(albums, request=request)
+    return serializer.json_response()
+
+@check_method('GET')
+def most_liked_albums(request: HttpRequest) -> JsonResponse:
+    albums = Album.objects.all().order_by('-likes')[:6]
     serializer = AlbumSerializer(albums, request=request)
     return serializer.json_response()
 

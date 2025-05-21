@@ -11,4 +11,5 @@ urlpatterns = [
     path('<int:album_pk>/like/', views.like_album, name='like-album'),
     path('<int:album_pk>/links/', views.album_links, name='album-links'),
     path('latest/', views.latest_albums, name='latest-albums'),
+    path('most-liked/', views.most_liked_albums, name='most-liked-albums'),
 ]

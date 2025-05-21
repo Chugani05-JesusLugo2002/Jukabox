@@ -33,8 +33,9 @@
 
   "music-page": {
     "title": "Music",
-    "tag1": "Best albums",
-    "tag2": "Latest songs"
+    "tag1": "Most loved albums",
+    "tag2": "Most liked songs",
+    "tag3": "Latest albums"
   },
 
   "importer-page": {
