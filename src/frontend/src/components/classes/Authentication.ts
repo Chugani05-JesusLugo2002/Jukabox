@@ -1,7 +1,3 @@
-import type { Song } from './Song'
-import type { Album } from './Album'
-import type { Artist } from './Artist'
-
 export interface User {
   id: number
   token: string
@@ -12,9 +8,10 @@ export interface User {
   email: string
   bio: string
   avatar: string
-  liked_songs: Song[]
-  liked_albums: Album[]
-  liked_artists: Artist[]
+  liked_songs_count: number
+  liked_albums_count: number
+  liked_artists_count: number
+  reviews_count: number
 }
 
 export interface SignupData {

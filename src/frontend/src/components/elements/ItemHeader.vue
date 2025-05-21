@@ -1,57 +1,30 @@
 <script setup lang="ts">
-import { useAPI } from '@/composables/useAPI'
 import { useAuthStore } from '@/stores/useAuth'
-import { onMounted, ref } from 'vue'
+import LikeButton from './shared/LikeButton.vue'
 
-const props = defineProps(['itemId', 'image', 'name', 'isRounded', 'itemType'])
+const authStore = useAuthStore()
 
-const imgClass = props.isRounded ? 'img-fluid rounded-circle' : 'img-fluid rounded'
-
-const { like, getLikedItems } = useAPI()
-const { user, isAuthenticated } = useAuthStore()
-
-const heartColor = ref('')
-
-async function likeItem() {
-  if (user) {
-    try {
-      const response = await like(props.itemId, props.itemType, user.token)
-      heartColor.value = heartColor.value ? '' : 'text-danger'
-    } catch (error) {
-      console.error(error)
-    }
-  }
-}
-
-onMounted(async () => {
-  if (user) {
-    const likedItems = await getLikedItems(user.slug, props.itemType)
-    likedItems.forEach((item: any) => {
-      if (item.id == props.itemId) {
-        heartColor.value = 'text-danger'
-      }
-    })
-  }
-})
+const { id, img, title, type } = defineProps<{
+  id: number
+  title: string
+  type: 'artist'|'album'|'song'
+  img?: string
+}>()
 </script>
 
 <template>
   <div class="row pb-3">
-    <div class="col-3" v-if="image">
-      <img :src="image" :alt="name + ' image'" :class="imgClass" />
+    <div class="col-3" v-if="img">
+      <img :src="img" :alt="title + ' image'" class="rounded-3 img-fluid" />
     </div>
     <div class="col d-flex flex-column justify-content-center">
-      <h1 class="display-5 fw-bold">{{ name }}</h1>
+      <h1 class="display-4">{{ title }}</h1>
       <p class="text-muted h5"><slot></slot></p>
     </div>
-    <div class="col-1 display-5 d-flex align-items-center" v-if="isAuthenticated">
-      <i v-if="user" :class="'bi bi-heart-fill likeButton ' + heartColor" @click="likeItem"></i>
+    <div class="col-1 display-5 d-flex align-items-center" v-if="authStore.isAuthenticated">
+      <LikeButton :id="id" :type="type"/>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
-.likeButton {
-  cursor: pointer;
-}
-</style>
+

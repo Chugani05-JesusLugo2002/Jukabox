@@ -8,6 +8,7 @@ import ItemHeader from '@/components/elements/ItemHeader.vue'
 import ItemsSection from '@/components/elements/shared/ItemsSection.vue'
 import MusicItem from '@/components/elements/shared/MusicItem.vue'
 import SectionHeader from '@/components/elements/ArtistDetailView/SectionHeader.vue'
+import ListenBrainzButton from '@/components/elements/ArtistDetailView/ListenBrainzButton.vue'
 
 const { getData } = useAPI()
 const route = useRoute()
@@ -21,12 +22,14 @@ onMounted(async () => {
   artist.value = await getData(`artists/${artist_pk}/`)
   topAlbums.value = await getData(`artists/${artist_pk}/albums/top/`)
   topSongs.value = await getData(`artists/${artist_pk}/songs/top/`)
-})
+})  
 </script>
 
 <template>
   <div v-if="artist">
-    <ItemHeader :name="artist.name" :isRounded="true" :itemId="artist.id" :itemType="'artist'" />
+    <ItemHeader :title="artist.name" :id="artist.id" :type="'artist'">
+      <ListenBrainzButton :lbzUrl="artist.lbz_url"/>
+    </ItemHeader>
 
     <ItemsSection v-if="topAlbums" class="my-5">
       <template #header>

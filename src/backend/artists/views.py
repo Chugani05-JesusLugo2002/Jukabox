@@ -22,9 +22,9 @@ def like_artist(request: HttpRequest, artist_pk: int) -> JsonResponse:
     artist = Artist.objects.get(pk=artist_pk)
     if request.profile.liked_artists.filter(pk=artist_pk).exists():
         request.profile.liked_artists.remove(artist)
-        return JsonResponse({'liked_artists': ArtistSerializer(request.profile.liked_artists.all()).serialize()})
+        return JsonResponse({'message': f'Un-like to {artist.name} :('})
     request.profile.liked_artists.add(artist)
-    return JsonResponse({'liked_artists': ArtistSerializer(request.profile.liked_artists.all()).serialize()})
+    return JsonResponse({'message': f'Like to {artist.name} <3'})
 
 @check_method('GET')
 def artist_detail(request: HttpRequest, artist_pk: int) -> JsonResponse:
@@ -35,7 +35,7 @@ def artist_detail(request: HttpRequest, artist_pk: int) -> JsonResponse:
 @check_method('GET')
 def artist_albums(request: HttpRequest, artist_pk: int) -> JsonResponse:
     artist = Artist.objects.get(pk=artist_pk)
-    serializer = AlbumSerializer(artist.albums.all().order_by('title'), request=request)
+    serializer = AlbumSerializer(artist.albums.all().order_by('-released_at'), request=request)
     return serializer.json_response()
 
 @check_method('GET')
@@ -48,7 +48,7 @@ def artist_top_albums(request: HttpRequest, artist_pk: int) -> JsonResponse:
 @check_method('GET')
 def artist_songs(request: HttpRequest, artist_pk: int) -> JsonResponse:
     artist = Artist.objects.get(pk=artist_pk)
-    serializer = SongSerializer(artist.songs.all().order_by('albums__title'), request=request)
+    serializer = SongSerializer(artist.songs.all().order_by('-albums__released_at'), request=request)
     return serializer.json_response()
 
 @check_method('GET')

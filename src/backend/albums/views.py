@@ -37,9 +37,9 @@ def like_album(request: HttpRequest, album_pk: int) -> JsonResponse:
     album = Album.objects.get(pk=album_pk)
     if request.profile.liked_albums.filter(pk=album_pk).exists():
         request.profile.liked_albums.remove(album)
-        return JsonResponse({'liked_albums': AlbumSerializer(request.profile.liked_albums.all()).serialize()})
+        return JsonResponse({'message': f'Un-like to {album.title}!'})
     request.profile.liked_albums.add(album)
-    return JsonResponse({'liked_albums': AlbumSerializer(request.profile.liked_albums.all()).serialize()})
+    return JsonResponse({'message': f'Like to {album.title}!'})
 
 @check_method('GET')
 def latest_albums(request: HttpRequest) -> JsonResponse:

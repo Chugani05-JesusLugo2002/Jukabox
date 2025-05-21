@@ -39,7 +39,7 @@ onMounted(async () => {
 
 <template>
   <div v-if="song">
-    <ItemHeader :image="song.cover" :name="song.title" :isRounded="false" :itemId="song.id" :itemType="'song'">
+    <ItemHeader :img="song.cover" :title="song.title" :id="song.id" :type="'song'">
       <ArtistsLabel :artists="song.artists" />
     </ItemHeader>
 

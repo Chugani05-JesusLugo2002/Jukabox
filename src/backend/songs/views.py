@@ -34,9 +34,9 @@ def like_song(request: HttpRequest, song_pk: int) -> JsonResponse:
     song = Song.objects.get(pk=song_pk)
     if request.profile.liked_songs.filter(pk=song_pk).exists():
         request.profile.liked_songs.remove(song)
-    else:
-        request.profile.liked_songs.add(song)
-    return JsonResponse({'liked_songs': SongSerializer(request.profile.liked_songs.all()).serialize()})
+        return JsonResponse({'message': f'Un-like {song.title}.'})
+    request.profile.liked_songs.add(song)
+    return JsonResponse({'message': f'Like to {song.title}.'})
 
 @csrf_exempt
 @check_method('POST')

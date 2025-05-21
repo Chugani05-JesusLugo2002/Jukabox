@@ -62,27 +62,6 @@ export const useAPI = () => {
     }
   }
 
-  async function getLikedItems(userId: string, itemType: string): Promise<any> {
-    const url = API_URL + `users/${userId}/liked_${itemType}s/`
-    try {
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      if (!response.ok) {
-        const data = await response.json()
-        toast.error(data.error)
-        throw new Error(data.error)
-      }
-      const data = await response.json()
-      return data
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   async function importArtist(artist_mbid: string): Promise<JSONResponse | undefined> {
     const url = API_URL + 'import/'
     try {
@@ -100,29 +79,6 @@ export const useAPI = () => {
         throw new Error(data.error)
       }
       return await response.json()
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  async function like(id: number, type: string, token: string): Promise<any> {
-    const url = API_URL + `${type}s/${id}/like/`
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: `{ "${type}_id": "${id}" }`,
-      })
-      if (!response.ok) {
-        const data = await response.json()
-        toast.error(data.error)
-        throw new Error(data.error)
-      }
-      const data = await response.json()
-      return data
     } catch (error) {
       console.error(error)
     }
@@ -201,8 +157,6 @@ export const useAPI = () => {
     userLogout,
     importArtist,
     getExplorerResult,
-    like,
-    addReview,
-    getLikedItems,
+    addReview
   }
 }

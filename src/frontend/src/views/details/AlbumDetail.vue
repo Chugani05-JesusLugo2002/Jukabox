@@ -26,7 +26,7 @@ onMounted(async () => {
 
 <template>
   <div v-if="album">
-    <ItemHeader :image="album.cover" :name="album.title" :item-id="album.id" :item-type="'album'">
+    <ItemHeader :img="album.cover" :title="album.title" :id="album.id" :type="'album'">
       <ArtistsLabel :artists="album.artists" />
     </ItemHeader>
 

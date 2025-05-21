@@ -14,7 +14,7 @@ class AlbumSerializer(BaseSerializer):
             'mbid': instance.mbid,
             'title': instance.title,
             'artists': ArtistSerializer(instance.artists.all(), request=self.request).serialize(),
-            'released_at': instance.released_at,
+            'released_at': instance.released_at.isoformat(),
             'likes': instance.likes.count(),
             'cover': self.build_url(instance.cover.url),
             'added_at': instance.added_at.isoformat(),
