@@ -9,8 +9,6 @@ const { id, title, likes, reviews, type } = defineProps<{
   likes: number
   reviews?: number
 }>()
-
-
 </script>
 
 <template>

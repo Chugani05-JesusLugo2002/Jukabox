@@ -76,5 +76,28 @@ export const useSocial = () => {
     }
   }
 
-  return { getMyProfile, likeItem, getLikedItems }
+  async function sendReview(songId: number, comment: string): Promise<JSONResponse | undefined> {
+    const url = API_URL + `songs/${songId}/add-review/`
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authStore.user?.token}`,
+        },
+        body: `{ "comment": "${comment}" }`,
+      })
+      if (!response.ok) {
+        const data = await response.json()
+        toast.error(data.error)
+        throw new Error(data.error)
+      }
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  return { getMyProfile, likeItem, getLikedItems, sendReview }
 }

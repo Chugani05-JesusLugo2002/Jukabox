@@ -31,7 +31,15 @@ onMounted(async () => {
 
     <div class="row">
       <div class="col order-lg-1 order-2">
-          <MusicItemList v-for="song in songs" :key="song.id" :id="song.id" :title="song.title" :likes="song.likes" :reviews="song.reviews" :type="'songs'"/>
+        <MusicItemList
+          v-for="song in songs"
+          :key="song.id"
+          :id="song.id"
+          :title="song.title"
+          :likes="song.likes"
+          :reviews="song.reviews"
+          :type="'songs'"
+        />
       </div>
       <div class="col-lg-3 col-12 order-1">
         <UrlsContainer :type="'albums'" :id="album.id" :lbzUrl="album.lbz_url" />

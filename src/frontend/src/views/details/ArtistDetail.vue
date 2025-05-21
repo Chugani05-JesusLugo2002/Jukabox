@@ -30,7 +30,7 @@ onMounted(async () => {
     if (link['url_type'] == 'statify') {
       statifyUrl.value = link['url']
     }
-  });
+  })
 })
 </script>
 

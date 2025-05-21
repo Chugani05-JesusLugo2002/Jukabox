@@ -9,7 +9,7 @@ const { getData } = useAPI()
 const { id, type, lbzUrl } = defineProps<{
   id: number
   lbzUrl: string
-  type: 'artists'|'albums'|'songs'
+  type: 'artists' | 'albums' | 'songs'
 }>()
 
 const links = ref()
@@ -24,7 +24,7 @@ onMounted(async () => {
 
 <template>
   <div class="mb-3" v-if="links">
-    <ListenBrainzButton :lbz-url="lbzUrl" :as-button="true"/>
+    <ListenBrainzButton :lbz-url="lbzUrl" :as-button="true" />
 
     <div class="d-flex flex-column mt-3" v-if="links.length > 0">
       <h4>External links</h4>
