@@ -4,7 +4,7 @@ import { inject } from 'vue'
 import type { Album } from '@/components/classes/Album'
 import type { Song } from '@/components/classes/Song'
 
-import ViewHeader from '@/components/ViewHeader.vue'
+import ViewHeader from '@/components/layout/ViewHeader.vue'
 import ItemsSection from '@/components/elements/MusicView/ItemsSection.vue'
 import AlbumItem from '@/components/elements/MusicView/AlbumItem.vue'
 import SongItem from '@/components/elements/MusicView/SongItem.vue'

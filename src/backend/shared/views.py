@@ -16,7 +16,8 @@ from .utils import check_method, check_json_body, assert_body_fields
 @check_json_body
 @assert_body_fields('query', 'type')
 def explore(request: HttpRequest) -> JsonResponse:
-    query = request.data['query']
+    if not (query := request.data.get('query', '')):
+        return JsonResponse({'error': 'Query not provided'}, status=400)
     match request.data['type']:
         case 'Artists':
             artists = Artist.objects.filter(name__icontains=query)

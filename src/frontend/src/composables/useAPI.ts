@@ -155,7 +155,7 @@ export const useAPI = () => {
     const url = API_URL + 'explore/'
     try {
       const response = await fetch(url, {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -182,12 +182,12 @@ export const useAPI = () => {
           'Content-Type': 'application/json',
         },
       })
+      const data = await response.json()
       if (!response.ok) {
-        const data = await response.json()
         toast.error(data.error)
         throw new Error(data.error)
-      }
-      const data = await response.json()
+      } 
+      toast.info(data.message)
       return data
     } catch (error) {
       console.error(error)

@@ -47,7 +47,5 @@ def user_signup(request: HttpRequest) -> JsonResponse:
 @csrf_exempt
 @check_method('GET')
 def user_logout(request: HttpRequest) -> JsonResponse:
-    if not request.user.is_authenticated:
-        return JsonResponse({'error': 'Nobody is logged for log out. How this happen? :o'}, status=500)
     logout(request)
     return JsonResponse({'message': 'User logged out'}, status=200)

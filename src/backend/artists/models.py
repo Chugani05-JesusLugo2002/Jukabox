@@ -5,6 +5,7 @@ class Artist(models.Model):
     name = models.CharField(max_length=255)
     bio = models.TextField(blank=True)
     added_at = models.DateField(auto_now_add=True)
+    avatar = models.ImageField(default='/avatars/default.jpg', upload_to='avatars/')
 
     class Meta:
         ordering = ('name',)

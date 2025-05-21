@@ -6,7 +6,7 @@ import { useAPI } from '@/composables/useAPI'
 import { useAuthStore } from '@/stores/useAuth'
 
 import type { User } from '@/components/classes/Authentication'
-import ViewHeader from '@/components/ViewHeader.vue'
+import ViewHeader from '@/components/layout/ViewHeader.vue'
 
 const { userSignup } = useAPI()
 const authStore = useAuthStore()

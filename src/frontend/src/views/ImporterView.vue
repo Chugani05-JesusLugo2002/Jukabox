@@ -5,7 +5,8 @@ import { useToast } from 'vue-toast-notification'
 import { useAPI } from '@/composables/useAPI'
 import { useAuthStore } from '@/stores/useAuth'
 
-import ViewHeader from '@/components/ViewHeader.vue'
+import ViewHeader from '@/components/layout/ViewHeader.vue'
+import AlertComp from '@/components/gui/AlertComp.vue'
 
 const { importArtist } = useAPI()
 const toast = useToast()
@@ -27,9 +28,7 @@ async function importToAPI(mbidInput: string) {
 <template>
   <ViewHeader>{{ $t('importer-page.title') }}</ViewHeader>
 
-  <div class="alert alert-info fw-bold text-center" role="alert">
-    {{ $t('importer-page.tag1') }}
-  </div>
+  <AlertComp :style="'info'">{{ $t('importer-page.tag1') }}</AlertComp>
 
   <div class="mb-4 px-3">
     <div class="mb-3" v-html="$t('importer-page.paragraph1')"></div>
@@ -62,8 +61,6 @@ async function importToAPI(mbidInput: string) {
       </div>
     </form>
 
-    <div class="alert alert-warning text-center fw-bold" role="alert" v-else>
-      You need to be logged in to use this feature!
-    </div>
+    <AlertComp :style="'warning'" v-else>You need to be logged in to use this feature!</AlertComp>
   </div>
 </template>

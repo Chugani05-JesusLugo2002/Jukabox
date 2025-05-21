@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/useAuth'
 import { useAPI } from '@/composables/useAPI'
-import ViewHeader from '@/components/ViewHeader.vue'
+import ViewHeader from '@/components/layout/ViewHeader.vue'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
