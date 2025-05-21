@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/useAuth'
-import LikeButton from './shared/LikeButton.vue'
+import LikeButton from './LikeButton.vue';
 
 const authStore = useAuthStore()
 

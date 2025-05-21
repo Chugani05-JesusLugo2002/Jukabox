@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 
 import { useAPI } from '@/composables/useAPI'
 
-import ItemHeader from '@/components/elements/ItemHeader.vue'
+import ItemHeader from '@/components/elements/shared/ItemHeader.vue'
 import ItemsSection from '@/components/elements/shared/ItemsSection.vue'
 import MusicItem from '@/components/elements/shared/MusicItem.vue'
 import SectionHeader from '@/components/elements/ArtistDetailView/SectionHeader.vue'

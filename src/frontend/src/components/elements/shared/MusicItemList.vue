@@ -9,16 +9,18 @@ const { id, title, likes, reviews, type } = defineProps<{
   likes: number
   reviews?: number
 }>()
+
+
 </script>
 
 <template>
   <RouterLink
-    class="row text-reset text-decoration-none d-flex align-items-center rounded"
+    :class="`row text-reset py-2 text-decoration-none d-flex align-items-center ${type == 'songs' ? 'border' : 'lead'}`"
     :to="`/${type}/${id}`"
   >
-    <p class="lead col-5 align-self-center">{{ title }}</p>
-    <p class="lead col-5"><slot></slot></p>
-    <div class="d-flex col-2 justify-content-end align-items-center">
+    <p class="col m-0">{{ title }}</p>
+    <p class="col m-0"><slot></slot></p>
+    <div class="col-2 d-flex justify-content-end align-items-center">
       <LikesCounter :likes="likes" />
       <ReviewsCounter :reviews="reviews ? reviews : 0" />
     </div>
