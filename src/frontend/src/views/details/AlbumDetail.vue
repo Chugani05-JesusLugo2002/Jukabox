@@ -33,7 +33,7 @@ onMounted(async () => {
     <div class="row">
       <div class="col">
         <ul class="list-group">
-          <SongListItem v-for="song in songs" :song="song"></SongListItem>
+          <SongListItem v-for="song in songs" :key="song.id" :song="song"></SongListItem>
         </ul>
       </div>
       <div class="col-3">

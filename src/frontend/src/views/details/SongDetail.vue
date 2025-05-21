@@ -48,13 +48,7 @@ onMounted(async () => {
         <p class="h4">Reviews</p>
         <form id="comment-input" class="mb-3" @submit.prevent="sendReview(song.id)" v-if="authStore.isAuthenticated">
           <div class="form-floating">
-            <input
-              type="text"
-              v-model="comment"
-              class="form-control mb-2"
-              name="comment"
-              id="comment"
-            ></input>
+            <input type="text" name="comment" id="comment" class="from-control mb-2" v-model="comment">
             <label for="comment">Your comment...</label>
           </div>
           <input class="btn btn-primary" type="submit" value="Send" />
@@ -62,7 +56,7 @@ onMounted(async () => {
 
         <div id="comments-container">
           <div v-if="songComments.length > 0">
-            <Comment v-for="comment in songComments" :comment="comment"></Comment>
+            <Comment v-for="(comment, index) in songComments" :key="index" :comment="comment"></Comment>
           </div>
           <div v-else class="alert alert-primary">No comments yet. Write the first one! :)</div>
         </div>

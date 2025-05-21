@@ -2,23 +2,25 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import ItemHeader from '@/components/elements/ItemHeader.vue'
-import type { Artist } from '@/components/classes/Artist'
 import { useAPI } from '@/composables/useAPI'
-import type { Album } from '@/components/classes/Album'
-import AlbumItem from '@/components/elements/MusicView/AlbumItem.vue'
-import UrlsContainer from '@/components/elements/includes/UrlsContainer.vue'
+
+import ItemHeader from '@/components/elements/ItemHeader.vue'
+import ItemsSection from '@/components/elements/shared/ItemsSection.vue'
+import MusicItem from '@/components/elements/shared/MusicItem.vue'
+import SectionHeader from '@/components/elements/ArtistDetailView/SectionHeader.vue'
 
 const { getData } = useAPI()
 const route = useRoute()
 
-const artist = ref<Artist | null>(null)
-const albums = ref<Album[]>()
+const artist = ref()
+const topAlbums = ref()
+const topSongs = ref()
 
 onMounted(async () => {
   const artist_pk = route.params['artist_pk']
   artist.value = await getData(`artists/${artist_pk}/`)
-  albums.value = await getData(`artists/${artist_pk}/albums/`)
+  topAlbums.value = await getData(`artists/${artist_pk}/albums/top/`)
+  topSongs.value = await getData(`artists/${artist_pk}/songs/top/`)
 })
 </script>
 
@@ -26,24 +28,29 @@ onMounted(async () => {
   <div v-if="artist">
     <ItemHeader :name="artist.name" :isRounded="true" :itemId="artist.id" :itemType="'artist'" />
 
-    <UrlsContainer :lbz_link="artist.lbz_url" :artist_links="artist.links" />
+    <ItemsSection v-if="topAlbums" class="my-5">
+      <template #header>
+        <SectionHeader :id="artist.id" :type="'albums'"/>
+      </template>
+      <template #default>
+        <MusicItem v-for="album in topAlbums" :key="album.id" :id="album.id" :img="album.cover" :type="'albums'">
+          {{ album.title }}
+        </MusicItem>
+      </template>
+    </ItemsSection>
 
-    <div v-if="albums">
-      <h5>Albums</h5>
-      <div class="album-grid d-flex flex-wrap gap-3 justify-content-center">
-        <AlbumItem v-for="album in albums" :album="album"></AlbumItem>
-      </div>
-    </div>
+    <ItemsSection v-if="topSongs" class="my-5">
+      <template #header>
+        <SectionHeader :id="artist.id" :type="'songs'"/>
+      </template>
+      <template #default>
+        <MusicItem v-for="song in topSongs" :key="song.id" :id="song.id" :img="song.cover" :type="'songs'">
+          {{ song.title }}
+        </MusicItem>
+      </template>
+    </ItemsSection>
   </div>
 
   <p v-else>Loading artist</p>
 </template>
 
-<style scoped>
-.album-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: flex-start;
-}
-</style>

@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from shared.utils import check_method, assert_token
 from albums.serializers import AlbumSerializer
+from songs.serializers import SongSerializer
 from importer.serializers import LinkSerializer
 
 from .models import Artist
@@ -25,7 +26,6 @@ def like_artist(request: HttpRequest, artist_pk: int) -> JsonResponse:
     request.profile.liked_artists.add(artist)
     return JsonResponse({'liked_artists': ArtistSerializer(request.profile.liked_artists.all()).serialize()})
 
-
 @check_method('GET')
 def artist_detail(request: HttpRequest, artist_pk: int) -> JsonResponse:
     artist = Artist.objects.get(pk=artist_pk)
@@ -35,7 +35,27 @@ def artist_detail(request: HttpRequest, artist_pk: int) -> JsonResponse:
 @check_method('GET')
 def artist_albums(request: HttpRequest, artist_pk: int) -> JsonResponse:
     artist = Artist.objects.get(pk=artist_pk)
-    serializer = AlbumSerializer(artist.albums.all(), request=request)
+    serializer = AlbumSerializer(artist.albums.all().order_by('title'), request=request)
+    return serializer.json_response()
+
+@check_method('GET')
+def artist_top_albums(request: HttpRequest, artist_pk: int) -> JsonResponse:
+    artist = Artist.objects.get(pk=artist_pk)
+    queryset = artist.albums.all().order_by('-likes')[:6]
+    serializer = AlbumSerializer(queryset, request=request)
+    return serializer.json_response()
+
+@check_method('GET')
+def artist_songs(request: HttpRequest, artist_pk: int) -> JsonResponse:
+    artist = Artist.objects.get(pk=artist_pk)
+    serializer = SongSerializer(artist.songs.all().order_by('albums__title'), request=request)
+    return serializer.json_response()
+
+@check_method('GET')
+def artist_top_songs(request: HttpRequest, artist_pk: int) -> JsonResponse:
+    artist = Artist.objects.get(pk=artist_pk)
+    queryset = artist.songs.all().order_by('-likes')[:6]
+    serializer = SongSerializer(queryset, request=request)
     return serializer.json_response()
 
 @check_method('GET')

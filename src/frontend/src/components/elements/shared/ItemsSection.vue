@@ -1,11 +1,7 @@
-<script setup lang="ts">
-const { title } = defineProps(['title'])
-</script>
-
 <template>
   <section>
-    <h2 class="display-5 my-3">{{ title }}</h2>
-    <div class="row justify-content-center">
+    <slot name="header"></slot>
+    <div class="row justify-content-center mt-3">
       <slot></slot>
     </div>
   </section>

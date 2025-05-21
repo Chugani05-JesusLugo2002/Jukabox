@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { Artist } from '../../classes/Artist'
 import { ref } from 'vue'
+
+import type { Artist } from '../../classes/Artist'
 
 interface FixedArtist {
   name: string

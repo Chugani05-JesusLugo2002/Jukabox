@@ -5,9 +5,9 @@ import type { Album } from '@/components/classes/Album'
 import type { Song } from '@/components/classes/Song'
 
 import ViewHeader from '@/components/layout/ViewHeader.vue'
-import ItemsSection from '@/components/elements/MusicView/ItemsSection.vue'
-import AlbumItem from '@/components/elements/MusicView/AlbumItem.vue'
-import SongItem from '@/components/elements/MusicView/SongItem.vue'
+import ItemsSection from '@/components/elements/shared/ItemsSection.vue'
+import MusicItem from '@/components/elements/shared/MusicItem.vue'
+import ArtistLabel from '@/components/elements/shared/ArtistLabel.vue'
 
 const mostLikedAlbums = inject<Album[]>('mostLikedAlbums')
 const mostLikedSongs = inject<Song[]>('mostLikedSongs')
@@ -17,15 +17,51 @@ const latestAlbums = inject<Album[]>('latestAlbums')
 <template>
   <ViewHeader>{{ $t('music-page.title') }}</ViewHeader>
 
-  <ItemsSection :title="$t('music-page.tag1')" v-if="mostLikedAlbums">
-    <AlbumItem v-for="(album, index) in mostLikedAlbums" :key="index" :album="album" />
+  <ItemsSection v-if="mostLikedAlbums">
+    <template #header>
+      <h2 class="display-5 my-3">{{ $t('music-page.tag1') }}</h2>
+    </template>
+    <template #default>
+      <MusicItem v-for="album in mostLikedAlbums" :key="album.id" :id="album.id" :img="album.cover" :type="'albums'">
+        <template #default>
+          {{ album.title }}
+        </template>
+        <template #extra>
+          <ArtistLabel v-if="album.artists.length > 0" :artist="album.artists[0]"/>
+        </template>
+      </MusicItem>
+    </template>
   </ItemsSection>
 
-  <ItemsSection :title="$t('music-page.tag2')" v-if="mostLikedSongs">
-    <SongItem v-for="(song, index) in mostLikedSongs" :key="index" :song="song" />
+  <ItemsSection v-if="mostLikedSongs">
+    <template #header>
+      <h2 class="display-5 my-3">{{ $t('music-page.tag2') }}</h2>
+    </template>
+    <template #default>
+      <MusicItem v-for="song in mostLikedSongs" :key="song.id" :id="song.id" :img="song.cover" :type="'songs'">
+        <template #default>
+          {{ song.title }}
+        </template>
+        <template #extra>
+          <ArtistLabel v-if="song.artists.length > 0" :artist="song.artists[0]"/>
+        </template>
+      </MusicItem>
+    </template>
   </ItemsSection>
 
-  <ItemsSection :title="$t('music-page.tag3')" v-if="latestAlbums">
-    <AlbumItem v-for="(album, index) in latestAlbums" :key="index" :album="album" />
+  <ItemsSection v-if="latestAlbums">
+    <template #header>
+      <h2 class="display-5 my-3">{{ $t('music-page.tag3') }}</h2>
+    </template>
+    <template #default>
+      <MusicItem v-for="album in latestAlbums" :key="album.id" :id="album.id" :img="album.cover" :type="'albums'">
+        <template #default>
+          {{ album.title }}
+        </template>
+        <template #extra>
+          <ArtistLabel v-if="album.artists.length > 0" :artist="album.artists[0]"/>
+        </template>
+      </MusicItem>
+    </template>
   </ItemsSection>
 </template>
