@@ -11,7 +11,7 @@ const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new Toolti
 <template>
   <a
     :href="lbzUrl"
-    class="col-1 rounded d-flex justify-content-center play-button"
+    class="col-md-1 d-none rounded d-lg-flex justify-content-center play-button text-decoration-none flex-column"
     target="_blank"
     data-bs-toggle="tooltip"
     data-bs-title="Play in ListenBrainz"
@@ -19,8 +19,9 @@ const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new Toolti
     <img
       src="/imgs/listenbrainz-logo.svg"
       :alt="`ListenBrainz to ${type} ${id}`"
-      class="img-fluid w-50"
+      class="img-fluid w-100"
     />
+    <p class="fst-italic text-secondary text-center">Listen</p>
   </a>
 </template>
 

@@ -13,12 +13,12 @@ const { id, title, likes, reviews, type } = defineProps<{
 
 <template>
   <RouterLink
-    :class="`row text-reset py-2 text-decoration-none d-flex align-items-center ${type == 'songs' ? 'border' : 'lead'}`"
+    :class="`row text-reset py-2 text-decoration-none d-flex align-items-center lead border-bottom`"
     :to="`/${type}/${id}`"
   >
     <p class="col m-0">{{ title }}</p>
-    <p class="col m-0"><slot></slot></p>
-    <div class="col-2 d-flex justify-content-end align-items-center">
+    <p class="col m-0 text-end text-sm-start"><slot></slot></p>
+    <div class="col-2 d-sm-flex d-none justify-content-end align-items-center">
       <LikesCounter :likes="likes" />
       <ReviewsCounter :reviews="reviews ? reviews : 0" />
     </div>

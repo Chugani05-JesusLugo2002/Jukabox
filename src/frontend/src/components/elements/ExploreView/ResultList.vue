@@ -8,7 +8,7 @@ const { result } = defineProps(['result'])
 </script>
 
 <template>
-  <ul class="list-group" v-if="result.result.hasOwnProperty('artists')">
+  <div class="list-group" v-if="result.result.hasOwnProperty('artists')">
     <ItemList
       v-for="artist in result.result.artists"
       :key="artist.id"
@@ -22,8 +22,8 @@ const { result } = defineProps(['result'])
         <LikesCounter :likes="artist.likes" />
       </template>
     </ItemList>
-  </ul>
-  <ul class="list-group" v-if="result.result.hasOwnProperty('albums')">
+  </div>
+  <div class="list-group" v-if="result.result.hasOwnProperty('albums')">
     <ItemList
       v-for="album in result.result.albums"
       :key="album.id"
@@ -40,8 +40,8 @@ const { result } = defineProps(['result'])
         <LikesCounter :likes="album.likes" />
       </template>
     </ItemList>
-  </ul>
-  <ul class="list-group" v-if="result.result.hasOwnProperty('songs')">
+  </div>
+  <div class="list-group" v-if="result.result.hasOwnProperty('songs')">
     <ItemList
       v-for="song in result.result.songs"
       :key="song.id"
@@ -59,5 +59,5 @@ const { result } = defineProps(['result'])
         <ReviewsCounter :reviews="song.reviews" />
       </template>
     </ItemList>
-  </ul>
+  </div>
 </template>

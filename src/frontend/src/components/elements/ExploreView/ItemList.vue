@@ -10,15 +10,15 @@ const { id, img, type } = defineProps<{
 </script>
 
 <template>
-  <div class="row py-1">
-    <RouterLink :to="`/${type}s/${id}/`" class="col-1">
+  <div class="row my-3">
+    <RouterLink :to="`/${type}s/${id}/`" class="col-sm-2 col-3">
       <img
         :src="img"
         :alt="id + ' image'"
         :class="`img-fluid ${type == 'artist' ? 'rounded-circle' : 'rounded-3'}`"
       />
     </RouterLink>
-    <div class="col-8">
+    <div class="col-sm-7 col-6">
       <h5>
         <RouterLink :to="`/${type}s/${id}/`" class="text-black"><slot></slot></RouterLink>
         <slot name="credits"></slot>

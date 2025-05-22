@@ -41,23 +41,47 @@ const { link } = defineProps<{
 </template>
 
 <style scoped lang="scss">
-.spotify {
-  background: linear-gradient(to right, #1db954, #191414);
-  color: white;
+a {
+  transition: 0.5s;
+  background-color: white;
+  color: black;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
-.statify {
+.spotify {
+  i {
+    color: #1db954;
+  }
+  &:hover {
+    background: linear-gradient(to left, #1db954, #191414);
+    color: white;
+  }
+  &:hover i {
+    color: white
+  }
+}
+.statify:hover {
   background: linear-gradient(to right, #2d0036, #004d00);
   color: white;
 }
-.deezer {
-  background: linear-gradient(to right, #5d1c63, #c92b68);
+.deezer:hover {
+  background: linear-gradient(to left, #5d1c63, #c92b68);
   color: white;
 }
-.bandcamp {
+.bandcamp:hover {
   background: linear-gradient(to right, #315b66, #ffffff);
 }
 .youtube {
-  background: linear-gradient(to right, #ff0000, #282828);
-  color: white;
+  i {
+    color: #ff0000;
+  }
+  &:hover {
+    background: linear-gradient(to right, #ff0000, #282828);
+    color: white;
+  }
+  &:hover i {
+    color: white;
+  }
 }
 </style>

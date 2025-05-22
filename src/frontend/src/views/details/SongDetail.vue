@@ -42,7 +42,7 @@ onMounted(async () => {
     </ItemHeader>
 
     <div class="row">
-      <div class="col-9">
+      <div class="col-lg-9 order-lg-2 order-2">
         <h4>Reviews</h4>
         <CreateReviewInput
           :songId="song.id"
@@ -58,7 +58,7 @@ onMounted(async () => {
           <AlertComp :style="'info'" v-else>No comments yet. Write the first one! :)</AlertComp>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-lg-3 order-1 order-lg-2">
         <UrlsContainer :type="'songs'" :id="song.id" :lbzUrl="song.lbz_url" />
         <StatsContainer :likes="song.likes" :reviews="song.reviews"></StatsContainer>
       </div>

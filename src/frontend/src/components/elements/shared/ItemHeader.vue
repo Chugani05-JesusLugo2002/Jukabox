@@ -14,14 +14,14 @@ const { id, img, title, type } = defineProps<{
 
 <template>
   <div class="row pb-3">
-    <div class="col-3" v-if="img">
-      <img :src="img" :alt="title + ' image'" class="rounded-3 img-fluid" />
+    <div class="col-sm-3 col-4" v-if="img">
+      <img :src="img" :alt="title + ' image'" class="rounded-3 img-fluid w-100" />
     </div>
     <div class="col d-flex flex-column justify-content-center">
-      <h1 class="display-4">{{ title }}</h1>
+      <h1 class="display-5">{{ title }}</h1>
       <p class="text-muted h5"><slot></slot></p>
     </div>
-    <div class="col-1 display-5 d-flex align-items-center" v-if="authStore.isAuthenticated">
+    <div class="col-sm-2 col-1 fs-1 d-flex align-items-center justify-content-end" v-if="authStore.isAuthenticated">
       <LikeButton :id="id" :type="type" />
     </div>
   </div>

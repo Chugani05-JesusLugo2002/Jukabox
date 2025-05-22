@@ -20,14 +20,14 @@ onMounted(async () => {
 
 <template>
   <div v-if="artist">
-    <h1>
+    <h1 class="mb-5">
       <RouterLink :to="`/artists/${artist.id}`" class="text-black">{{ artist.name }}</RouterLink> -
       Songs
     </h1>
     <div class="row display-6 my-3">
-      <div class="col-5">Song</div>
-      <div class="col-5">Album</div>
-      <div class="col-2 text-end">Stats</div>
+      <div class="col-sm-5 col">Song</div>
+      <div class="col-sm-5 col text-end text-sm-start">Album</div>
+      <div class="col-2 text-end d-none d-sm-inline">Stats</div>
     </div>
     <MusicItemList
       v-for="song in songs"
