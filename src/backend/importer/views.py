@@ -3,7 +3,6 @@ from django.views.decorators.csrf import csrf_exempt
 import re
 
 from shared.utils import check_method, check_json_body, assert_body_fields, assert_token
-from artists.models import Artist
 
 from .tasks import import_artist_data
 
@@ -19,6 +18,4 @@ def import_artist(request: HttpRequest) -> JsonResponse:
     if not (m := re.fullmatch(mbid_pattern, mbid)):
         return JsonResponse({'error': 'Invalid MBID'}, status=400)
     import_artist_data.delay(mbid)
-    if Artist.objects.get(mbid=mbid):
-        return JsonResponse({'message': f'Updating artist data...'})
-    return JsonResponse({'message': f'Adding artist data...'})
+    return JsonResponse({'message': f'Updating artist data...'})
